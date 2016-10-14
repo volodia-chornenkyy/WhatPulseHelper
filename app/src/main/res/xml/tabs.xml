@@ -1,0 +1,14 @@
+<tabs>
+    <tab
+        icon="@drawable/ic_person_24dp"
+        id="@+id/tab_profile"
+        title="Profile" />
+    <tab
+        icon="@drawable/ic_laptop_24dp"
+        id="@+id/tab_computers"
+        title="Computers" />
+    <tab
+        icon="@drawable/ic_people_24dp"
+        id="@+id/tab_teams"
+        title="Teams" />
+</tabs>
