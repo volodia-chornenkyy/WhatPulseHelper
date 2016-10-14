@@ -23,6 +23,6 @@
         android:layout_width="match_parent"
         android:layout_height="60dp"
         android:layout_gravity="bottom"
-        app:bb_behavior="shy|shifting"
+        app:bb_behavior="shy|shifting|underNavbar"
         app:bb_tabXmlResource="@xml/tabs" />
 </android.support.design.widget.CoordinatorLayout>
