@@ -23,6 +23,7 @@ class GeneralInfoFragment : Fragment(), GeneralInfoView {
         }
     }
 
+    // region Lifecycle
     override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_general_info, container, false)
@@ -34,8 +35,16 @@ class GeneralInfoFragment : Fragment(), GeneralInfoView {
         return binding?.root
     }
 
+    override fun onDestroyView() {
+        presenter.detach()
+        super.onDestroyView()
+    }
+    //endregion
+
+    //region View
     override fun bindUser(user: UserResponse) {
         println(user)
         binding?.user = user
     }
+    //endregion
 }
