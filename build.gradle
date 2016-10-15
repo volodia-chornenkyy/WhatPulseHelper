@@ -2,6 +2,7 @@
 
 buildscript {
 
+    ext.build_tools_version = '2.2.1'
     ext.kotlin_version = '1.0.4'
     ext.retrofit_version = '2.1.0'
     ext.support_lib_version = '24.2.1'
@@ -11,7 +12,7 @@ buildscript {
         jcenter()
     }
     dependencies {
-        classpath 'com.android.tools.build:gradle:2.2.1'
+        classpath "com.android.tools.build:gradle:$build_tools_version"
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
         classpath "org.jetbrains.kotlin:kotlin-android-extensions:$kotlin_version"
 
