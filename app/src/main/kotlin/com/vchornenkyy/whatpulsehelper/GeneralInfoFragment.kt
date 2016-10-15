@@ -36,6 +36,6 @@ class GeneralInfoFragment : Fragment(), GeneralInfoView {
 
     override fun bindUser(user: UserResponse) {
         println(user)
-        binding?.user = users
+        binding?.user = user
     }
 }
