@@ -1,7 +1,7 @@
 package com.vchornenkyy.whatpulsehelper.view
 
-import com.vchornenkyy.whatpulsehelper.api.model.UserResponse
+import com.vchornenkyy.whatpulsehelper.dto.User
 
 interface GeneralInfoView {
-    fun bindUser(user: UserResponse)
+    fun bindUser(user: User)
 }

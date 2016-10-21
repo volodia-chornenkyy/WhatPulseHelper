@@ -6,8 +6,8 @@ import android.support.v4.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.vchornenkyy.whatpulsehelper.api.model.UserResponse
 import com.vchornenkyy.whatpulsehelper.databinding.FragmentGeneralInfoBinding
+import com.vchornenkyy.whatpulsehelper.dto.User
 import com.vchornenkyy.whatpulsehelper.presenter.GeneralInfoPresenter
 import com.vchornenkyy.whatpulsehelper.view.GeneralInfoView
 
@@ -42,7 +42,7 @@ class GeneralInfoFragment : Fragment(), GeneralInfoView {
     //endregion
 
     //region View
-    override fun bindUser(user: UserResponse) {
+    override fun bindUser(user: User) {
         println(user)
         binding?.user = user
     }

@@ -1,9 +1,9 @@
 package com.vchornenkyy.whatpulsehelper.dto
 
-data class Ranks(
-        val keys: String,
-        val clicks: String,
-        val download: String,
-        val upload: String,
-        val uptime: String
-)
+class Ranks() {
+    var keys: String? = null
+    var clicks: String? = null
+    var download: String? = null
+    var upload: String? = null
+    var uptime: String? = null
+}

@@ -1,12 +1,12 @@
 package com.vchornenkyy.whatpulsehelper.dto
 
-data class Computer(
-        val name: String,
-        val keys: String,
-        val clicks: String,
-        val download: String,
-        val upload: String,
-        val uptime: String,
-        val pulses: String,
-        val lastPulse: String
-)
+class Computer() {
+    var name: String? = null
+    var keys: String? = null
+    var clicks: String? = null
+    var download: String? = null
+    var upload: String? = null
+    var uptime: String? = null
+    var pulses: String? = null
+    var lastPulse: String? = null
+}

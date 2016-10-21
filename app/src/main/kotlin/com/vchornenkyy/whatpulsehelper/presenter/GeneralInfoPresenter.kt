@@ -3,7 +3,7 @@ package com.vchornenkyy.whatpulsehelper.presenter
 import com.vchornenkyy.whatpulsehelper.api.Cache
 import com.vchornenkyy.whatpulsehelper.api.InMemoryCache
 import com.vchornenkyy.whatpulsehelper.api.WhatPulseRestApi
-import com.vchornenkyy.whatpulsehelper.api.model.UserResponse
+import com.vchornenkyy.whatpulsehelper.helper.ModelConverter
 import com.vchornenkyy.whatpulsehelper.view.GeneralInfoView
 import rx.Subscription
 import rx.android.schedulers.AndroidSchedulers
@@ -20,21 +20,13 @@ class GeneralInfoPresenter() {
         val username = "temnoi"
         userSubscription = cache.getUser()
                 .switchIfEmpty(userApi.getUser(username))
-                .map { userResponse -> convert(userResponse) }
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe { userResponse ->
-                    view?.bindUser(userResponse)
-
-                    // todo take timestamp from 'GeneratedTime'
-                    cache.saveUser(userResponse, System.currentTimeMillis())
+                    val user = ModelConverter().convert(userResponse)
+                    view?.bindUser(user)
+                    cache.saveUser(userResponse, user.generatedTime)
                 }
-    }
-
-    //TODO move it somewhere
-    fun convert(userResponse: UserResponse): UserResponse {
-        // prepare model for UI (for ex. format data/time)
-        return userResponse
     }
 
     fun detach() {

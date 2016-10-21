@@ -16,8 +16,12 @@ class InMemoryCache private constructor() : Cache {
         val instance: InMemoryCache by lazy { Holder.INSTANCE }
     }
 
-    override fun saveUser(userResponse: UserResponse, timestamp: Long) {
-        this.userResponseTimestamp = timestamp
+    override fun saveUser(userResponse: UserResponse, timestamp: Long?) {
+        if (timestamp == null) {
+            this.userResponseTimestamp = System.currentTimeMillis()
+        } else {
+            this.userResponseTimestamp = timestamp
+        }
         this.userResponse = userResponse
     }
 

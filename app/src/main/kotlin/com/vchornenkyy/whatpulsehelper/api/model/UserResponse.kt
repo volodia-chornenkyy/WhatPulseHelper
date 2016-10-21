@@ -28,6 +28,6 @@ data class UserResponse(
         @JsonProperty("AvClicksPerPulse") val averageClicksPerPulse: Long,
         @JsonProperty("AvKPS") val averageKeysPerSecond: Float,
         @JsonProperty("AvCPS") val averageClicksPerSecond: Float,
-        @JsonProperty("Ranks") val ranks: Ranks,
-        @JsonProperty("Computers") val computers: HashMap<String, Computer>?
+        @JsonProperty("Ranks") val ranks: RanksResponse,
+        @JsonProperty("Computers") val computers: HashMap<String, ComputerResponse>
 )
