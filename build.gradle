@@ -2,10 +2,10 @@
 
 buildscript {
 
-    ext.build_tools_version = '2.2.1'
+    ext.build_tools_version = '2.2.2'
     ext.kotlin_version = '1.0.4'
     ext.retrofit_version = '2.1.0'
-    ext.support_lib_version = '24.2.1'
+    ext.support_lib_version = '25.0.0'
     ext.rxandroid_version = '1.2.1'
 
     repositories {

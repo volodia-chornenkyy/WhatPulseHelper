@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/tab_profile"
+        android:icon="@drawable/ic_person_24dp"
+        android:title="Profile" />
+    <item
+        android:id="@+id/tab_computers"
+        android:icon="@drawable/ic_laptop_24dp"
+        android:title="Computers" />
+    <item
+        android:id="@+id/tab_teams"
+        android:icon="@drawable/ic_people_24dp"
+        android:title="Teams" />
+</menu>
