@@ -25,7 +25,7 @@ class GeneralInfoPresenter() {
                 .subscribe { userResponse ->
                     val user = ModelConverter().convert(userResponse)
                     view?.bindUser(user)
-                    cache.saveUser(userResponse, user.generatedTime)
+                    cache.saveUser(userResponse)
                 }
     }
 

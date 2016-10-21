@@ -2,11 +2,12 @@ package com.vchornenkyy.whatpulsehelper.api
 
 import com.vchornenkyy.whatpulsehelper.api.model.UserResponse
 import rx.Observable
+import java.util.*
 
 class InMemoryCache private constructor() : Cache {
     private val timeout = 3600000
-    private var userResponseTimestamp: Long = 0;
-    private var userResponse: UserResponse? = null;
+    private var userResponseTimestamp: Long = 0
+    private var userResponse: UserResponse? = null
 
     private object Holder {
         val INSTANCE = InMemoryCache()
@@ -16,21 +17,22 @@ class InMemoryCache private constructor() : Cache {
         val instance: InMemoryCache by lazy { Holder.INSTANCE }
     }
 
-    override fun saveUser(userResponse: UserResponse, timestamp: Long?) {
-        if (timestamp == null) {
-            this.userResponseTimestamp = System.currentTimeMillis()
-        } else {
-            this.userResponseTimestamp = timestamp
+    override fun saveUser(userResponse: UserResponse) {
+        if (!isCacheValid(Date().time)) {
+            this.userResponseTimestamp = Date().time
+            this.userResponse = userResponse
         }
-        this.userResponse = userResponse
     }
 
     override fun getUser(): Observable<UserResponse> {
-        val timePassed = System.currentTimeMillis() - userResponseTimestamp
-        if (timePassed > timeout) {
-            userResponse = null
-            return Observable.empty()
+        if (isCacheValid(Date().time)) {
+            return Observable.just(userResponse)
         }
-        return Observable.just(userResponse)
+        return Observable.empty()
+    }
+
+    private fun isCacheValid(currentTime: Long): Boolean {
+        val timePassed = currentTime - userResponseTimestamp
+        return timePassed < timeout
     }
 }
