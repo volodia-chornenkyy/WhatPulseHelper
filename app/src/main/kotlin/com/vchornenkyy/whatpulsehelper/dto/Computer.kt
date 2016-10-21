@@ -1,7 +1,7 @@
 package com.vchornenkyy.whatpulsehelper.dto
 
 class Computer() {
-    var name: String? = null
+    var name: String = ""
     var keys: String? = null
     var clicks: String? = null
     var download: String? = null

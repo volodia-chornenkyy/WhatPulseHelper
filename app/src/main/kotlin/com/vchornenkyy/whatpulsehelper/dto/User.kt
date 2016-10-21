@@ -3,7 +3,6 @@ package com.vchornenkyy.whatpulsehelper.dto
 import java.util.*
 
 class User() {
-    var generatedTime: Long? = null
     var userId: Long? = null
     var accountName: String? = null
     var country: String? = null

@@ -39,10 +39,10 @@ class ModelConverter {
             computer.download = numberFormatter.format(computerResponse.value.download)
             computer.upload = numberFormatter.format(computerResponse.value.upload)
 //            computer.uptime = numberFormatter.format(computerResponse.value.uptimeSeconds)
+            computers.put(computer.name, computer)
         }
 
         val user = User()
-        user.generatedTime = dateFormatter.parse(response.generatedTime).time
         user.userId = response.userId
         user.accountName = response.accountName
         user.country = response.country
@@ -61,7 +61,7 @@ class ModelConverter {
         user.averageKeysPerSecond = numberFormatter.format(response.pulsesAmount)
         user.averageClicksPerSecond = numberFormatter.format(response.pulsesAmount)
         user.ranks = ranks
-//        user.computers: HashMap<String, Computer>? = null
+        user.computers = computers
         return user
     }
 }
