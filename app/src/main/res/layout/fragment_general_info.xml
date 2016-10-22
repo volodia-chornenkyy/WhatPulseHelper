@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     tools:context="com.vchornenkyy.whatpulsehelper.GeneralInfoFragment">
 
@@ -18,148 +17,134 @@
         android:layout_height="match_parent"
         android:orientation="vertical">
 
-        <android.support.v7.widget.CardView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:cardElevation="5dp"
-            app:cardUseCompatPadding="true">
+        <RelativeLayout
+            android:id="@+id/accountLayout"
+            style="@style/Block">
 
-            <RelativeLayout
-                android:id="@+id/accountLayout"
-                style="@style/Block">
+            <TextView
+                android:id="@+id/tvAccountTitle"
+                style="@style/CardTitle"
+                android:text="Account" />
 
-                <TextView
-                    android:id="@+id/tvAccountTitle"
-                    style="@style/CardTitle"
-                    android:text="Account" />
+            <TextView
+                android:id="@+id/tvUsernameLabel"
+                style="@style/CardText.Label"
+                android:layout_below="@id/tvAccountTitle"
+                android:text="Username" />
 
-                <TextView
-                    android:id="@+id/tvUsernameLabel"
-                    style="@style/CardText.Label"
-                    android:layout_below="@id/tvAccountTitle"
-                    android:text="Username" />
+            <TextView
+                android:id="@+id/tvUsername"
+                style="@style/CardText.Value"
+                android:layout_below="@id/tvAccountTitle"
+                android:layout_toRightOf="@id/tvUsernameLabel"
+                android:text="@{user.accountName}"
+                tools:ignore="RtlHardcoded"
+                tools:text="TextView" />
 
-                <TextView
-                    android:id="@+id/tvUsername"
-                    style="@style/CardText.Value"
-                    android:layout_below="@id/tvAccountTitle"
-                    android:layout_toRightOf="@id/tvUsernameLabel"
-                    android:text="@{user.accountName}"
-                    tools:ignore="RtlHardcoded"
-                    tools:text="TextView" />
+            <TextView
+                android:id="@+id/tvCountryLabel"
+                style="@style/CardText.Label"
+                android:layout_below="@id/tvUsernameLabel"
+                android:text="Country"
+                android:visibility="@{user.country == null ? View.GONE : View.VISIBLE}" />
 
-                <TextView
-                    android:id="@+id/tvCountryLabel"
-                    style="@style/CardText.Label"
-                    android:layout_below="@id/tvUsernameLabel"
-                    android:text="Country"
-                    android:visibility="@{user.country == null ? View.GONE : View.VISIBLE}" />
+            <TextView
+                android:id="@+id/tvCountry"
+                style="@style/CardText.Value"
+                android:layout_below="@id/tvUsernameLabel"
+                android:layout_toRightOf="@id/tvCountryLabel"
+                android:text="@{user.country}"
+                android:visibility="@{user.country == null ? View.GONE : View.VISIBLE}"
+                tools:ignore="RtlHardcoded"
+                tools:text="TextView" />
 
-                <TextView
-                    android:id="@+id/tvCountry"
-                    style="@style/CardText.Value"
-                    android:layout_below="@id/tvUsernameLabel"
-                    android:layout_toRightOf="@id/tvCountryLabel"
-                    android:text="@{user.country}"
-                    android:visibility="@{user.country == null ? View.GONE : View.VISIBLE}"
-                    tools:ignore="RtlHardcoded"
-                    tools:text="TextView" />
+            <TextView
+                android:id="@+id/tvJoinedAtLabel"
+                style="@style/CardText.Label"
+                android:layout_below="@id/tvCountryLabel"
+                android:text="Joined at"
+                android:visibility="@{user.dateJoined == null ? View.GONE : View.VISIBLE}" />
 
-                <TextView
-                    android:id="@+id/tvJoinedAtLabel"
-                    style="@style/CardText.Label"
-                    android:layout_below="@id/tvCountryLabel"
-                    android:text="Joined at"
-                    android:visibility="@{user.dateJoined == null ? View.GONE : View.VISIBLE}" />
+            <TextView
+                android:id="@+id/tvJoinedAt"
+                style="@style/CardText.Value"
+                android:layout_below="@id/tvCountryLabel"
+                android:layout_toRightOf="@id/tvJoinedAtLabel"
+                android:text="@{user.dateJoined}"
+                android:visibility="@{user.dateJoined == null ? View.GONE : View.VISIBLE}"
+                tools:ignore="RtlHardcoded"
+                tools:text="Joined at" />
+        </RelativeLayout>
 
-                <TextView
-                    android:id="@+id/tvJoinedAt"
-                    style="@style/CardText.Value"
-                    android:layout_below="@id/tvCountryLabel"
-                    android:layout_toRightOf="@id/tvJoinedAtLabel"
-                    android:text="@{user.dateJoined}"
-                    android:visibility="@{user.dateJoined == null ? View.GONE : View.VISIBLE}"
-                    tools:ignore="RtlHardcoded"
-                    tools:text="Joined at" />
-            </RelativeLayout>
-        </android.support.v7.widget.CardView>
+        <RelativeLayout
+            android:id="@+id/totalLayout"
+            style="@style/Block">
 
-        <android.support.v7.widget.CardView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:cardElevation="5dp"
-            app:cardUseCompatPadding="true">
+            <TextView
+                android:id="@+id/tvPulseTitle"
+                style="@style/CardTitle"
+                android:text="Total" />
 
-            <RelativeLayout
-                android:id="@+id/totalLayout"
-                style="@style/Block">
+            <TextView
+                android:id="@+id/tvPulseAmountLabel"
+                style="@style/CardText.Label"
+                android:layout_below="@id/tvPulseTitle"
+                android:text="Pulses" />
 
-                <TextView
-                    android:id="@+id/tvPulseTitle"
-                    style="@style/CardTitle"
-                    android:text="Total" />
+            <TextView
+                android:id="@+id/tvPulseAmountValue"
+                style="@style/CardText.Value"
+                android:layout_below="@id/tvPulseTitle"
+                android:layout_toRightOf="@id/tvPulseAmountLabel"
+                android:text='@{user.pulsesAmount}'
+                tools:ignore="RtlHardcoded"
+                tools:text="Pulses amount" />
 
-                <TextView
-                    android:id="@+id/tvPulseAmountLabel"
-                    style="@style/CardText.Label"
-                    android:layout_below="@id/tvPulseTitle"
-                    android:text="Pulses" />
+            <TextView
+                android:id="@+id/tvKeysAmountLabel"
+                style="@style/CardText.Label"
+                android:layout_below="@id/tvPulseAmountLabel"
+                android:text="Keys" />
 
-                <TextView
-                    android:id="@+id/tvPulseAmountValue"
-                    style="@style/CardText.Value"
-                    android:layout_below="@id/tvPulseTitle"
-                    android:layout_toRightOf="@id/tvPulseAmountLabel"
-                    android:text='@{user.pulsesAmount}'
-                    tools:ignore="RtlHardcoded"
-                    tools:text="Pulses amount" />
+            <TextView
+                android:id="@+id/tvKeysAmountValue"
+                style="@style/CardText.Value"
+                android:layout_below="@id/tvPulseAmountLabel"
+                android:layout_toRightOf="@id/tvKeysAmountLabel"
+                android:text='@{user.keysPressed}'
+                tools:ignore="RtlHardcoded"
+                tools:text="Keys amount" />
 
-                <TextView
-                    android:id="@+id/tvKeysAmountLabel"
-                    style="@style/CardText.Label"
-                    android:layout_below="@id/tvPulseAmountLabel"
-                    android:text="Keys" />
+            <TextView
+                android:id="@+id/tvClicksAmountLabel"
+                style="@style/CardText.Label"
+                android:layout_below="@id/tvKeysAmountLabel"
+                android:text="Clicks" />
 
-                <TextView
-                    android:id="@+id/tvKeysAmountValue"
-                    style="@style/CardText.Value"
-                    android:layout_below="@id/tvPulseAmountLabel"
-                    android:layout_toRightOf="@id/tvKeysAmountLabel"
-                    android:text='@{user.keysPressed}'
-                    tools:ignore="RtlHardcoded"
-                    tools:text="Keys amount" />
+            <TextView
+                android:id="@+id/tvClicksAmountValue"
+                style="@style/CardText.Value"
+                android:layout_below="@id/tvKeysAmountLabel"
+                android:layout_toRightOf="@id/tvClicksAmountLabel"
+                android:text='@{user.clicksMade}'
+                tools:ignore="RtlHardcoded"
+                tools:text="Clicks amount" />
 
-                <TextView
-                    android:id="@+id/tvClicksAmountLabel"
-                    style="@style/CardText.Label"
-                    android:layout_below="@id/tvKeysAmountLabel"
-                    android:text="Clicks" />
+            <TextView
+                android:id="@+id/tvUptimeAmountLabel"
+                style="@style/CardText.Label"
+                android:layout_below="@id/tvClicksAmountLabel"
+                android:text="Uptime" />
 
-                <TextView
-                    android:id="@+id/tvClicksAmountValue"
-                    style="@style/CardText.Value"
-                    android:layout_below="@id/tvKeysAmountLabel"
-                    android:layout_toRightOf="@id/tvClicksAmountLabel"
-                    android:text='@{user.clicksMade}'
-                    tools:ignore="RtlHardcoded"
-                    tools:text="Clicks amount" />
-
-                <TextView
-                    android:id="@+id/tvUptimeAmountLabel"
-                    style="@style/CardText.Label"
-                    android:layout_below="@id/tvClicksAmountLabel"
-                    android:text="Uptime" />
-
-                <TextView
-                    android:id="@+id/tvUptimeAmountValue"
-                    style="@style/CardText.Value"
-                    android:layout_below="@id/tvClicksAmountLabel"
-                    android:layout_toRightOf="@id/tvClicksAmountLabel"
-                    android:text='@{user.clicksMade}'
-                    tools:ignore="RtlHardcoded"
-                    tools:text="Uptime amount" />
-            </RelativeLayout>
-        </android.support.v7.widget.CardView>
+            <TextView
+                android:id="@+id/tvUptimeAmountValue"
+                style="@style/CardText.Value"
+                android:layout_below="@id/tvClicksAmountLabel"
+                android:layout_toRightOf="@id/tvClicksAmountLabel"
+                android:text='@{user.clicksMade}'
+                tools:ignore="RtlHardcoded"
+                tools:text="Uptime amount" />
+        </RelativeLayout>
 
     </LinearLayout>
 </layout>
