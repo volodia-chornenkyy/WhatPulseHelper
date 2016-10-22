@@ -46,6 +46,13 @@
                 android:layout_height="wrap_content"
                 app:labelText="Joined at"
                 app:valueText="@{user.dateJoined}" />
+
+            <com.vchornenkyy.whatpulsehelper.ui.LabeledTextView
+                android:id="@+id/tvLastPulse"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:labelText="Last pulse at"
+                app:valueText="@{user.lastPulse}" />
         </LinearLayout>
 
         <LinearLayout
@@ -54,7 +61,7 @@
             android:orientation="vertical">
 
             <TextView
-                android:id="@+id/tvPulseTitle"
+                android:id="@+id/tvTotalTitle"
                 style="@style/CardTitle"
                 android:text="Total" />
 
@@ -85,6 +92,59 @@
                 android:layout_height="wrap_content"
                 app:labelText="Uptime"
                 app:valueText="@{user.uptime}" />
+
+            <com.vchornenkyy.whatpulsehelper.ui.LabeledTextView
+                android:id="@+id/tvDownload"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:labelText="Download"
+                app:valueText="@{user.download}" />
+
+            <com.vchornenkyy.whatpulsehelper.ui.LabeledTextView
+                android:id="@+id/tvUpload"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:labelText="Upload"
+                app:valueText="@{user.upload}" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/averageLayout"
+            style="@style/Block"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/tvAverageTitle"
+                style="@style/CardTitle"
+                android:text="Average" />
+
+            <com.vchornenkyy.whatpulsehelper.ui.LabeledTextView
+                android:id="@+id/tvKeysAvgPulse"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:labelText="Keys per pulse"
+                app:valueText="@{user.averageKeysPerPulse}" />
+
+            <com.vchornenkyy.whatpulsehelper.ui.LabeledTextView
+                android:id="@+id/tvKeysAvgSec"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:labelText="Keys per second"
+                app:valueText="@{user.averageKeysPerSecond}" />
+
+            <com.vchornenkyy.whatpulsehelper.ui.LabeledTextView
+                android:id="@+id/tvClicksAvgPulse"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:labelText="Clicks per pulse "
+                app:valueText="@{user.averageClicksPerPulse}" />
+
+            <com.vchornenkyy.whatpulsehelper.ui.LabeledTextView
+                android:id="@+id/tvClicksAvgSec"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:labelText="Clicks per second "
+                app:valueText="@{user.averageClicksPerSecond}" />
         </LinearLayout>
     </LinearLayout>
 </layout>
