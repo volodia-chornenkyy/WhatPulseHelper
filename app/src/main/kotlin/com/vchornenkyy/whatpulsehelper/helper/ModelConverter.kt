@@ -56,10 +56,10 @@ class ModelConverter {
         user.download = response.downloadFormatted
         user.upload = response.uploadFormatted
         user.uptime = response.uptimeShort
-        user.averageKeysPerPulse = numberFormatter.format(response.pulsesAmount)
-        user.averageClicksPerPulse = numberFormatter.format(response.pulsesAmount)
-        user.averageKeysPerSecond = numberFormatter.format(response.pulsesAmount)
-        user.averageClicksPerSecond = numberFormatter.format(response.pulsesAmount)
+        user.averageKeysPerPulse = numberFormatter.format(response.averageKeysPerPulse)
+        user.averageClicksPerPulse = numberFormatter.format(response.averageClicksPerPulse)
+        user.averageKeysPerSecond = numberFormatter.format(response.averageKeysPerSecond)
+        user.averageClicksPerSecond = numberFormatter.format(response.averageClicksPerSecond)
         user.ranks = ranks
         user.computers = computers
         return user
