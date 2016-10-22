@@ -11,6 +11,7 @@ data class ComputerResponse(
         @JsonProperty("Download") val download: Long,
         @JsonProperty("Upload") val upload: Long,
         @JsonProperty("UptimeSeconds") val uptimeSeconds: Long,
+        @JsonProperty("UptimeShort") val uptimeShort: String,
         @JsonProperty("Pulses") val pulses: Long,
         @JsonProperty("LastPulseUnixTimestamp") val lastPulseTimestamp: Long
 )

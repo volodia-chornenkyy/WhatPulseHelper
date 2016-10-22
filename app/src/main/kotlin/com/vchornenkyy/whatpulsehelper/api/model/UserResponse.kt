@@ -24,6 +24,7 @@ data class UserResponse(
         @JsonProperty("DownloadMB") val downloadMb: Long,
         @JsonProperty("UploadMB") val uploadMb: Long,
         @JsonProperty("UptimeSeconds") val uptimeSeconds: Long,
+        @JsonProperty("UptimeShort") val uptimeShort: String,
         @JsonProperty("AvKeysPerPulse") val averageKeysPerPulse: Long,
         @JsonProperty("AvClicksPerPulse") val averageClicksPerPulse: Long,
         @JsonProperty("AvKPS") val averageKeysPerSecond: Float,

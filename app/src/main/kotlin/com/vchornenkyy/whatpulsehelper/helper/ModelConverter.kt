@@ -38,7 +38,7 @@ class ModelConverter {
             computer.keys = numberFormatter.format(computerResponse.value.keys)
             computer.download = numberFormatter.format(computerResponse.value.download)
             computer.upload = numberFormatter.format(computerResponse.value.upload)
-//            computer.uptime = numberFormatter.format(computerResponse.value.uptimeSeconds)
+            computer.uptime = computerResponse.value.uptimeShort
             computers.put(computer.name, computer)
         }
 
@@ -55,7 +55,7 @@ class ModelConverter {
         user.clicksMade = numberFormatter.format(response.clicksMade)
         user.download = response.downloadFormatted
         user.upload = response.uploadFormatted
-//        user.uptime = numberFormatter.format(response.pulsesAmount)
+        user.uptime = response.uptimeShort
         user.averageKeysPerPulse = numberFormatter.format(response.pulsesAmount)
         user.averageClicksPerPulse = numberFormatter.format(response.pulsesAmount)
         user.averageKeysPerSecond = numberFormatter.format(response.pulsesAmount)
