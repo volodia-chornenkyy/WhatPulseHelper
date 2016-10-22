@@ -1,5 +1,6 @@
 package com.vchornenkyy.whatpulsehelper.presenter
 
+import android.util.Log
 import com.vchornenkyy.whatpulsehelper.api.Cache
 import com.vchornenkyy.whatpulsehelper.api.InMemoryCache
 import com.vchornenkyy.whatpulsehelper.api.WhatPulseRestApi
@@ -22,11 +23,17 @@ class GeneralInfoPresenter() {
                 .switchIfEmpty(userApi.getUser(username))
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribe { userResponse ->
-                    val user = ModelConverter().convert(userResponse)
-                    view?.bindUser(user)
-                    cache.saveUser(userResponse)
-                }
+                .subscribe(
+                        { userResponse ->
+                            val user = ModelConverter().convert(userResponse)
+                            view?.bindUser(user)
+                            cache.saveUser(userResponse)
+                        },
+                        { error ->
+                            Log.e(GeneralInfoPresenter::class.java.name, error.message, error);
+                            // TODO display error message to UI
+                        }
+                )
     }
 
     fun detach() {
