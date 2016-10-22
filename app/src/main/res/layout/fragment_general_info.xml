@@ -109,6 +109,52 @@
         </LinearLayout>
 
         <LinearLayout
+            android:id="@+id/rankssLayout"
+            style="@style/Block"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/tvRanksTitle"
+                style="@style/CardTitle"
+                android:text="Ranks" />
+
+            <com.vchornenkyy.whatpulsehelper.ui.LabeledTextView
+                android:id="@+id/tvKeysRank"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:labelText="Keys"
+                app:valueText="@{user.ranks.keys}" />
+
+            <com.vchornenkyy.whatpulsehelper.ui.LabeledTextView
+                android:id="@+id/tvClicksRank"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:labelText="Clicks"
+                app:valueText="@{user.ranks.clicks}" />
+
+            <com.vchornenkyy.whatpulsehelper.ui.LabeledTextView
+                android:id="@+id/tvUptimeRank"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:labelText="Uptime"
+                app:valueText="@{user.ranks.uptime}" />
+
+            <com.vchornenkyy.whatpulsehelper.ui.LabeledTextView
+                android:id="@+id/tvDownloadRank"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:labelText="Download"
+                app:valueText="@{user.ranks.download}" />
+
+            <com.vchornenkyy.whatpulsehelper.ui.LabeledTextView
+                android:id="@+id/tvUploadRank"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:labelText="Upload"
+                app:valueText="@{user.ranks.upload}" />
+        </LinearLayout>
+
+        <LinearLayout
             android:id="@+id/averageLayout"
             style="@style/Block"
             android:orientation="vertical">
