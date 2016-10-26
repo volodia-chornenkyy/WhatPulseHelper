@@ -8,11 +8,12 @@ import android.view.View
 import android.view.ViewGroup
 import com.vchornenkyy.whatpulsehelper.databinding.FragmentGeneralInfoBinding
 import com.vchornenkyy.whatpulsehelper.dto.User
+import com.vchornenkyy.whatpulsehelper.helper.SharedPrefAppProperties
 import com.vchornenkyy.whatpulsehelper.presenter.GeneralInfoPresenter
 import com.vchornenkyy.whatpulsehelper.view.GeneralInfoView
 
 class GeneralInfoFragment : Fragment(), GeneralInfoView {
-    val presenter = GeneralInfoPresenter()
+    var presenter: GeneralInfoPresenter? = null
 
     var binding: FragmentGeneralInfoBinding? = null
 
@@ -28,15 +29,17 @@ class GeneralInfoFragment : Fragment(), GeneralInfoView {
                               savedInstanceState: Bundle?): View? {
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_general_info, container, false)
 
-        presenter.view = this
+        presenter = GeneralInfoPresenter(SharedPrefAppProperties(context))
 
-        presenter.loadUser()
+        presenter?.view = this
+
+        presenter?.loadUser()
 
         return binding?.root
     }
 
     override fun onDestroyView() {
-        presenter.detach()
+        presenter?.detach()
         super.onDestroyView()
     }
     //endregion
