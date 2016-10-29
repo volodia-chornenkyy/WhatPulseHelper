@@ -38,4 +38,10 @@ class EventTracker : IEventTracker {
             tracker.profileOpened()
         }
     }
+
+    override fun orientationChanged(orientation: String) {
+        for (tracker in trackers) {
+            tracker.orientationChanged(orientation)
+        }
+    }
 }

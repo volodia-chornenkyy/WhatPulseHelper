@@ -1,6 +1,7 @@
 package com.vchornenkyy.whatpulsehelper
 
 import android.content.Intent
+import android.content.res.Configuration
 import android.os.Bundle
 import android.support.design.widget.Snackbar
 import android.support.v4.app.Fragment
@@ -13,6 +14,7 @@ import com.vchornenkyy.whatpulsehelper.common.api.InMemoryCache
 import com.vchornenkyy.whatpulsehelper.common.helper.AppProperties
 import com.vchornenkyy.whatpulsehelper.common.helper.SharedPrefAppProperties
 import com.vchornenkyy.whatpulsehelper.common.tracking.EventTracker
+import com.vchornenkyy.whatpulsehelper.common.tracking.annotations.Orientation
 import com.vchornenkyy.whatpulsehelper.general_info.GeneralInfoFragment
 import com.vchornenkyy.whatpulsehelper.login.LoginActivity
 import kotlinx.android.synthetic.main.activity_main.*
@@ -70,6 +72,17 @@ class MainActivity : AppCompatActivity() {
             }
         }
         return false
+    }
+
+    override fun onConfigurationChanged(newConfig: Configuration?) {
+        super.onConfigurationChanged(newConfig)
+
+        // Checks the orientation of the screen
+        if (newConfig?.orientation == Configuration.ORIENTATION_LANDSCAPE) {
+            EventTracker.instance.orientationChanged(Orientation.LANDSCAPE)
+        } else if (newConfig?.orientation == Configuration.ORIENTATION_PORTRAIT) {
+            EventTracker.instance.orientationChanged(Orientation.PORTRAIT)
+        }
     }
 
     private fun openFragment(fragment: Fragment) {
