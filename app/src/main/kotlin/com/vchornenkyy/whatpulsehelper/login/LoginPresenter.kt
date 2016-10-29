@@ -43,7 +43,7 @@ class LoginPresenter constructor(val appProperties: AppProperties,
                         { error ->
                             view?.showProgress(false)
 
-                            Log.e(GeneralInfoPresenter::class.java.name, error.message, error);
+                            Log.e(GeneralInfoPresenter::class.java.name, error.message, error)
                             // TODO display error message to UI
                         }
                 )

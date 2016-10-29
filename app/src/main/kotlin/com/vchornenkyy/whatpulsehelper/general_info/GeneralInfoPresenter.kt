@@ -31,7 +31,7 @@ class GeneralInfoPresenter constructor(val appProperties: AppProperties) {
                             cache.saveUser(userResponse)
                         },
                         { error ->
-                            Log.e(GeneralInfoPresenter::class.java.name, error.message, error);
+                            Log.e(GeneralInfoPresenter::class.java.name, error.message, error)
                             // TODO display error message to UI
                         }
                 )

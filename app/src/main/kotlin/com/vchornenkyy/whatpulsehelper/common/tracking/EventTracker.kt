@@ -3,7 +3,7 @@ package com.vchornenkyy.whatpulsehelper.common.tracking
 import java.util.*
 
 class EventTracker : IEventTracker {
-    private val trackers: ArrayList<IEventTracker> = ArrayList<IEventTracker>(0)
+    private val trackers: ArrayList<IEventTracker> = ArrayList<IEventTracker>()
 
     private constructor()
 

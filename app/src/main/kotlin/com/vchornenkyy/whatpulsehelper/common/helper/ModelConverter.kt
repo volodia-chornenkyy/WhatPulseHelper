@@ -32,13 +32,13 @@ class ModelConverter {
 
 
         val computers = HashMap<String, Computer>()
-        for (computerResponse in response.computers.entries) {
+        for ((key, value) in response.computers) {
             val computer = Computer()
-            computer.clicks = numberFormatter.format(computerResponse.value.clicks)
-            computer.keys = numberFormatter.format(computerResponse.value.keys)
-            computer.download = numberFormatter.format(computerResponse.value.download)
-            computer.upload = numberFormatter.format(computerResponse.value.upload)
-            computer.uptime = computerResponse.value.uptimeShort
+            computer.clicks = numberFormatter.format(value.clicks)
+            computer.keys = numberFormatter.format(value.keys)
+            computer.download = numberFormatter.format(value.download)
+            computer.upload = numberFormatter.format(value.upload)
+            computer.uptime = value.uptimeShort
             computers.put(computer.name, computer)
         }
 

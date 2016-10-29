@@ -43,7 +43,7 @@ public class LabeledTextView extends LinearLayout {
         }
 
         if (isInEditMode()) {
-            tvValue.setText("Value");
+            tvValue.setText(R.string.placeholder_text);
         }
     }
 

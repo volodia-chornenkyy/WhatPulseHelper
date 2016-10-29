@@ -109,7 +109,7 @@
         </LinearLayout>
 
         <LinearLayout
-            android:id="@+id/rankssLayout"
+            android:id="@+id/ranksLayout"
             style="@style/Block"
             android:orientation="vertical">
 
