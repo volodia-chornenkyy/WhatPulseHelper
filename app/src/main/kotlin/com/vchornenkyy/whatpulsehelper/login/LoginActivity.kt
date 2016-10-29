@@ -7,6 +7,7 @@ import android.support.v7.app.AppCompatActivity
 import com.vchornenkyy.whatpulsehelper.MainActivity
 import com.vchornenkyy.whatpulsehelper.R
 import com.vchornenkyy.whatpulsehelper.common.helper.SharedPrefAppProperties
+import com.vchornenkyy.whatpulsehelper.common.tracking.EventTracker
 import kotlinx.android.synthetic.main.activity_login.*
 
 class LoginActivity : AppCompatActivity(), LoginView {
@@ -17,7 +18,9 @@ class LoginActivity : AppCompatActivity(), LoginView {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
 
-        presenter = LoginPresenter(SharedPrefAppProperties(this))
+        presenter = LoginPresenter(
+                SharedPrefAppProperties(this),
+                EventTracker.instance)
 
         presenter?.attach(this)
 

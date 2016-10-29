@@ -5,12 +5,14 @@ import com.vchornenkyy.whatpulsehelper.common.api.Cache
 import com.vchornenkyy.whatpulsehelper.common.api.InMemoryCache
 import com.vchornenkyy.whatpulsehelper.common.api.WhatPulseRestApi
 import com.vchornenkyy.whatpulsehelper.common.helper.AppProperties
+import com.vchornenkyy.whatpulsehelper.common.tracking.EventTracker
 import com.vchornenkyy.whatpulsehelper.general_info.GeneralInfoPresenter
 import rx.Subscription
 import rx.android.schedulers.AndroidSchedulers
 import rx.schedulers.Schedulers
 
-class LoginPresenter constructor(val appProperties: AppProperties) {
+class LoginPresenter constructor(val appProperties: AppProperties,
+                                 val eventTracker: EventTracker) {
 
     private var view: LoginView? = null
     private var userSubscription: Subscription? = null
@@ -31,6 +33,8 @@ class LoginPresenter constructor(val appProperties: AppProperties) {
                             cache.saveUser(userResponse)
 
                             appProperties.saveUsername(username)
+
+                            eventTracker.login()
 
                             view?.openMainScreen()
                         },

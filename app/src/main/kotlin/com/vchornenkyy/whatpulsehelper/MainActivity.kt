@@ -12,6 +12,7 @@ import com.vchornenkyy.whatpulsehelper.common.api.Cache
 import com.vchornenkyy.whatpulsehelper.common.api.InMemoryCache
 import com.vchornenkyy.whatpulsehelper.common.helper.AppProperties
 import com.vchornenkyy.whatpulsehelper.common.helper.SharedPrefAppProperties
+import com.vchornenkyy.whatpulsehelper.common.tracking.EventTracker
 import com.vchornenkyy.whatpulsehelper.general_info.GeneralInfoFragment
 import com.vchornenkyy.whatpulsehelper.login.LoginActivity
 import kotlinx.android.synthetic.main.activity_main.*
@@ -36,7 +37,11 @@ class MainActivity : AppCompatActivity() {
         bottomBar.setOnNavigationItemSelectedListener {
             item ->
             when (item.itemId) {
-                R.id.tab_profile -> openFragment(GeneralInfoFragment.newInstance())
+                R.id.tab_profile -> {
+                    openFragment(GeneralInfoFragment.newInstance())
+
+                    EventTracker.instance.profileOpened()
+                }
                 R.id.tab_computers, R.id.tab_teams -> Toast.makeText(this, "Coming soon", Snackbar.LENGTH_SHORT).show()
             }
             return@setOnNavigationItemSelectedListener false
@@ -57,6 +62,8 @@ class MainActivity : AppCompatActivity() {
 
                 val cache: Cache = InMemoryCache.instance
                 cache.clear()
+
+                EventTracker.instance.logout()
 
                 startActivity(Intent(this, LoginActivity::class.java))
                 finish()
