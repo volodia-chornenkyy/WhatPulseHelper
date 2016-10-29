@@ -3,15 +3,15 @@ package com.vchornenkyy.whatpulsehelper.login
 import android.content.Intent
 import android.os.Bundle
 import android.support.design.widget.Snackbar
-import android.support.v7.app.AppCompatActivity
 import android.view.View
 import com.vchornenkyy.whatpulsehelper.MainActivity
 import com.vchornenkyy.whatpulsehelper.R
+import com.vchornenkyy.whatpulsehelper.common.BaseActivity
 import com.vchornenkyy.whatpulsehelper.common.helper.SharedPrefAppProperties
 import com.vchornenkyy.whatpulsehelper.common.tracking.EventTracker
 import kotlinx.android.synthetic.main.activity_login.*
 
-class LoginActivity : AppCompatActivity(), LoginView {
+class LoginActivity : BaseActivity(), LoginView {
 
     var presenter: LoginPresenter? = null
 
