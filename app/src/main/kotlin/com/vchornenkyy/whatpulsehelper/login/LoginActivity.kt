@@ -4,6 +4,7 @@ import android.content.Intent
 import android.os.Bundle
 import android.support.design.widget.Snackbar
 import android.support.v7.app.AppCompatActivity
+import android.view.View
 import com.vchornenkyy.whatpulsehelper.MainActivity
 import com.vchornenkyy.whatpulsehelper.R
 import com.vchornenkyy.whatpulsehelper.common.helper.SharedPrefAppProperties
@@ -24,7 +25,9 @@ class LoginActivity : AppCompatActivity(), LoginView {
 
         presenter?.attach(this)
 
-        loginProceed.setOnClickListener { presenter?.login(loginUsername.text.toString()) }
+        loginProceed.setOnClickListener {
+            presenter?.login(loginUsername.text.toString())
+        }
     }
 
     override fun onDestroy() {
@@ -34,6 +37,16 @@ class LoginActivity : AppCompatActivity(), LoginView {
 
     override fun displayMessage(message: String) {
         Snackbar.make(findViewById(android.R.id.content), message, Snackbar.LENGTH_SHORT).show()
+    }
+
+    override fun showProgress(show: Boolean) {
+        if (show) {
+            loginProceed.visibility = View.GONE
+            loginProgress.visibility = View.VISIBLE
+        } else {
+            loginProceed.visibility = View.VISIBLE
+            loginProgress.visibility = View.GONE
+        }
     }
 
     override fun getUsername(): String {

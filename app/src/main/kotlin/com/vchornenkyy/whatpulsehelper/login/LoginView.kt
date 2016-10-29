@@ -6,6 +6,8 @@ interface LoginView {
 
     fun displayMessage(message: String)
 
+    fun showProgress(show: Boolean)
+
     fun openMainScreen()
 
 }

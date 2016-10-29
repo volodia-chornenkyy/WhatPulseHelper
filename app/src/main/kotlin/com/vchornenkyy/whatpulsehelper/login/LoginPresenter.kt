@@ -23,6 +23,8 @@ class LoginPresenter constructor(val appProperties: AppProperties,
             return
         }
 
+        view?.showProgress(true)
+
         val userApi = WhatPulseRestApi().userApi
         val cache: Cache = InMemoryCache.instance
         userSubscription = userApi.getUser(username)
@@ -39,6 +41,8 @@ class LoginPresenter constructor(val appProperties: AppProperties,
                             view?.openMainScreen()
                         },
                         { error ->
+                            view?.showProgress(false)
+
                             Log.e(GeneralInfoPresenter::class.java.name, error.message, error);
                             // TODO display error message to UI
                         }

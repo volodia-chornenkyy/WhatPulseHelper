@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
@@ -35,4 +36,15 @@
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="48dp"
         app:srcCompat="@drawable/ic_arrow_forward_24dp" />
+
+    <ProgressBar
+        android:id="@+id/loginProgress"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="44dp"
+        android:indeterminate="true"
+        android:visibility="gone"
+        tools:visibility="visible" />
 </RelativeLayout>
