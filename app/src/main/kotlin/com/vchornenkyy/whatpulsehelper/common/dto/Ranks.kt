@@ -1,4 +1,4 @@
-package com.vchornenkyy.whatpulsehelper.dto
+package com.vchornenkyy.whatpulsehelper.common.dto
 
 class Ranks() {
     var keys: String? = null

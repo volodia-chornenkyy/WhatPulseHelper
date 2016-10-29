@@ -1,6 +1,6 @@
-package com.vchornenkyy.whatpulsehelper.api
+package com.vchornenkyy.whatpulsehelper.common.api
 
-import com.vchornenkyy.whatpulsehelper.api.model.UserResponse
+import com.vchornenkyy.whatpulsehelper.common.api.model.UserResponse
 import retrofit2.http.GET
 import retrofit2.http.Query
 import rx.Observable

@@ -1,4 +1,4 @@
-package com.vchornenkyy.whatpulsehelper.api
+package com.vchornenkyy.whatpulsehelper.common.api
 
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor

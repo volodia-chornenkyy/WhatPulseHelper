@@ -1,4 +1,4 @@
-package com.vchornenkyy.whatpulsehelper.helper
+package com.vchornenkyy.whatpulsehelper.common.helper
 
 interface AppProperties {
 

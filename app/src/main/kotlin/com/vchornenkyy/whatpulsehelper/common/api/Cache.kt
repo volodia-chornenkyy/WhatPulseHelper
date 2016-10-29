@@ -1,6 +1,6 @@
-package com.vchornenkyy.whatpulsehelper.api
+package com.vchornenkyy.whatpulsehelper.common.api
 
-import com.vchornenkyy.whatpulsehelper.api.model.UserResponse
+import com.vchornenkyy.whatpulsehelper.common.api.model.UserResponse
 import rx.Observable
 
 interface Cache {

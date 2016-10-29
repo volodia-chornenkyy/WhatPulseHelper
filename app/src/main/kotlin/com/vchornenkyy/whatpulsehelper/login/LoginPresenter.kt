@@ -1,11 +1,11 @@
 package com.vchornenkyy.whatpulsehelper.login
 
 import android.util.Log
-import com.vchornenkyy.whatpulsehelper.api.Cache
-import com.vchornenkyy.whatpulsehelper.api.InMemoryCache
-import com.vchornenkyy.whatpulsehelper.api.WhatPulseRestApi
-import com.vchornenkyy.whatpulsehelper.helper.AppProperties
-import com.vchornenkyy.whatpulsehelper.presenter.GeneralInfoPresenter
+import com.vchornenkyy.whatpulsehelper.common.api.Cache
+import com.vchornenkyy.whatpulsehelper.common.api.InMemoryCache
+import com.vchornenkyy.whatpulsehelper.common.api.WhatPulseRestApi
+import com.vchornenkyy.whatpulsehelper.common.helper.AppProperties
+import com.vchornenkyy.whatpulsehelper.general_info.GeneralInfoPresenter
 import rx.Subscription
 import rx.android.schedulers.AndroidSchedulers
 import rx.schedulers.Schedulers

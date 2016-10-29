@@ -1,4 +1,4 @@
-package com.vchornenkyy.whatpulsehelper.ui;
+package com.vchornenkyy.whatpulsehelper.common.view;
 
 import android.content.Context;
 import android.content.res.TypedArray;

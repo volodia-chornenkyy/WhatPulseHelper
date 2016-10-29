@@ -1,4 +1,4 @@
-package com.vchornenkyy.whatpulsehelper.api.model
+package com.vchornenkyy.whatpulsehelper.common.api.model
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties
 import com.fasterxml.jackson.annotation.JsonProperty

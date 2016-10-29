@@ -1,9 +1,9 @@
-package com.vchornenkyy.whatpulsehelper.helper
+package com.vchornenkyy.whatpulsehelper.common.helper
 
-import com.vchornenkyy.whatpulsehelper.api.model.UserResponse
-import com.vchornenkyy.whatpulsehelper.dto.Computer
-import com.vchornenkyy.whatpulsehelper.dto.Ranks
-import com.vchornenkyy.whatpulsehelper.dto.User
+import com.vchornenkyy.whatpulsehelper.common.api.model.UserResponse
+import com.vchornenkyy.whatpulsehelper.common.dto.Computer
+import com.vchornenkyy.whatpulsehelper.common.dto.Ranks
+import com.vchornenkyy.whatpulsehelper.common.dto.User
 import java.text.DecimalFormat
 import java.text.NumberFormat
 import java.text.SimpleDateFormat

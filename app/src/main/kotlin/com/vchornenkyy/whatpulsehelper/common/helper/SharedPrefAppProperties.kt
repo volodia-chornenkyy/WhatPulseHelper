@@ -1,4 +1,4 @@
-package com.vchornenkyy.whatpulsehelper.helper
+package com.vchornenkyy.whatpulsehelper.common.helper
 
 import android.content.Context
 import android.content.SharedPreferences

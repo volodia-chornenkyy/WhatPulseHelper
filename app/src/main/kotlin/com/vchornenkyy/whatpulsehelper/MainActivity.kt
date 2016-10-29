@@ -8,10 +8,11 @@ import android.support.v7.app.AppCompatActivity
 import android.view.Menu
 import android.view.MenuItem
 import android.widget.Toast
-import com.vchornenkyy.whatpulsehelper.api.Cache
-import com.vchornenkyy.whatpulsehelper.api.InMemoryCache
-import com.vchornenkyy.whatpulsehelper.helper.AppProperties
-import com.vchornenkyy.whatpulsehelper.helper.SharedPrefAppProperties
+import com.vchornenkyy.whatpulsehelper.common.api.Cache
+import com.vchornenkyy.whatpulsehelper.common.api.InMemoryCache
+import com.vchornenkyy.whatpulsehelper.common.helper.AppProperties
+import com.vchornenkyy.whatpulsehelper.common.helper.SharedPrefAppProperties
+import com.vchornenkyy.whatpulsehelper.general_info.GeneralInfoFragment
 import com.vchornenkyy.whatpulsehelper.login.LoginActivity
 import kotlinx.android.synthetic.main.activity_main.*
 

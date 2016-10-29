@@ -1,4 +1,4 @@
-package com.vchornenkyy.whatpulsehelper
+package com.vchornenkyy.whatpulsehelper.splash
 
 import android.content.Intent
 import android.os.Bundle
