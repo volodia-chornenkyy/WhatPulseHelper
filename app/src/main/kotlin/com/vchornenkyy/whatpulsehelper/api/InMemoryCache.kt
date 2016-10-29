@@ -31,6 +31,11 @@ class InMemoryCache private constructor() : Cache {
         return Observable.empty()
     }
 
+    override fun clear() {
+        userResponse = null
+        userResponseTimestamp = 0
+    }
+
     private fun isCacheValid(currentTime: Long): Boolean {
         val timePassed = currentTime - userResponseTimestamp
         return timePassed < timeout

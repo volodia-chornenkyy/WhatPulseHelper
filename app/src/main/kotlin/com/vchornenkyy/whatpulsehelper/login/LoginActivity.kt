@@ -1,8 +1,10 @@
 package com.vchornenkyy.whatpulsehelper.login
 
+import android.content.Intent
 import android.os.Bundle
 import android.support.design.widget.Snackbar
 import android.support.v7.app.AppCompatActivity
+import com.vchornenkyy.whatpulsehelper.MainActivity
 import com.vchornenkyy.whatpulsehelper.R
 import com.vchornenkyy.whatpulsehelper.helper.SharedPrefAppProperties
 import kotlinx.android.synthetic.main.activity_login.*
@@ -33,5 +35,9 @@ class LoginActivity : AppCompatActivity(), LoginView {
 
     override fun getUsername(): String {
         return loginUsername.text.toString()
+    }
+
+    override fun openMainScreen() {
+        startActivity(Intent(this, MainActivity::class.java))
     }
 }

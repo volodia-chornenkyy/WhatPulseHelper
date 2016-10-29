@@ -1,5 +1,6 @@
 package com.vchornenkyy.whatpulsehelper
 
+import android.content.Intent
 import android.os.Bundle
 import android.support.design.widget.Snackbar
 import android.support.v4.app.Fragment
@@ -7,13 +8,22 @@ import android.support.v7.app.AppCompatActivity
 import android.view.Menu
 import android.view.MenuItem
 import android.widget.Toast
+import com.vchornenkyy.whatpulsehelper.api.Cache
+import com.vchornenkyy.whatpulsehelper.api.InMemoryCache
+import com.vchornenkyy.whatpulsehelper.helper.AppProperties
+import com.vchornenkyy.whatpulsehelper.helper.SharedPrefAppProperties
+import com.vchornenkyy.whatpulsehelper.login.LoginActivity
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
 
+    private var appProperties: AppProperties? = null
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+
+        appProperties = SharedPrefAppProperties(this)
 
         setSupportActionBar(toolbar)
         supportActionBar?.setDisplayShowTitleEnabled(false)
@@ -39,7 +49,17 @@ class MainActivity : AppCompatActivity() {
 
     override fun onOptionsItemSelected(item: MenuItem?): Boolean {
         when (item?.itemId) {
-            R.id.menu_logout -> Toast.makeText(this, "Logout user now", Toast.LENGTH_SHORT).show()
+            R.id.menu_logout -> {
+                // todo move to presenter
+
+                appProperties?.saveUsername("")
+
+                val cache: Cache = InMemoryCache.instance
+                cache.clear()
+
+                startActivity(Intent(this, LoginActivity::class.java))
+                finish()
+            }
         }
         return false
     }

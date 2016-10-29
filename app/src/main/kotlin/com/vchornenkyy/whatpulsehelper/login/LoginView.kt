@@ -6,4 +6,6 @@ interface LoginView {
 
     fun displayMessage(message: String)
 
+    fun openMainScreen()
+
 }

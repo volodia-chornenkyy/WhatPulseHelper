@@ -7,4 +7,6 @@ interface Cache {
     fun saveUser(userResponse: UserResponse)
 
     fun getUser(): Observable<UserResponse>
+
+    fun clear()
 }

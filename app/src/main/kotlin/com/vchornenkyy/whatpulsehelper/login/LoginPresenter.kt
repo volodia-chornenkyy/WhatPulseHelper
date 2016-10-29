@@ -1,7 +1,14 @@
 package com.vchornenkyy.whatpulsehelper.login
 
+import android.util.Log
+import com.vchornenkyy.whatpulsehelper.api.Cache
+import com.vchornenkyy.whatpulsehelper.api.InMemoryCache
+import com.vchornenkyy.whatpulsehelper.api.WhatPulseRestApi
 import com.vchornenkyy.whatpulsehelper.helper.AppProperties
+import com.vchornenkyy.whatpulsehelper.presenter.GeneralInfoPresenter
 import rx.Subscription
+import rx.android.schedulers.AndroidSchedulers
+import rx.schedulers.Schedulers
 
 class LoginPresenter constructor(val appProperties: AppProperties) {
 
@@ -14,7 +21,24 @@ class LoginPresenter constructor(val appProperties: AppProperties) {
             return
         }
 
-        // todo load user to check if it exist
+        val userApi = WhatPulseRestApi().userApi
+        val cache: Cache = InMemoryCache.instance
+        userSubscription = userApi.getUser(username)
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(
+                        { userResponse ->
+                            cache.saveUser(userResponse)
+
+                            appProperties.saveUsername(username)
+
+                            view?.openMainScreen()
+                        },
+                        { error ->
+                            Log.e(GeneralInfoPresenter::class.java.name, error.message, error);
+                            // TODO display error message to UI
+                        }
+                )
     }
 
     fun attach(view: LoginView) {
