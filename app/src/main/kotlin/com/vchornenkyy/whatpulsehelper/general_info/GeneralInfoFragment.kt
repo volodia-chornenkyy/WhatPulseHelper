@@ -39,13 +39,13 @@ class GeneralInfoFragment : Fragment(), GeneralInfoView {
 
     override fun onDestroyView() {
         presenter?.detach()
+        binding?.unbind()
         super.onDestroyView()
     }
     //endregion
 
     //region View
     override fun bindUser(user: User) {
-        println(user)
         binding?.user = user
     }
     //endregion
