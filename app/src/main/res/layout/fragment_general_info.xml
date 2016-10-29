@@ -24,7 +24,7 @@
             <TextView
                 android:id="@+id/tvAccountTitle"
                 style="@style/CardTitle"
-                android:text="Account" />
+                android:text="@string/profile_section_account" />
 
             <com.vchornenkyy.whatpulsehelper.common.view.LabeledTextView
                 android:id="@+id/tvUser"
@@ -63,7 +63,7 @@
             <TextView
                 android:id="@+id/tvTotalTitle"
                 style="@style/CardTitle"
-                android:text="Total" />
+                android:text="@string/profile_section_total" />
 
             <com.vchornenkyy.whatpulsehelper.common.view.LabeledTextView
                 android:id="@+id/tvPulse"
@@ -116,7 +116,7 @@
             <TextView
                 android:id="@+id/tvRanksTitle"
                 style="@style/CardTitle"
-                android:text="Ranks" />
+                android:text="@string/profile_section_ranks" />
 
             <com.vchornenkyy.whatpulsehelper.common.view.LabeledTextView
                 android:id="@+id/tvKeysRank"
@@ -162,7 +162,7 @@
             <TextView
                 android:id="@+id/tvAverageTitle"
                 style="@style/CardTitle"
-                android:text="Average" />
+                android:text="@string/profile_section_average" />
 
             <com.vchornenkyy.whatpulsehelper.common.view.LabeledTextView
                 android:id="@+id/tvKeysAvgPulse"

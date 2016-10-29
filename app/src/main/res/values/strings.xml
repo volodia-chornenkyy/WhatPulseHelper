@@ -1,3 +1,10 @@
 <resources>
     <string name="app_name">WhatPulseHelper</string>
+
+    <!--Profile info-->
+    <string name="profile_section_account">Account</string>
+    <string name="profile_section_total">Total</string>
+    <string name="profile_section_ranks">Ranks</string>
+    <string name="profile_section_average">Average</string>
+    <string name="login_welcome">Welcome</string>
 </resources>

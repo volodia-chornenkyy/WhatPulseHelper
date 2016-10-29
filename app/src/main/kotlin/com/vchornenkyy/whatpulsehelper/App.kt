@@ -15,8 +15,10 @@ class App : Application() {
         super.onCreate()
         Fabric.with(this, Crashlytics(), Answers())
 
-        // setup tracking
-        eventTracker = EventTracker.instance
-        eventTracker?.addTracker(TrackerAnswers())
+        // setup tracking only for release build
+        if (!BuildConfig.DEBUG) {
+            eventTracker = EventTracker.instance
+            eventTracker?.addTracker(TrackerAnswers())
+        }
     }
 }
