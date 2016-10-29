@@ -4,15 +4,15 @@
     <item
         android:id="@+id/tab_profile"
         android:icon="@drawable/ic_person_24dp"
-        android:title="Profile" />
+        android:title="@string/bottom_nav_profile" />
     <item
         android:id="@+id/tab_computers"
         android:enabled="false"
         android:icon="@drawable/ic_laptop_24dp"
-        android:title="Computers" />
+        android:title="@string/bottom_nav_computers" />
     <item
         android:id="@+id/tab_teams"
         android:enabled="false"
         android:icon="@drawable/ic_people_24dp"
-        android:title="Teams" />
+        android:title="@string/bottom_nav_teams" />
 </menu>

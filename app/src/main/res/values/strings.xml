@@ -6,5 +6,16 @@
     <string name="profile_section_total">Total</string>
     <string name="profile_section_ranks">Ranks</string>
     <string name="profile_section_average">Average</string>
+
+    <!--Login-->
     <string name="login_welcome">Welcome</string>
+    <string name="login_username_hint">username</string>
+
+    <!--Bottom navigation-->
+    <string name="bottom_nav_profile">Profile</string>
+    <string name="bottom_nav_computers">Computers</string>
+    <string name="bottom_nav_teams">Teams</string>
+
+    <!--Menu-->
+    <string name="menu_logout">Logout</string>
 </resources>
