@@ -39,5 +39,6 @@ class LoginActivity : AppCompatActivity(), LoginView {
 
     override fun openMainScreen() {
         startActivity(Intent(this, MainActivity::class.java))
+        finish()
     }
 }
