@@ -1,6 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
+    <style name="Shadow">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">@dimen/shadow_height</item>
+    </style>
+
+    <style name="Shadow.Up">
+        <item name="android:background">@drawable/bg_shadow_up</item>
+    </style>
+
+    <style name="Shadow.Down">
+        <item name="android:background">@drawable/bg_shadow_down</item>
+    </style>
+
     <style name="Block">
         <item name="android:padding">16dp</item>
         <item name="android:layout_width">match_parent</item>

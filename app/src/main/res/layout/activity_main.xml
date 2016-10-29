@@ -36,12 +36,15 @@
 
     </android.support.v4.widget.NestedScrollView>
 
+    <View
+        style="@style/Shadow.Up"
+        android:layout_above="@+id/bottomBar" />
+
     <android.support.design.widget.BottomNavigationView
         android:id="@+id/bottomBar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
-        android:layout_gravity="bottom"
         android:background="@android:color/white"
         app:menu="@menu/bottom_tabs" />
 </RelativeLayout>
