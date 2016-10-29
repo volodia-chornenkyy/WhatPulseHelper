@@ -8,7 +8,7 @@
 
         <variable
             name="user"
-            type="com.vchornenkyy.whatpulsehelper.dto.User" />
+            type="com.vchornenkyy.whatpulsehelper.common.dto.User" />
     </data>
 
     <LinearLayout
