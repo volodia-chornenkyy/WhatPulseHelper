@@ -26,9 +26,17 @@ android {
         minSdkVersion 16
         targetSdkVersion 25
         versionCode 1
-        versionName "0.1.dev"
+        versionName "0.1"
 
         vectorDrawables.useSupportLibrary = true
+    }
+    signingConfigs {
+        release {
+            storeFile file("keys/whatpulse-helper.keystore")
+            storePassword "put_valid_password"
+            keyAlias "WhatPulseHelper"
+            keyPassword "put_valid_password"
+        }
     }
     dataBinding {
         enabled = true
@@ -37,6 +45,7 @@ android {
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            signingConfig signingConfigs.release
         }
     }
     sourceSets {
