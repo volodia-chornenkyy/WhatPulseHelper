@@ -9,7 +9,7 @@
 
     <!--Login-->
     <string name="login_welcome">Welcome</string>
-    <string name="login_username_hint">username</string>
+    <string name="login_username_hint">WhatPulse username</string>
 
     <!--Bottom navigation-->
     <string name="bottom_nav_profile">Profile</string>
