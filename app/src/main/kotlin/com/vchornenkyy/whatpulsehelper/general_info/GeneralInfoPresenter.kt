@@ -9,6 +9,7 @@ import com.vchornenkyy.whatpulsehelper.common.helper.ModelConverter
 import rx.Subscription
 import rx.android.schedulers.AndroidSchedulers
 import rx.schedulers.Schedulers
+import java.net.UnknownHostException
 
 class GeneralInfoPresenter constructor(val appProperties: AppProperties) {
 
@@ -31,6 +32,11 @@ class GeneralInfoPresenter constructor(val appProperties: AppProperties) {
                             cache.saveUser(userResponse)
                         },
                         { error ->
+
+                            if (error is UnknownHostException) {
+                                view?.displayMessage("Please check internet connection")
+                            }
+
                             Log.e(GeneralInfoPresenter::class.java.name, error.message, error)
                             // TODO display error message to UI
                         }

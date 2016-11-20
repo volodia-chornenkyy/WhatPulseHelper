@@ -1,6 +1,7 @@
 package com.vchornenkyy.whatpulsehelper.login
 
 import android.util.Log
+import com.fasterxml.jackson.databind.JsonMappingException
 import com.vchornenkyy.whatpulsehelper.common.api.Cache
 import com.vchornenkyy.whatpulsehelper.common.api.InMemoryCache
 import com.vchornenkyy.whatpulsehelper.common.api.WhatPulseRestApi
@@ -10,6 +11,7 @@ import com.vchornenkyy.whatpulsehelper.general_info.GeneralInfoPresenter
 import rx.Subscription
 import rx.android.schedulers.AndroidSchedulers
 import rx.schedulers.Schedulers
+import java.net.UnknownHostException
 
 class LoginPresenter constructor(val appProperties: AppProperties,
                                  val eventTracker: EventTracker) {
@@ -43,8 +45,13 @@ class LoginPresenter constructor(val appProperties: AppProperties,
                         { error ->
                             view?.showProgress(false)
 
-                            Log.e(GeneralInfoPresenter::class.java.name, error.message, error)
-                            // TODO display error message to UI
+                            if (error is UnknownHostException) {
+                                view?.displayMessage("Please check internet connection")
+                            } else if (error is JsonMappingException) {
+                                view?.displayMessage("Unknown user ID")
+                            } else {
+                                Log.e(GeneralInfoPresenter::class.java.name, error.message, error)
+                            }
                         }
                 )
     }
