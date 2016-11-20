@@ -1,10 +1,10 @@
 package com.vchornenkyy.whatpulsehelper.login
 
-interface LoginView {
+import com.vchornenkyy.whatpulsehelper.common.IBaseView
+
+interface LoginView : IBaseView {
 
     fun getUsername(): String
-
-    fun displayMessage(message: String)
 
     fun showProgress(show: Boolean)
 

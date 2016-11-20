@@ -2,7 +2,6 @@ package com.vchornenkyy.whatpulsehelper.login
 
 import android.content.Intent
 import android.os.Bundle
-import android.support.design.widget.Snackbar
 import android.view.View
 import com.vchornenkyy.whatpulsehelper.MainActivity
 import com.vchornenkyy.whatpulsehelper.R
@@ -33,10 +32,6 @@ class LoginActivity : BaseActivity(), LoginView {
     override fun onDestroy() {
         super.onDestroy()
         presenter?.detach()
-    }
-
-    override fun displayMessage(message: String) {
-        Snackbar.make(findViewById(android.R.id.content), message, Snackbar.LENGTH_SHORT).show()
     }
 
     override fun showProgress(show: Boolean) {
