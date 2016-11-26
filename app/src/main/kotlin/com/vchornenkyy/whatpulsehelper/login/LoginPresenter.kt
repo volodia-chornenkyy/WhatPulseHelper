@@ -2,15 +2,11 @@ package com.vchornenkyy.whatpulsehelper.login
 
 import android.util.Log
 import com.fasterxml.jackson.databind.JsonMappingException
-import com.vchornenkyy.whatpulsehelper.common.api.Cache
-import com.vchornenkyy.whatpulsehelper.common.api.InMemoryCache
-import com.vchornenkyy.whatpulsehelper.common.api.WhatPulseRestApi
 import com.vchornenkyy.whatpulsehelper.common.helper.AppProperties
 import com.vchornenkyy.whatpulsehelper.common.tracking.EventTracker
 import com.vchornenkyy.whatpulsehelper.general_info.GeneralInfoPresenter
+import com.vchornenkyy.whatpulsehelper.login.usecase.LoginUseCase
 import rx.Subscription
-import rx.android.schedulers.AndroidSchedulers
-import rx.schedulers.Schedulers
 import java.net.UnknownHostException
 
 class LoginPresenter constructor(val appProperties: AppProperties,
@@ -20,22 +16,16 @@ class LoginPresenter constructor(val appProperties: AppProperties,
     private var userSubscription: Subscription? = null
 
     fun login(username: String) {
-        if (username.length == 0) {
+        if (username.isEmpty()) {
             view?.displayMessage("Please enter username")
             return
         }
 
         view?.showProgress(true)
 
-        val userApi = WhatPulseRestApi().userApi
-        val cache: Cache = InMemoryCache.instance
-        userSubscription = userApi.getUser(username)
-                .subscribeOn(Schedulers.io())
-                .observeOn(AndroidSchedulers.mainThread())
+        LoginUseCase(appProperties).execute(username)
                 .subscribe(
-                        { userResponse ->
-                            cache.saveUser(userResponse)
-
+                        { user ->
                             appProperties.saveUsername(username)
 
                             eventTracker.login()
