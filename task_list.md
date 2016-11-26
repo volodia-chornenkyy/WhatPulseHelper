@@ -3,8 +3,6 @@ WhatPulse Helper Task List
 
 Major
 =====
-- Handle errors without network
-- Create Computers screen
 - Create Teams screen
 - Use ProGuard
 - Create landscape layouts
@@ -17,6 +15,12 @@ Minor
 - Write unit tests
 
 ----------
+
+In progress
+===========
+- v0.2
+    * Handle errors without network
+    * Create Computers screen
 
 Done
 ====

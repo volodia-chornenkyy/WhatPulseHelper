@@ -39,6 +39,12 @@ class EventTracker : IEventTracker {
         }
     }
 
+    override fun computersOpened() {
+        for (tracker in trackers) {
+            tracker.profileOpened()
+        }
+    }
+
     override fun orientationChanged(orientation: String) {
         for (tracker in trackers) {
             tracker.orientationChanged(orientation)

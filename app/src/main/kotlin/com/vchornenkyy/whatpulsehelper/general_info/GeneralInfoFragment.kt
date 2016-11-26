@@ -27,7 +27,7 @@ class GeneralInfoFragment : BaseFragment(), GeneralInfoView {
     // region Lifecycle
     override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
-        binding = DataBindingUtil.inflate(inflater, R.layout.fragment_general_info, container, false)
+        binding = DataBindingUtil.inflate(inflater, R.layout.general_info_layout, container, false)
 
         presenter = GeneralInfoPresenter(SharedPrefAppProperties(context))
 
