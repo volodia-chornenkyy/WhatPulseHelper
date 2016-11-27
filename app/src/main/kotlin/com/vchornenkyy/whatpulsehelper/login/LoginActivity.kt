@@ -16,7 +16,7 @@ class LoginActivity : BaseActivity(), LoginView {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.login_activity)
+        setContentView(R.layout.login_layout)
 
         presenter = LoginPresenter(
                 SharedPrefAppProperties(this),

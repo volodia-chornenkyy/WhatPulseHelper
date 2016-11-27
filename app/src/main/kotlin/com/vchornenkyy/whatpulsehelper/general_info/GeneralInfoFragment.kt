@@ -9,13 +9,13 @@ import com.vchornenkyy.whatpulsehelper.R
 import com.vchornenkyy.whatpulsehelper.common.BaseFragment
 import com.vchornenkyy.whatpulsehelper.common.dto.User
 import com.vchornenkyy.whatpulsehelper.common.helper.SharedPrefAppProperties
-import com.vchornenkyy.whatpulsehelper.databinding.FragmentGeneralInfoBinding
+import com.vchornenkyy.whatpulsehelper.databinding.GeneralInfoLayoutBinding
 
 class GeneralInfoFragment : BaseFragment(), GeneralInfoView {
 
     var presenter: GeneralInfoPresenter? = null
 
-    var binding: FragmentGeneralInfoBinding? = null
+    var binding: GeneralInfoLayoutBinding? = null
 
     companion object {
 
