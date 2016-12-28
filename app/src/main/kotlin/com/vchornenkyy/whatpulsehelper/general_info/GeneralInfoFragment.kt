@@ -2,19 +2,20 @@ package com.vchornenkyy.whatpulsehelper.general_info
 
 import android.databinding.DataBindingUtil
 import android.os.Bundle
-import android.support.v4.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.vchornenkyy.whatpulsehelper.R
+import com.vchornenkyy.whatpulsehelper.common.BaseFragment
 import com.vchornenkyy.whatpulsehelper.common.dto.User
 import com.vchornenkyy.whatpulsehelper.common.helper.SharedPrefAppProperties
-import com.vchornenkyy.whatpulsehelper.databinding.FragmentGeneralInfoBinding
+import com.vchornenkyy.whatpulsehelper.databinding.GeneralInfoLayoutBinding
 
-class GeneralInfoFragment : Fragment(), GeneralInfoView {
+class GeneralInfoFragment : BaseFragment(), GeneralInfoView {
+
     var presenter: GeneralInfoPresenter? = null
 
-    var binding: FragmentGeneralInfoBinding? = null
+    var binding: GeneralInfoLayoutBinding? = null
 
     companion object {
 
@@ -26,7 +27,7 @@ class GeneralInfoFragment : Fragment(), GeneralInfoView {
     // region Lifecycle
     override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
-        binding = DataBindingUtil.inflate(inflater, R.layout.fragment_general_info, container, false)
+        binding = DataBindingUtil.inflate(inflater, R.layout.general_info_layout, container, false)
 
         presenter = GeneralInfoPresenter(SharedPrefAppProperties(context))
 

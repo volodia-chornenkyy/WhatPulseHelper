@@ -20,6 +20,10 @@ class TrackerAnswers : IEventTracker {
         Answers.getInstance().logContentView(ContentViewEvent().putContentName("profile"))
     }
 
+    override fun computersOpened() {
+        Answers.getInstance().logContentView(ContentViewEvent().putContentName("computers"))
+    }
+
     override fun orientationChanged(orientation: String) {
         Answers.getInstance().logCustom(CustomEvent("Orientation change").putCustomAttribute("type", orientation))
     }

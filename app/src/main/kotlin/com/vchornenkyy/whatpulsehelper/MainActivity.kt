@@ -13,9 +13,10 @@ import com.vchornenkyy.whatpulsehelper.common.api.InMemoryCache
 import com.vchornenkyy.whatpulsehelper.common.helper.AppProperties
 import com.vchornenkyy.whatpulsehelper.common.helper.SharedPrefAppProperties
 import com.vchornenkyy.whatpulsehelper.common.tracking.EventTracker
+import com.vchornenkyy.whatpulsehelper.computers.ComputersFragment
 import com.vchornenkyy.whatpulsehelper.general_info.GeneralInfoFragment
 import com.vchornenkyy.whatpulsehelper.login.LoginActivity
-import kotlinx.android.synthetic.main.activity_main.*
+import kotlinx.android.synthetic.main.main_activity.*
 
 class MainActivity : BaseActivity() {
 
@@ -23,7 +24,7 @@ class MainActivity : BaseActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+        setContentView(R.layout.main_activity)
 
         appProperties = SharedPrefAppProperties(this)
 
@@ -42,7 +43,12 @@ class MainActivity : BaseActivity() {
 
                     EventTracker.instance.profileOpened()
                 }
-                R.id.tab_computers, R.id.tab_teams -> Toast.makeText(this, "Coming soon", Snackbar.LENGTH_SHORT).show()
+                R.id.tab_computers -> {
+                    openFragment(ComputersFragment.newInstance())
+
+                    EventTracker.instance.computersOpened()
+                }
+                R.id.tab_teams -> Toast.makeText(this, "Coming soon", Snackbar.LENGTH_SHORT).show()
             }
             return@setOnNavigationItemSelectedListener false
         }
