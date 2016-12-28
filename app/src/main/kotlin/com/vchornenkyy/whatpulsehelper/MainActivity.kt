@@ -50,7 +50,7 @@ class MainActivity : BaseActivity() {
                 }
                 R.id.tab_teams -> Toast.makeText(this, "Coming soon", Snackbar.LENGTH_SHORT).show()
             }
-            return@setOnNavigationItemSelectedListener false
+            return@setOnNavigationItemSelectedListener true
         }
     }
 
