@@ -30,28 +30,28 @@
                 android:id="@+id/tvUser"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                app:labelText="Username"
+                app:labelText="@string/username"
                 app:valueText="@{user.accountName}" />
 
             <com.vchornenkyy.whatpulsehelper.common.view.LabeledTextView
                 android:id="@+id/tvCountry"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                app:labelText="Country"
+                app:labelText="@string/country"
                 app:valueText="@{user.country}" />
 
             <com.vchornenkyy.whatpulsehelper.common.view.LabeledTextView
                 android:id="@+id/tvJoinedAt"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                app:labelText="Joined at"
+                app:labelText="@string/joined.at"
                 app:valueText="@{user.dateJoined}" />
 
             <com.vchornenkyy.whatpulsehelper.common.view.LabeledTextView
                 android:id="@+id/tvLastPulse"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                app:labelText="Last pulse at"
+                app:labelText="@string/last.pulse.at"
                 app:valueText="@{user.lastPulse}" />
         </LinearLayout>
 
@@ -76,35 +76,35 @@
                 android:id="@+id/tvKeysAmount"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                app:labelText="Keys"
+                app:labelText="@string/keys"
                 app:valueText="@{user.keysPressed}" />
 
             <com.vchornenkyy.whatpulsehelper.common.view.LabeledTextView
                 android:id="@+id/tvClicksAmount"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                app:labelText="Clicks"
+                app:labelText="@string/clicks"
                 app:valueText="@{user.clicksMade}" />
 
             <com.vchornenkyy.whatpulsehelper.common.view.LabeledTextView
                 android:id="@+id/tvUptimeAmount"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                app:labelText="Uptime"
+                app:labelText="@string/uptime"
                 app:valueText="@{user.uptime}" />
 
             <com.vchornenkyy.whatpulsehelper.common.view.LabeledTextView
                 android:id="@+id/tvDownload"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                app:labelText="Download"
+                app:labelText="@string/download"
                 app:valueText="@{user.download}" />
 
             <com.vchornenkyy.whatpulsehelper.common.view.LabeledTextView
                 android:id="@+id/tvUpload"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                app:labelText="Upload"
+                app:labelText="@string/upload"
                 app:valueText="@{user.upload}" />
         </LinearLayout>
 
@@ -122,35 +122,35 @@
                 android:id="@+id/tvKeysRank"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                app:labelText="Keys"
+                app:labelText="@string/keys"
                 app:valueText="@{user.ranks.keys}" />
 
             <com.vchornenkyy.whatpulsehelper.common.view.LabeledTextView
                 android:id="@+id/tvClicksRank"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                app:labelText="Clicks"
+                app:labelText="@string/clicks"
                 app:valueText="@{user.ranks.clicks}" />
 
             <com.vchornenkyy.whatpulsehelper.common.view.LabeledTextView
                 android:id="@+id/tvUptimeRank"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                app:labelText="Uptime"
+                app:labelText="@string/uptime"
                 app:valueText="@{user.ranks.uptime}" />
 
             <com.vchornenkyy.whatpulsehelper.common.view.LabeledTextView
                 android:id="@+id/tvDownloadRank"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                app:labelText="Download"
+                app:labelText="@string/download"
                 app:valueText="@{user.ranks.download}" />
 
             <com.vchornenkyy.whatpulsehelper.common.view.LabeledTextView
                 android:id="@+id/tvUploadRank"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                app:labelText="Upload"
+                app:labelText="@string/upload"
                 app:valueText="@{user.ranks.upload}" />
         </LinearLayout>
 
@@ -168,28 +168,28 @@
                 android:id="@+id/tvKeysAvgPulse"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                app:labelText="Keys per pulse"
+                app:labelText="@string/keys.per.pulse"
                 app:valueText="@{user.averageKeysPerPulse}" />
 
             <com.vchornenkyy.whatpulsehelper.common.view.LabeledTextView
                 android:id="@+id/tvKeysAvgSec"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                app:labelText="Keys per second"
+                app:labelText="@string/keys.per.second"
                 app:valueText="@{user.averageKeysPerSecond}" />
 
             <com.vchornenkyy.whatpulsehelper.common.view.LabeledTextView
                 android:id="@+id/tvClicksAvgPulse"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                app:labelText="Clicks per pulse "
+                app:labelText="@string/clicks.per.pulse"
                 app:valueText="@{user.averageClicksPerPulse}" />
 
             <com.vchornenkyy.whatpulsehelper.common.view.LabeledTextView
                 android:id="@+id/tvClicksAvgSec"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                app:labelText="Clicks per second "
+                app:labelText="@string/click.per.pulse"
                 app:valueText="@{user.averageClicksPerSecond}" />
         </LinearLayout>
     </LinearLayout>
