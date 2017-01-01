@@ -69,7 +69,7 @@
                 android:id="@+id/tvPulse"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                app:labelText="Pulses"
+                app:labelText="@string/pulses"
                 app:valueText="@{user.pulsesAmount}" />
 
             <com.vchornenkyy.whatpulsehelper.common.view.LabeledTextView
