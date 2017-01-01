@@ -2,6 +2,7 @@ package com.vchornenkyy.whatpulsehelper.computers
 
 import android.os.Bundle
 import android.support.v7.widget.LinearLayoutManager
+import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -9,7 +10,6 @@ import com.vchornenkyy.whatpulsehelper.R
 import com.vchornenkyy.whatpulsehelper.common.BaseFragment
 import com.vchornenkyy.whatpulsehelper.common.dto.Computer
 import com.vchornenkyy.whatpulsehelper.common.helper.SharedPrefAppProperties
-import kotlinx.android.synthetic.main.computers_layout.*
 
 class ComputersFragment : BaseFragment(), ComputersView {
     var presenter: ComputersPresenter? = null
@@ -30,7 +30,7 @@ class ComputersFragment : BaseFragment(), ComputersView {
 
         val view = LayoutInflater.from(context).inflate(R.layout.computers_layout, container, false)
 
-        setupUi()
+        setupUi(view)
 
         presenter = ComputersPresenter(SharedPrefAppProperties(context))
 
@@ -51,8 +51,10 @@ class ComputersFragment : BaseFragment(), ComputersView {
         adapter.updateData(computers)
     }
 
-    private fun setupUi() {
-        list.layoutManager = LinearLayoutManager(context)
-        list.adapter = adapter
+    private fun setupUi(view: View) {
+        // TODO find out why direct usage don't work
+        val list: RecyclerView? = view.findViewById(R.id.list) as RecyclerView?
+        list?.layoutManager = LinearLayoutManager(context)
+        list?.adapter = adapter
     }
 }

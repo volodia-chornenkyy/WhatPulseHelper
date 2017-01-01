@@ -35,4 +35,5 @@
     <string name="joined.at">Joined at</string>
     <string name="last.pulse.at">Last pulse at</string>
     <string name="pulses">Pulses</string>
+    <string name="amount.of.pulses">Amount of pulses</string>
 </resources>

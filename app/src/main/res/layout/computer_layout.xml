@@ -1,14 +1,48 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:orientation="vertical">
+    tools:context="com.vchornenkyy.whatpulsehelper.GeneralInfoFragment">
 
-    <TextView
-        android:id="@+id/nameTextView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        tools:text="Computer name" />
+    <data>
 
-</LinearLayout>
+        <variable
+            name="computer"
+            type="com.vchornenkyy.whatpulsehelper.common.dto.Computer" />
+    </data>
+
+    <LinearLayout
+        style="@style/Block"
+        android:orientation="vertical">
+
+        <TextView
+            style="@style/CardTitle"
+            android:text="@{computer.name}"
+            tools:text="computer name" />
+
+        <com.vchornenkyy.whatpulsehelper.common.view.LabeledTextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:labelText="@string/last.pulse.at"
+            app:valueText="@{computer.lastPulse}" />
+
+        <com.vchornenkyy.whatpulsehelper.common.view.LabeledTextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:labelText="@string/amount.of.pulses"
+            app:valueText="@{computer.pulses}" />
+
+        <com.vchornenkyy.whatpulsehelper.common.view.LabeledTextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:labelText="@string/keys"
+            app:valueText="@{computer.keys}" />
+
+        <com.vchornenkyy.whatpulsehelper.common.view.LabeledTextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:labelText="@string/clicks"
+            app:valueText="@{computer.clicks}" />
+    </LinearLayout>
+</layout>

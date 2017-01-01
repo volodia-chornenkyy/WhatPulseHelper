@@ -34,6 +34,9 @@ class ModelConverter {
         val computers = HashMap<String, Computer>()
         for ((key, value) in response.computers) {
             val computer = Computer()
+            computer.name = value.name
+            computer.lastPulse = dateFormatter.format(Date(value.lastPulseTimestamp.times(1000)))
+            computer.pulses = value.pulses.toString()
             computer.clicks = numberFormatter.format(value.clicks)
             computer.keys = numberFormatter.format(value.keys)
             computer.download = numberFormatter.format(value.download)
