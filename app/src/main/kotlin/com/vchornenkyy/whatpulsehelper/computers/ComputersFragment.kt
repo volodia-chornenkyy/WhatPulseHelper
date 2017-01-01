@@ -54,7 +54,11 @@ class ComputersFragment : BaseFragment(), ComputersView {
     private fun setupUi(view: View) {
         // TODO find out why direct usage don't work
         val list: RecyclerView? = view.findViewById(R.id.list) as RecyclerView?
-        list?.layoutManager = LinearLayoutManager(context)
+        val layoutManager = LinearLayoutManager(context)
+        layoutManager.isAutoMeasureEnabled = true
+        list?.layoutManager = layoutManager
+        list?.isNestedScrollingEnabled = false
+        list?.setHasFixedSize(true)
         list?.adapter = adapter
     }
 }
