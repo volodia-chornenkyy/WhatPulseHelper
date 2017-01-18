@@ -8,7 +8,7 @@
     <data>
 
         <variable
-            name="computer"
+            name="obj"
             type="com.vchornenkyy.whatpulsehelper.common.dto.Computer" />
     </data>
 
@@ -18,31 +18,31 @@
 
         <TextView
             style="@style/CardTitle"
-            android:text="@{computer.name}"
+            android:text="@{obj.name}"
             tools:text="computer name" />
 
         <com.vchornenkyy.whatpulsehelper.common.view.LabeledTextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:labelText="@string/last.pulse.at"
-            app:valueText="@{computer.lastPulse}" />
+            app:valueText="@{obj.lastPulse}" />
 
         <com.vchornenkyy.whatpulsehelper.common.view.LabeledTextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:labelText="@string/amount.of.pulses"
-            app:valueText="@{computer.pulses}" />
+            app:valueText="@{obj.pulses}" />
 
         <com.vchornenkyy.whatpulsehelper.common.view.LabeledTextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:labelText="@string/keys"
-            app:valueText="@{computer.keys}" />
+            app:valueText="@{obj.keys}" />
 
         <com.vchornenkyy.whatpulsehelper.common.view.LabeledTextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:labelText="@string/clicks"
-            app:valueText="@{computer.clicks}" />
+            app:valueText="@{obj.clicks}" />
     </LinearLayout>
 </layout>
