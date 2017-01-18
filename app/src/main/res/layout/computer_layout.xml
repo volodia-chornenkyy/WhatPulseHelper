@@ -13,7 +13,7 @@
     </data>
 
     <LinearLayout
-        style="@style/Block"
+        style="@style/Block.Clickable"
         android:orientation="vertical">
 
         <TextView
