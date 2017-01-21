@@ -67,7 +67,7 @@ dependencies {
     compile "com.squareup.okhttp3:logging-interceptor:$okhttp_version"
     compile "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
     compile "io.reactivex:rxandroid:$rxandroid_version"
-    compile("com.crashlytics.sdk.android:crashlytics:2.6.5@aar") {
+    compile("com.crashlytics.sdk.android:crashlytics:2.6.6@aar") {
         transitive = true;
     }
 }
