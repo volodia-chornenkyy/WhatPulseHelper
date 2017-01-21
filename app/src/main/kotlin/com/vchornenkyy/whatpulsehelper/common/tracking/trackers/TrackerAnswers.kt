@@ -24,6 +24,10 @@ class TrackerAnswers : IEventTracker {
         Answers.getInstance().logContentView(ContentViewEvent().putContentName("computers"))
     }
 
+    override fun teamsOpened() {
+        Answers.getInstance().logContentView(ContentViewEvent().putContentName("teams"))
+    }
+
     override fun orientationChanged(orientation: String) {
         Answers.getInstance().logCustom(CustomEvent("Orientation change").putCustomAttribute("type", orientation))
     }

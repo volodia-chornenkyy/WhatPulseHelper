@@ -41,7 +41,13 @@ class EventTracker : IEventTracker {
 
     override fun computersOpened() {
         for (tracker in trackers) {
-            tracker.profileOpened()
+            tracker.computersOpened()
+        }
+    }
+
+    override fun teamsOpened() {
+        for (tracker in trackers) {
+            tracker.teamsOpened()
         }
     }
 

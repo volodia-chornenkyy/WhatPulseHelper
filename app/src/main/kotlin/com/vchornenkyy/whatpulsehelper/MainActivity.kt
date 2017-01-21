@@ -2,11 +2,9 @@ package com.vchornenkyy.whatpulsehelper
 
 import android.content.Intent
 import android.os.Bundle
-import android.support.design.widget.Snackbar
 import android.support.v4.app.Fragment
 import android.view.Menu
 import android.view.MenuItem
-import android.widget.Toast
 import com.vchornenkyy.whatpulsehelper.common.BaseActivity
 import com.vchornenkyy.whatpulsehelper.common.api.Cache
 import com.vchornenkyy.whatpulsehelper.common.api.InMemoryCache
@@ -16,6 +14,7 @@ import com.vchornenkyy.whatpulsehelper.common.tracking.EventTracker
 import com.vchornenkyy.whatpulsehelper.computers.ComputersFragment
 import com.vchornenkyy.whatpulsehelper.general_info.GeneralInfoFragment
 import com.vchornenkyy.whatpulsehelper.login.LoginActivity
+import com.vchornenkyy.whatpulsehelper.teams.TeamsFragment
 import kotlinx.android.synthetic.main.main_activity.*
 
 class MainActivity : BaseActivity() {
@@ -48,7 +47,11 @@ class MainActivity : BaseActivity() {
 
                     EventTracker.instance.computersOpened()
                 }
-                R.id.tab_teams -> Toast.makeText(this, "Coming soon", Snackbar.LENGTH_SHORT).show()
+                R.id.tab_teams -> {
+                    openFragment(TeamsFragment.newInstance())
+
+                    EventTracker.instance.computersOpened()
+                }
             }
             return@setOnNavigationItemSelectedListener true
         }
