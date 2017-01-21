@@ -40,7 +40,7 @@
         style="@style/Shadow.Up"
         android:layout_above="@+id/bottomBar" />
 
-    <android.support.design.widget.BottomNavigationView
+    <com.vchornenkyy.whatpulsehelper.common.view.StatedNavigationBottomBar
         android:id="@+id/bottomBar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
