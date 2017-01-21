@@ -34,11 +34,22 @@ class ModelConverter {
         val computers = HashMap<String, Computer>()
         for ((key, value) in response.computers) {
             val computer = Computer()
+            computer.name = value.name
+            if (value.lastPulseTimestamp == 0L) {
+                computer.lastPulse = ""
+            } else {
+                computer.lastPulse = dateFormatter.format(Date(value.lastPulseTimestamp.times(1000)))
+            }
+            computer.pulses = value.pulses.toString()
             computer.clicks = numberFormatter.format(value.clicks)
             computer.keys = numberFormatter.format(value.keys)
-            computer.download = numberFormatter.format(value.download)
-            computer.upload = numberFormatter.format(value.upload)
-            computer.uptime = value.uptimeShort
+            computer.download = humanReadableByteCount(megaBytesToBytes(value.download))
+            computer.upload = humanReadableByteCount(megaBytesToBytes(value.upload))
+            if (value.uptimeSeconds == 0L) {
+                computer.uptime = "0"
+            } else {
+                computer.uptime = value.uptimeShort
+            }
             computers.put(computer.name, computer)
         }
 
@@ -53,8 +64,8 @@ class ModelConverter {
         user.pulsesAmount = numberFormatter.format(response.pulsesAmount)
         user.keysPressed = numberFormatter.format(response.keysPressed)
         user.clicksMade = numberFormatter.format(response.clicksMade)
-        user.download = response.downloadFormatted
-        user.upload = response.uploadFormatted
+        user.download = humanReadableByteCount(megaBytesToBytes(response.downloadMb))
+        user.upload = humanReadableByteCount(megaBytesToBytes(response.uploadMb))
         user.uptime = response.uptimeShort
         user.averageKeysPerPulse = numberFormatter.format(response.averageKeysPerPulse)
         user.averageClicksPerPulse = numberFormatter.format(response.averageClicksPerPulse)
@@ -63,5 +74,17 @@ class ModelConverter {
         user.ranks = ranks
         user.computers = computers
         return user
+    }
+
+    private fun humanReadableByteCount(bytes: Long): String {
+        val unit = 1024
+        if (bytes < unit) return bytes.toString() + " B"
+        val exp = (Math.log(bytes.toDouble()) / Math.log(unit.toDouble())).toInt()
+        val pre = "kMGTPE"[exp - 1]
+        return String.format("%.2f %sB", bytes / Math.pow(unit.toDouble(), exp.toDouble()), pre)
+    }
+
+    private fun megaBytesToBytes(megaBytes: Long): Long {
+        return megaBytes.times(1024 * 1024)
     }
 }

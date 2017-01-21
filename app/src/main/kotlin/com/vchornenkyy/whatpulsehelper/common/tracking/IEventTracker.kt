@@ -10,5 +10,9 @@ interface IEventTracker {
 
     fun profileOpened()
 
+    fun computersOpened()
+
+    fun teamsOpened()
+
     fun orientationChanged(@Orientation.Items orientation: String)
 }

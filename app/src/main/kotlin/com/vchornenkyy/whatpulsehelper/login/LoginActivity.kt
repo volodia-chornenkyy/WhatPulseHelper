@@ -2,14 +2,13 @@ package com.vchornenkyy.whatpulsehelper.login
 
 import android.content.Intent
 import android.os.Bundle
-import android.support.design.widget.Snackbar
 import android.view.View
 import com.vchornenkyy.whatpulsehelper.MainActivity
 import com.vchornenkyy.whatpulsehelper.R
 import com.vchornenkyy.whatpulsehelper.common.BaseActivity
 import com.vchornenkyy.whatpulsehelper.common.helper.SharedPrefAppProperties
 import com.vchornenkyy.whatpulsehelper.common.tracking.EventTracker
-import kotlinx.android.synthetic.main.activity_login.*
+import kotlinx.android.synthetic.main.login_layout.*
 
 class LoginActivity : BaseActivity(), LoginView {
 
@@ -17,7 +16,7 @@ class LoginActivity : BaseActivity(), LoginView {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_login)
+        setContentView(R.layout.login_layout)
 
         presenter = LoginPresenter(
                 SharedPrefAppProperties(this),
@@ -33,10 +32,6 @@ class LoginActivity : BaseActivity(), LoginView {
     override fun onDestroy() {
         super.onDestroy()
         presenter?.detach()
-    }
-
-    override fun displayMessage(message: String) {
-        Snackbar.make(findViewById(android.R.id.content), message, Snackbar.LENGTH_SHORT).show()
     }
 
     override fun showProgress(show: Boolean) {

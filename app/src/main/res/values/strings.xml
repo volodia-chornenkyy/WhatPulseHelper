@@ -16,9 +16,27 @@
     <string name="bottom_nav_computers">Computers</string>
     <string name="bottom_nav_teams">Teams</string>
 
+    <!--Errors-->
+    <string name="no.pulses.from.pc">No pulses was performed from this PC</string>
+
     <!--Menu-->
     <string name="menu_logout">Logout</string>
 
     <!--Placeholders-->
     <string name="placeholder_text">Value</string>
+    <string name="keys">Keys</string>
+    <string name="clicks">Clicks</string>
+    <string name="uptime">Uptime</string>
+    <string name="download">Download</string>
+    <string name="upload">Upload</string>
+    <string name="keys.per.pulse">Keys per pulse</string>
+    <string name="keys.per.second">Keys per second</string>
+    <string name="clicks.per.pulse">Clicks per pulse</string>
+    <string name="click.per.pulse">Clicks per second</string>
+    <string name="country">Country</string>
+    <string name="username">Username</string>
+    <string name="joined.at">Joined at</string>
+    <string name="last.pulse.at">Last pulse at</string>
+    <string name="pulses">Pulses</string>
+    <string name="amount.of.pulses">Amount of pulses</string>
 </resources>
