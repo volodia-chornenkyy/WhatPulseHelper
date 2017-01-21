@@ -44,5 +44,23 @@
             android:layout_height="wrap_content"
             app:labelText="@string/clicks"
             app:valueText="@{obj.clicks}" />
+
+        <com.vchornenkyy.whatpulsehelper.common.view.LabeledTextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:labelText="@string/uptime"
+            app:valueText="@{obj.uptime}" />
+
+        <com.vchornenkyy.whatpulsehelper.common.view.LabeledTextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:labelText="@string/download"
+            app:valueText="@{obj.download}" />
+
+        <com.vchornenkyy.whatpulsehelper.common.view.LabeledTextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:labelText="@string/upload"
+            app:valueText="@{obj.upload}" />
     </LinearLayout>
 </layout>
