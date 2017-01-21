@@ -35,13 +35,21 @@ class ModelConverter {
         for ((key, value) in response.computers) {
             val computer = Computer()
             computer.name = value.name
-            computer.lastPulse = dateFormatter.format(Date(value.lastPulseTimestamp.times(1000)))
+            if (value.lastPulseTimestamp == 0L){
+                computer.lastPulse = ""
+            } else {
+                computer.lastPulse = dateFormatter.format(Date(value.lastPulseTimestamp.times(1000)))
+            }
             computer.pulses = value.pulses.toString()
             computer.clicks = numberFormatter.format(value.clicks)
             computer.keys = numberFormatter.format(value.keys)
             computer.download = numberFormatter.format(value.download)
             computer.upload = numberFormatter.format(value.upload)
-            computer.uptime = value.uptimeShort
+            if (value.uptimeSeconds == 0L) {
+                computer.uptime = "0"
+            } else {
+                computer.uptime = value.uptimeShort
+            }
             computers.put(computer.name, computer)
         }
 

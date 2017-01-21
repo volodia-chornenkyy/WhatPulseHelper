@@ -16,6 +16,9 @@
     <string name="bottom_nav_computers">Computers</string>
     <string name="bottom_nav_teams">Teams</string>
 
+    <!--Errors-->
+    <string name="no.pulses.from.pc">No pulses was performed from this PC</string>
+
     <!--Menu-->
     <string name="menu_logout">Logout</string>
 
