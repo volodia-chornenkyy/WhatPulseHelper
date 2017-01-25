@@ -25,26 +25,32 @@
         android:layout_marginTop="@dimen/space_horizontal"
         android:gravity="center"
         android:hint="@string/login_username_hint"
-        android:inputType="text"
+        android:inputType="text|textNoSuggestions"
         android:maxLines="1" />
 
-    <android.support.design.widget.FloatingActionButton
-        android:id="@+id/loginProceed"
+    <RelativeLayout
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="85dp"
-        app:srcCompat="@drawable/ic_arrow_forward_24dp" />
+        android:layout_below="@id/loginUsername"
+        android:layout_centerHorizontal="true">
 
-    <ProgressBar
-        android:id="@+id/loginProgress"
-        android:layout_width="48dp"
-        android:layout_height="48dp"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="82dp"
-        android:indeterminate="true"
-        android:visibility="gone"
-        tools:visibility="visible" />
+        <android.support.design.widget.FloatingActionButton
+            android:id="@+id/loginProceed"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:layout_marginBottom="85dp"
+            app:srcCompat="@drawable/ic_arrow_forward_24dp" />
+
+        <ProgressBar
+            android:id="@+id/loginProgress"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:layout_centerInParent="true"
+            android:layout_marginBottom="82dp"
+            android:indeterminate="true"
+            android:visibility="gone"
+            tools:visibility="visible" />
+    </RelativeLayout>
 </RelativeLayout>
