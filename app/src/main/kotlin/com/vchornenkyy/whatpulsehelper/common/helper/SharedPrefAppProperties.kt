@@ -3,15 +3,11 @@ package com.vchornenkyy.whatpulsehelper.common.helper
 import android.content.Context
 import android.content.SharedPreferences
 
-class SharedPrefAppProperties : AppProperties {
+class SharedPrefAppProperties(context: Context) : AppProperties {
 
-    private val pref: SharedPreferences
+    private val pref: SharedPreferences = context.getSharedPreferences("app_properties", Context.MODE_PRIVATE)
 
     private val KEY_USERNAME = "username"
-
-    constructor(context: Context) {
-        pref = context.getSharedPreferences("app_properties", Context.MODE_PRIVATE)
-    }
 
     override fun saveUsername(username: String) {
         pref.edit().putString(KEY_USERNAME, username).apply()
