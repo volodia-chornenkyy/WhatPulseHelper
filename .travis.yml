@@ -1,4 +1,6 @@
 language: android
+before_install:
+ - chmod +x gradlew
 android:
   components:
     - platform-tools
@@ -13,6 +15,5 @@ android:
     # Additional components
     - extra-google-m2repository
     - extra-android-m2repository
-    - extra-android-support
   licenses:
     - 'android-sdk-license-.+'
