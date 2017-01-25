@@ -17,7 +17,7 @@
         android:orientation="vertical">
 
         <TextView
-            style="@style/CardTitle"
+            style="@style/Title"
             android:text="@{obj.name}"
             tools:text="computer name" />
 
@@ -73,7 +73,7 @@
 
         <TextView
             android:id="@+id/computer_item_message"
-            style="@style/CardText.Label"
+            style="@style/Text.Label"
             tools:text="Message" />
     </LinearLayout>
 </layout>

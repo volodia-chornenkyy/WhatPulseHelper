@@ -7,11 +7,11 @@
 
     <TextView
         android:id="@+id/label"
-        style="@style/CardText.Label"
+        style="@style/Text.Label"
         tools:text="Label" />
 
     <TextView
         android:id="@+id/value"
-        style="@style/CardText.Value"
+        style="@style/Text.Value"
         tools:text="TextView" />
 </LinearLayout>

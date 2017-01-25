@@ -15,16 +15,20 @@
     </style>
 
     <style name="Block">
-        <item name="android:padding">16dp</item>
+        <item name="android:paddingTop">@dimen/space_horizontal</item>
+        <item name="android:paddingBottom">@dimen/space_horizontal</item>
+        <item name="android:paddingLeft">@dimen/space_vertical</item>
+        <item name="android:paddingRight">@dimen/space_vertical</item>
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">wrap_content</item>
     </style>
-    
+
     <style name="Block.Clickable">
         <item name="android:clickable">true</item>
         <item name="android:background">?attr/selectableItemBackgroundBorderless</item>
     </style>
 
+    <style name="Title">
     <style name="CardTitle">
         <item name="android:textAllCaps">true</item>
         <item name="android:textSize">@dimen/text_title</item>
@@ -34,17 +38,20 @@
         <item name="android:layout_height">wrap_content</item>
     </style>
 
+    <style name="Text">
     <style name="CardText">
         <item name="android:textSize">@dimen/text_general</item>
         <item name="android:textColor">@android:color/black</item>
         <item name="android:layout_marginTop">4dp</item>
     </style>
 
+    <style name="Text.Label">
     <style name="CardText.Label">
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>
     </style>
 
+    <style name="Text.Value">
     <style name="CardText.Value">
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">wrap_content</item>
