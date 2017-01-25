@@ -22,3 +22,6 @@ android:
     - extra-android-m2repository
   licenses:
     - 'android-sdk-license-.+'
+  script:
+    # bash gradlew test jacocoTestReport for tests
+    - bash gradlew assembleDebug
