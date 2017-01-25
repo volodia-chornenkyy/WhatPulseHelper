@@ -7,22 +7,22 @@
     android:orientation="vertical">
 
     <TextView
+        style="@style/Title"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_above="@+id/loginUsername"
         android:gravity="center"
-        android:text="@string/login_welcome"
-        android:textColor="@android:color/black"
-        android:textSize="24sp" />
+        android:text="@string/login_welcome" />
 
     <EditText
         android:id="@+id/loginUsername"
+        style="@style/Text"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_centerInParent="true"
-        android:layout_marginLeft="16dp"
-        android:layout_marginRight="16dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginLeft="@dimen/space_vertical"
+        android:layout_marginRight="@dimen/space_vertical"
+        android:layout_marginTop="@dimen/space_horizontal"
         android:gravity="center"
         android:hint="@string/login_username_hint"
         android:inputType="text"

@@ -7,7 +7,7 @@ class SplashPresenter constructor(private val appProperties: AppProperties) {
     private var view: SplashView? = null
 
     fun openRespectableScreen() {
-        if (appProperties.getUsername().length == 0) {
+        if (appProperties.getUsername().isEmpty()) {
             view?.openLoginScreen()
         } else {
             view?.openMainScreen()
