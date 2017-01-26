@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">WhatPulseHelper</string>
+    <string name="app_name">WhatPulse Helper</string>
 
     <!--Profile info-->
     <string name="profile_section_account">Account</string>
