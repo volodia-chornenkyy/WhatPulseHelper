@@ -1,11 +1,10 @@
 package com.vchornenkyy.whatpulsehelper.common.view
 
 import android.content.Context
-import android.os.Parcel
+import android.os.Bundle
 import android.os.Parcelable
 import android.support.design.widget.BottomNavigationView
 import android.util.AttributeSet
-import android.view.View
 
 /**
  * @author chornenkyy@gmail.com
@@ -15,25 +14,30 @@ import android.view.View
 
 class StatedNavigationBottomBar : BottomNavigationView {
 
-    constructor(context: Context) : super(context) {}
+    constructor(context: Context) : super(context)
 
-    constructor(context: Context, attrs: AttributeSet) : super(context, attrs) {}
+    constructor(context: Context, attrs: AttributeSet) : super(context, attrs)
 
-    constructor(context: Context, attrs: AttributeSet, defStyleAttr: Int) : super(context, attrs, defStyleAttr) {}
+    constructor(context: Context, attrs: AttributeSet, defStyleAttr: Int) : super(context, attrs, defStyleAttr)
+
+    private val keySuperState = "superState"
+    private val keySelectedItemId = "selectedItemId"
 
     public override fun onSaveInstanceState(): Parcelable {
-        val superState = super.onSaveInstanceState()
-        val ss = SavedState(superState)
-        ss.selectedMenuItemId = selectedItemId
-        return ss
+        val bundle = Bundle()
+        bundle.putParcelable(keySuperState, super.onSaveInstanceState())
+
+        bundle.putInt(keySelectedItemId, selectedItemId)
+
+        return bundle
     }
 
     public override fun onRestoreInstanceState(state: Parcelable) {
-        val ss = state as SavedState
-        super.onRestoreInstanceState(ss.superState)
+        val bundle = state as Bundle
+        super.onRestoreInstanceState(bundle.getParcelable<Parcelable>(keySuperState))
 
-        val selectedMenuItemId = ss.selectedMenuItemId
-        restoreSelectedItemState(selectedMenuItemId)
+        val selectedItemId = bundle.getInt(keySelectedItemId)
+        restoreSelectedItemState(selectedItemId)
     }
 
     private val selectedItemId: Int
@@ -49,33 +53,6 @@ class StatedNavigationBottomBar : BottomNavigationView {
         val menuItem = menu.findItem(menuItemId)
         if (menuItem != null) {
             menuItem.isChecked = true
-        }
-    }
-
-    internal class SavedState : View.BaseSavedState {
-        var selectedMenuItemId: Int = 0
-
-        constructor(superState: Parcelable) : super(superState) {}
-
-        private constructor(`in`: Parcel) : super(`in`) {
-            selectedMenuItemId = `in`.readInt()
-        }
-
-        override fun writeToParcel(out: Parcel, flags: Int) {
-            super.writeToParcel(out, flags)
-            out.writeInt(selectedMenuItemId)
-        }
-
-        companion object {
-            val CREATOR: Parcelable.Creator<SavedState> = object : Parcelable.Creator<SavedState> {
-                override fun createFromParcel(`in`: Parcel): SavedState {
-                    return SavedState(`in`)
-                }
-
-                override fun newArray(size: Int): Array<SavedState?> {
-                    return arrayOfNulls(size)
-                }
-            }
         }
     }
 }
