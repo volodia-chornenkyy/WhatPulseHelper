@@ -16,11 +16,12 @@ class ModelConverter {
     val dateTimeFormatter: SimpleDateFormat = SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.US)
     val dateOnlyFormatter: SimpleDateFormat = SimpleDateFormat("yyyy-MM-dd", Locale.US)
 
+    val dataTypeFormatter = DataTypeFormatter()
+
     init {
         val symbols = numberFormatter.decimalFormatSymbols
         symbols.groupingSeparator = ' '
         numberFormatter.decimalFormatSymbols = symbols
-
     }
 
     fun convert(response: UserResponse): User {
@@ -41,8 +42,8 @@ class ModelConverter {
             team.members = numberFormatter.format(teamResponse.members)
             team.keysPressed = numberFormatter.format(teamResponse.keysPressed)
             team.clicksMade = numberFormatter.format(teamResponse.clicksMade)
-            team.download = humanReadableByteCount(megaBytesToBytes(teamResponse.downloadMb))
-            team.upload = humanReadableByteCount(megaBytesToBytes(teamResponse.uploadMb))
+            team.download = dataTypeFormatter.megaBytesToString(teamResponse.downloadMb)
+            team.upload = dataTypeFormatter.megaBytesToString(teamResponse.uploadMb)
             team.ranks = convertRanks(teamResponse.ranks)
         }
         return team
@@ -60,8 +61,8 @@ class ModelConverter {
         user.pulsesAmount = numberFormatter.format(response.pulsesAmount)
         user.keysPressed = numberFormatter.format(response.keysPressed)
         user.clicksMade = numberFormatter.format(response.clicksMade)
-        user.download = humanReadableByteCount(megaBytesToBytes(response.downloadMb))
-        user.upload = humanReadableByteCount(megaBytesToBytes(response.uploadMb))
+        user.download = dataTypeFormatter.megaBytesToString(response.downloadMb)
+        user.upload = dataTypeFormatter.megaBytesToString(response.uploadMb)
         user.uptime = response.uptimeShort
         user.averageKeysPerPulse = numberFormatter.format(response.averageKeysPerPulse)
         user.averageClicksPerPulse = numberFormatter.format(response.averageClicksPerPulse)
@@ -96,8 +97,8 @@ class ModelConverter {
             computer.pulses = value.pulses.toString()
             computer.clicks = numberFormatter.format(value.clicks)
             computer.keys = numberFormatter.format(value.keys)
-            computer.download = humanReadableByteCount(megaBytesToBytes(value.download))
-            computer.upload = humanReadableByteCount(megaBytesToBytes(value.upload))
+            computer.download = dataTypeFormatter.megaBytesToString(value.download)
+            computer.upload = dataTypeFormatter.megaBytesToString(value.upload)
             if (value.uptimeSeconds == 0L) {
                 computer.uptime = "0"
             } else {
@@ -108,15 +109,5 @@ class ModelConverter {
         return computers
     }
 
-    private fun humanReadableByteCount(bytes: Long): String {
-        val unit = 1024
-        if (bytes < unit) return bytes.toString() + " B"
-        val exp = (Math.log(bytes.toDouble()) / Math.log(unit.toDouble())).toInt()
-        val pre = "kMGTPE"[exp - 1]
-        return String.format("%.2f %sB", bytes / Math.pow(unit.toDouble(), exp.toDouble()), pre)
-    }
 
-    private fun megaBytesToBytes(megaBytes: Long): Long {
-        return megaBytes.times(1024 * 1024)
-    }
 }
