@@ -13,10 +13,12 @@ class App : Application() {
 
     override fun onCreate() {
         super.onCreate()
-        Fabric.with(this, Crashlytics(), Answers())
 
-        // setup tracking only for release build
+        // setup release build
         if (!BuildConfig.DEBUG) {
+
+            Fabric.with(this, Crashlytics(), Answers())
+
             eventTracker = EventTracker.instance
             eventTracker?.addTracker(TrackerAnswers())
         }
