@@ -12,8 +12,8 @@ class TeamResponse {
     @JsonProperty("Clicks") val clicksMade: Long = 0
     @JsonProperty("Download") val downloadFormatted: String = ""
     @JsonProperty("Upload") val uploadFormatted: String = ""
-    @JsonProperty("DownloadMB") val downloadMb: Long = 0
-    @JsonProperty("UploadMB") val uploadMb: Long = 0
+    @JsonProperty("DownloadMB") val downloadMb: Double = 0.0
+    @JsonProperty("UploadMB") val uploadMb: Double = 0.0
     @JsonProperty("UptimeSeconds") val uptimeSeconds: Long = 0
     @JsonProperty("UptimeShort") val uptimeShort: String = ""
     @JsonProperty("UptimeLong") val uptimeLong: String = ""

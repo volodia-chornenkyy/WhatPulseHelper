@@ -70,6 +70,8 @@ dependencies {
     compile("com.crashlytics.sdk.android:crashlytics:2.6.6@aar") {
         transitive = true;
     }
+
+    testCompile group: 'junit', name: 'junit', version: '4.12'
 }
 kapt {
     generateStubs = true
