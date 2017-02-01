@@ -1,8 +1,10 @@
 package com.vchornenkyy.whatpulsehelper.common.helper
 
+import com.vchornenkyy.whatpulsehelper.common.api.model.RanksResponse
 import com.vchornenkyy.whatpulsehelper.common.api.model.UserResponse
 import com.vchornenkyy.whatpulsehelper.common.dto.Computer
 import com.vchornenkyy.whatpulsehelper.common.dto.Ranks
+import com.vchornenkyy.whatpulsehelper.common.dto.Team
 import com.vchornenkyy.whatpulsehelper.common.dto.User
 import java.text.DecimalFormat
 import java.text.NumberFormat
@@ -11,7 +13,8 @@ import java.util.*
 
 class ModelConverter {
     val numberFormatter: DecimalFormat = NumberFormat.getInstance(Locale.US) as DecimalFormat
-    val dateFormatter: SimpleDateFormat = SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.US)
+    val dateTimeFormatter: SimpleDateFormat = SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.US)
+    val dateOnlyFormatter: SimpleDateFormat = SimpleDateFormat("yyyy-MM-dd", Locale.US)
 
     init {
         val symbols = numberFormatter.decimalFormatSymbols
@@ -21,21 +24,39 @@ class ModelConverter {
     }
 
     fun convert(response: UserResponse): User {
-        val ranks = convertRanks(response)
+        val ranks = convertRanks(response.ranks)
         val computers = convertComputers(response)
-        val user = convertUser(computers, ranks, response)
+        val team = convertTeam(response)
+        val user = convertUser(computers, ranks, team, response)
         return user
     }
 
-    private fun convertUser(computers: HashMap<String, Computer>, ranks: Ranks, response: UserResponse): User {
+    private fun convertTeam(response: UserResponse): Team {
+        val team = Team()
+        val teamResponse = response.team
+        if (teamResponse.name.isNotEmpty()) {
+            team.name = teamResponse.name
+            team.description = teamResponse.description
+            team.dateFormed = dateOnlyFormatter.format(Date(teamResponse.dateFormedTimeStamp.times(1000)))
+            team.members = numberFormatter.format(teamResponse.members)
+            team.keysPressed = numberFormatter.format(teamResponse.keysPressed)
+            team.clicksMade = numberFormatter.format(teamResponse.clicksMade)
+            team.download = humanReadableByteCount(megaBytesToBytes(teamResponse.downloadMb))
+            team.upload = humanReadableByteCount(megaBytesToBytes(teamResponse.uploadMb))
+            team.ranks = convertRanks(teamResponse.ranks)
+        }
+        return team
+    }
+
+    private fun convertUser(computers: HashMap<String, Computer>, ranks: Ranks, team: Team, response: UserResponse): User {
         val user = User()
         user.userId = response.userId
         user.accountName = response.accountName
         user.country = response.country
         user.countryCode = response.countryCode
-        user.dateJoined = dateFormatter.format(Date(response.dateJoinedTimestamp.times(1000)))
+        user.dateJoined = dateTimeFormatter.format(Date(response.dateJoinedTimestamp.times(1000)))
         user.homePage = response.homePage
-        user.lastPulse = dateFormatter.format(Date(response.lastPulseTimestamp.times(1000)))
+        user.lastPulse = dateTimeFormatter.format(Date(response.lastPulseTimestamp.times(1000)))
         user.pulsesAmount = numberFormatter.format(response.pulsesAmount)
         user.keysPressed = numberFormatter.format(response.keysPressed)
         user.clicksMade = numberFormatter.format(response.clicksMade)
@@ -48,16 +69,17 @@ class ModelConverter {
         user.averageClicksPerSecond = numberFormatter.format(response.averageClicksPerSecond)
         user.ranks = ranks
         user.computers = computers
+        user.team = team
         return user
     }
 
-    private fun convertRanks(response: UserResponse): Ranks {
+    private fun convertRanks(response: RanksResponse): Ranks {
         val ranks = Ranks()
-        ranks.clicks = numberFormatter.format(response.ranks.clicks)
-        ranks.keys = numberFormatter.format(response.ranks.keys)
-        ranks.download = numberFormatter.format(response.ranks.download)
-        ranks.upload = numberFormatter.format(response.ranks.upload)
-        ranks.uptime = numberFormatter.format(response.ranks.uptime)
+        ranks.clicks = numberFormatter.format(response.clicks)
+        ranks.keys = numberFormatter.format(response.keys)
+        ranks.download = numberFormatter.format(response.download)
+        ranks.upload = numberFormatter.format(response.upload)
+        ranks.uptime = numberFormatter.format(response.uptime)
         return ranks
     }
 
@@ -69,7 +91,7 @@ class ModelConverter {
             if (value.lastPulseTimestamp == 0L) {
                 computer.lastPulse = ""
             } else {
-                computer.lastPulse = dateFormatter.format(Date(value.lastPulseTimestamp.times(1000)))
+                computer.lastPulse = dateTimeFormatter.format(Date(value.lastPulseTimestamp.times(1000)))
             }
             computer.pulses = value.pulses.toString()
             computer.clicks = numberFormatter.format(value.clicks)

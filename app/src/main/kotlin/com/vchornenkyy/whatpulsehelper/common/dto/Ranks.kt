@@ -1,6 +1,6 @@
 package com.vchornenkyy.whatpulsehelper.common.dto
 
-class Ranks() {
+class Ranks {
     var keys: String? = null
     var clicks: String? = null
     var download: String? = null
