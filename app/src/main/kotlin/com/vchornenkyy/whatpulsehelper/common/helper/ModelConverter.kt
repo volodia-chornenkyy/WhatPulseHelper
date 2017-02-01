@@ -10,49 +10,24 @@ import java.text.SimpleDateFormat
 import java.util.*
 
 class ModelConverter {
-    val numberFormatter: DecimalFormat
-    val dateFormatter: SimpleDateFormat
+    val numberFormatter: DecimalFormat = NumberFormat.getInstance(Locale.US) as DecimalFormat
+    val dateFormatter: SimpleDateFormat = SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.US)
 
     init {
-        numberFormatter = NumberFormat.getInstance(Locale.US) as DecimalFormat
         val symbols = numberFormatter.decimalFormatSymbols
         symbols.groupingSeparator = ' '
         numberFormatter.decimalFormatSymbols = symbols
 
-        dateFormatter = SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.US)
     }
 
     fun convert(response: UserResponse): User {
-        val ranks = Ranks()
-        ranks.clicks = numberFormatter.format(response.ranks.clicks)
-        ranks.keys = numberFormatter.format(response.ranks.keys)
-        ranks.download = numberFormatter.format(response.ranks.download)
-        ranks.upload = numberFormatter.format(response.ranks.upload)
-        ranks.uptime = numberFormatter.format(response.ranks.uptime)
+        val ranks = convertRanks(response)
+        val computers = convertComputers(response)
+        val user = convertUser(computers, ranks, response)
+        return user
+    }
 
-
-        val computers = HashMap<String, Computer>()
-        for ((key, value) in response.computers) {
-            val computer = Computer()
-            computer.name = value.name
-            if (value.lastPulseTimestamp == 0L) {
-                computer.lastPulse = ""
-            } else {
-                computer.lastPulse = dateFormatter.format(Date(value.lastPulseTimestamp.times(1000)))
-            }
-            computer.pulses = value.pulses.toString()
-            computer.clicks = numberFormatter.format(value.clicks)
-            computer.keys = numberFormatter.format(value.keys)
-            computer.download = humanReadableByteCount(megaBytesToBytes(value.download))
-            computer.upload = humanReadableByteCount(megaBytesToBytes(value.upload))
-            if (value.uptimeSeconds == 0L) {
-                computer.uptime = "0"
-            } else {
-                computer.uptime = value.uptimeShort
-            }
-            computers.put(computer.name, computer)
-        }
-
+    private fun convertUser(computers: HashMap<String, Computer>, ranks: Ranks, response: UserResponse): User {
         val user = User()
         user.userId = response.userId
         user.accountName = response.accountName
@@ -74,6 +49,41 @@ class ModelConverter {
         user.ranks = ranks
         user.computers = computers
         return user
+    }
+
+    private fun convertRanks(response: UserResponse): Ranks {
+        val ranks = Ranks()
+        ranks.clicks = numberFormatter.format(response.ranks.clicks)
+        ranks.keys = numberFormatter.format(response.ranks.keys)
+        ranks.download = numberFormatter.format(response.ranks.download)
+        ranks.upload = numberFormatter.format(response.ranks.upload)
+        ranks.uptime = numberFormatter.format(response.ranks.uptime)
+        return ranks
+    }
+
+    private fun convertComputers(response: UserResponse): HashMap<String, Computer> {
+        val computers = HashMap<String, Computer>()
+        for ((key, value) in response.computers) {
+            val computer = Computer()
+            computer.name = value.name
+            if (value.lastPulseTimestamp == 0L) {
+                computer.lastPulse = ""
+            } else {
+                computer.lastPulse = dateFormatter.format(Date(value.lastPulseTimestamp.times(1000)))
+            }
+            computer.pulses = value.pulses.toString()
+            computer.clicks = numberFormatter.format(value.clicks)
+            computer.keys = numberFormatter.format(value.keys)
+            computer.download = humanReadableByteCount(megaBytesToBytes(value.download))
+            computer.upload = humanReadableByteCount(megaBytesToBytes(value.upload))
+            if (value.uptimeSeconds == 0L) {
+                computer.uptime = "0"
+            } else {
+                computer.uptime = value.uptimeShort
+            }
+            computers.put(computer.name, computer)
+        }
+        return computers
     }
 
     private fun humanReadableByteCount(bytes: Long): String {
