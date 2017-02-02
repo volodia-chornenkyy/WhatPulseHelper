@@ -25,7 +25,7 @@ android:
     - 'android-sdk-license-.+'
 
 script:
-  # bash gradlew test jacocoTestReport for tests
+  - ./gradlew jacocoTestReport
   - ./gradlew assembleDebug
 
 after_success:
