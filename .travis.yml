@@ -5,6 +5,7 @@ jdk:
 
 before_install:
  - chmod +x gradlew
+ - pip install --user codecov
 
 android:
   components:
@@ -26,3 +27,6 @@ android:
 script:
   # bash gradlew test jacocoTestReport for tests
   - ./gradlew assembleDebug
+
+after_success:
+  - codecov
