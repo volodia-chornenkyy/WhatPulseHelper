@@ -44,47 +44,56 @@ class DataTypeFormatterTest {
 
         @Test
         fun oneMegabyteConversion() {
-            assertEquals("1,00 MB", dataTypeFormatter.megaBytesToString(1.0))
+            val expectedResult = getExpectedResult(1.0, "M")
+            assertEquals(expectedResult, dataTypeFormatter.megaBytesToString(1.0))
         }
 
         @Test
         fun oneGigabyteConversion() {
-            assertEquals("1,00 GB", dataTypeFormatter.megaBytesToString(1024.0))
+            val expectedResult = getExpectedResult(1.0, "G")
+            assertEquals(expectedResult, dataTypeFormatter.megaBytesToString(1024.0))
         }
 
         @Test
         fun oneGigabyteWithFractionConversion() {
-            assertEquals("1,33 GB", dataTypeFormatter.megaBytesToString(1366.0))
+            val expectedResult = getExpectedResult(1.33, "G")
+            assertEquals(expectedResult, dataTypeFormatter.megaBytesToString(1366.0))
         }
 
         @Test
         fun oneTerabyteConversion() {
             val oneTerabyte: Double = Math.pow(1024.0, 2.0)
-            assertEquals("1,00 TB", dataTypeFormatter.megaBytesToString(oneTerabyte))
+            val expectedResult = getExpectedResult(1.0, "T")
+            assertEquals(expectedResult, dataTypeFormatter.megaBytesToString(oneTerabyte))
         }
 
         @Test
         fun onePetabyteConversion() {
             val onePetabyte: Double = Math.pow(1024.0, 3.0)
-            assertEquals("1,00 PB", dataTypeFormatter.megaBytesToString(onePetabyte))
+            val expectedResult = getExpectedResult(1.0, "P")
+            assertEquals(expectedResult, dataTypeFormatter.megaBytesToString(onePetabyte))
         }
 
         @Test
         fun oneExabyteConversion() {
             val oneExabyte: Double = Math.pow(1024.0, 4.0)
-            assertEquals("1,00 EB", dataTypeFormatter.megaBytesToString(oneExabyte))
+            val expectedResult = getExpectedResult(1.0, "E")
+            assertEquals(expectedResult, dataTypeFormatter.megaBytesToString(oneExabyte))
         }
 
         @Test
         fun overflowAvailableMetricsConversion() {
             // metric not available in the implementation
             val oneZettabyte: Double = Math.pow(1024.0, 5.0)
-            assertEquals("1024,00 EB", dataTypeFormatter.megaBytesToString(oneZettabyte))
+            val expectedResult = getExpectedResult(1024.0, "E")
+            assertEquals(expectedResult, dataTypeFormatter.megaBytesToString(oneZettabyte))
         }
 
         @Test
         fun negativeAmountOfMegabytesGetEmptyString() {
             assertEquals("", dataTypeFormatter.megaBytesToString(-1.0))
         }
+
+        private fun getExpectedResult(value: Double, suffix: String) = String.format("%.2f %sB", value, suffix)
     }
 }
