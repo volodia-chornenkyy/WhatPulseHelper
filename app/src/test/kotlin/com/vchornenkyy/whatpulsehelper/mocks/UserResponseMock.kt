@@ -12,6 +12,12 @@ class UserResponseMock {
             computers.put("1", ComputerResponseMock.get())
             return UserResponse("", 0, "", "", "", 0, "", 0, 0, 0, 0, "", "", 0.0, 0.0, 0, "", 0, 0, 0.0f, 0.0f, RankResponseMock.get(), computers, TeamResponseMock.get())
         }
+
+        fun get(name: String): UserResponse {
+            val computers = HashMap<String, ComputerResponse>(1)
+            computers.put("1", ComputerResponseMock.get())
+            return UserResponse("", 0, name, "", "", 0, "", 0, 0, 0, 0, "", "", 0.0, 0.0, 0, "", 0, 0, 0.0f, 0.0f, RankResponseMock.get(), computers, TeamResponseMock.get())
+        }
     }
 
 }

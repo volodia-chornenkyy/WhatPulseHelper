@@ -15,10 +15,9 @@ import rx.schedulers.Schedulers
 abstract class BaseUserUseCase(protected val properties: AppProperties,
                                protected val userApi: UserService = WhatPulseRestApi().userApi,
                                protected val cache: Cache = InMemoryCache.instance,
+                               protected val converter: ModelConverter = ModelConverter(),
                                val subscribeOn: Scheduler = Schedulers.io(),
                                val observeOn: Scheduler = AndroidSchedulers.mainThread()) {
-
-    protected val converter = ModelConverter()
 
     protected fun getUser(userId: String): Observable<User> {
         return cache.getUser()
