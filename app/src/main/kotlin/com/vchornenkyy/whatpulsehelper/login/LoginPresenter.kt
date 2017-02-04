@@ -25,8 +25,7 @@ class LoginPresenter constructor(val appProperties: AppProperties,
 
         LoginUseCase(appProperties).execute(username)
                 .subscribe(
-                        { user ->
-                            appProperties.saveUsername(username)
+                        { isLoggedIn ->
 
                             eventTracker.login()
 

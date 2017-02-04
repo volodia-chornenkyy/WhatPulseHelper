@@ -2,11 +2,11 @@ package com.vchornenkyy.whatpulsehelper.login.usecase
 
 import com.vchornenkyy.whatpulsehelper.common.api.Cache
 import com.vchornenkyy.whatpulsehelper.common.api.UserService
-import com.vchornenkyy.whatpulsehelper.common.dto.User
 import com.vchornenkyy.whatpulsehelper.common.helper.AppProperties
 import com.vchornenkyy.whatpulsehelper.common.helper.ModelConverter
 import com.vchornenkyy.whatpulsehelper.mocks.UserResponseMock
-import junit.framework.Assert.assertEquals
+import org.junit.Assert.assertTrue
+import org.junit.Assert.fail
 import org.junit.Test
 import org.junit.runner.RunWith
 import org.junit.runners.JUnit4
@@ -19,9 +19,9 @@ import rx.schedulers.Schedulers
 @RunWith(JUnit4::class)
 class LoginUseCaseTest {
 
-    val testSubscriber = TestSubscriber<User>()
     val accountName = "temnoi"
 
+    val testSubscriber = TestSubscriber<Boolean>()
     val appProperties: AppProperties = mock(AppProperties::class.java)
     val userApi: UserService = mock(UserService::class.java)
     val cache: Cache = mock(Cache::class.java)
@@ -40,8 +40,10 @@ class LoginUseCaseTest {
         loginUseCase.execute(accountName).subscribe(testSubscriber)
 
         testSubscriber.assertNoErrors()
-        for (onNextEvent in testSubscriber.onNextEvents) {
-            assertEquals(user.accountName, onNextEvent.accountName)
+        if (testSubscriber.onNextEvents.isNotEmpty()) {
+            assertTrue(testSubscriber.onNextEvents[0])
+        } else {
+            fail()
         }
     }
 }
