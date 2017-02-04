@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.vchornenkyy.whatpulsehelper.MainActivity">
+    tools:context="com.vchornenkyy.whatpulsehelper.view.MainActivity">
 
     <android.support.v4.widget.NestedScrollView
         android:layout_width="match_parent"
@@ -40,7 +40,7 @@
         style="@style/Shadow.Up"
         android:layout_above="@+id/bottomBar" />
 
-    <com.vchornenkyy.whatpulsehelper.common.view.StatedNavigationBottomBar
+    <com.vchornenkyy.whatpulsehelper.view.widgets.StatedNavigationBottomBar
         android:id="@+id/bottomBar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

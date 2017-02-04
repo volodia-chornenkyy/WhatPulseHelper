@@ -1,7 +1,7 @@
 package com.vchornenkyy.whatpulsehelper.mocks
 
-import com.vchornenkyy.whatpulsehelper.common.api.model.ComputerResponse
-import com.vchornenkyy.whatpulsehelper.common.api.model.UserResponse
+import com.vchornenkyy.whatpulsehelper.model.api.model.ComputerResponse
+import com.vchornenkyy.whatpulsehelper.model.api.model.UserResponse
 import java.util.*
 
 class UserResponseMock {

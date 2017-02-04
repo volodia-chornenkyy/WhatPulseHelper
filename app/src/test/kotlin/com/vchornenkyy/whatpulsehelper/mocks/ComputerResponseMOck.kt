@@ -1,6 +1,6 @@
 package com.vchornenkyy.whatpulsehelper.mocks
 
-import com.vchornenkyy.whatpulsehelper.common.api.model.ComputerResponse
+import com.vchornenkyy.whatpulsehelper.model.api.model.ComputerResponse
 
 class ComputerResponseMock {
 
