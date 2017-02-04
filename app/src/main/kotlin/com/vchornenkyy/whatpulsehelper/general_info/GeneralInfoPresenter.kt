@@ -1,14 +1,16 @@
 package com.vchornenkyy.whatpulsehelper.general_info
 
 import android.util.Log
+import com.vchornenkyy.whatpulsehelper.common.BasePresenter
+import com.vchornenkyy.whatpulsehelper.common.BaseView
+import com.vchornenkyy.whatpulsehelper.common.dto.User
 import com.vchornenkyy.whatpulsehelper.common.helper.AppProperties
 import com.vchornenkyy.whatpulsehelper.general_info.usecase.GetUserUseCase
 import rx.Subscription
 import java.net.UnknownHostException
 
-class GeneralInfoPresenter constructor(val appProperties: AppProperties) {
+class GeneralInfoPresenter<VIEW : GeneralInfoPresenter.View> constructor(val appProperties: AppProperties) : BasePresenter<VIEW>() {
 
-    var view: GeneralInfoView? = null
     var userSubscription: Subscription? = null
 
     fun loadUser() {
@@ -29,8 +31,14 @@ class GeneralInfoPresenter constructor(val appProperties: AppProperties) {
                 )
     }
 
-    fun detach() {
+    override fun detach() {
+        super.detach()
+
         userSubscription?.unsubscribe()
         userSubscription = null
+    }
+
+    interface View : BaseView {
+        fun bindUser(user: User)
     }
 }

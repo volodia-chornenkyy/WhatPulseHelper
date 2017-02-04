@@ -6,9 +6,9 @@ import android.support.v7.app.AppCompatActivity
 import com.vchornenkyy.whatpulsehelper.common.tracking.EventTracker
 import com.vchornenkyy.whatpulsehelper.common.tracking.annotations.Orientation
 
-abstract class BaseActivity : AppCompatActivity(), IBaseView {
+abstract class BaseActivity : AppCompatActivity(), BaseView {
 
-    var sharedView: IBaseView? = null
+    var sharedView: BaseView? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

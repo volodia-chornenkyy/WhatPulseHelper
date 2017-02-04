@@ -11,8 +11,8 @@ import com.vchornenkyy.whatpulsehelper.common.BaseFragment
 import com.vchornenkyy.whatpulsehelper.common.dto.Computer
 import com.vchornenkyy.whatpulsehelper.common.helper.SharedPrefAppProperties
 
-class ComputersFragment : BaseFragment(), ComputersView {
-    var presenter: ComputersPresenter? = null
+class ComputersFragment : BaseFragment(), ComputersPresenter.View {
+    var presenter: ComputersPresenter<ComputersPresenter.View>? = null
 
     val adapter = ComputersAdapter()
 
@@ -34,7 +34,7 @@ class ComputersFragment : BaseFragment(), ComputersView {
 
         presenter = ComputersPresenter(SharedPrefAppProperties(context))
 
-        presenter?.view = this
+        presenter?.attach(this)
 
         presenter?.loadComputers()
 

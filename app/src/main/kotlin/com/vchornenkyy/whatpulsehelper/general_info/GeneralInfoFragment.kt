@@ -11,9 +11,9 @@ import com.vchornenkyy.whatpulsehelper.common.dto.User
 import com.vchornenkyy.whatpulsehelper.common.helper.SharedPrefAppProperties
 import com.vchornenkyy.whatpulsehelper.databinding.GeneralInfoLayoutBinding
 
-class GeneralInfoFragment : BaseFragment(), GeneralInfoView {
+class GeneralInfoFragment : BaseFragment(), GeneralInfoPresenter.View {
 
-    var presenter: GeneralInfoPresenter? = null
+    var presenter: GeneralInfoPresenter<GeneralInfoPresenter.View>? = null
 
     var binding: GeneralInfoLayoutBinding? = null
 
@@ -31,7 +31,7 @@ class GeneralInfoFragment : BaseFragment(), GeneralInfoView {
 
         presenter = GeneralInfoPresenter(SharedPrefAppProperties(context))
 
-        presenter?.view = this
+        presenter?.attach(this)
 
         presenter?.loadUser()
 

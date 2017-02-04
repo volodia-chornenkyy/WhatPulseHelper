@@ -1,10 +1,9 @@
 package com.vchornenkyy.whatpulsehelper.splash
 
+import com.vchornenkyy.whatpulsehelper.common.BasePresenter
 import com.vchornenkyy.whatpulsehelper.common.helper.AppProperties
 
-class SplashPresenter constructor(private val appProperties: AppProperties) {
-
-    private var view: SplashView? = null
+class SplashPresenter<VIEW : SplashPresenter.View> constructor(private val appProperties: AppProperties) : BasePresenter<VIEW>() {
 
     fun openRespectableScreen() {
         if (appProperties.getUsername().isEmpty()) {
@@ -14,11 +13,10 @@ class SplashPresenter constructor(private val appProperties: AppProperties) {
         }
     }
 
-    fun attach(view: SplashView) {
-        this.view = view
-    }
+    interface View {
 
-    fun detach() {
-        view = null
+        fun openMainScreen()
+
+        fun openLoginScreen()
     }
 }

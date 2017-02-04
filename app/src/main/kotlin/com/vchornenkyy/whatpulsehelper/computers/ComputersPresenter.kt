@@ -1,14 +1,16 @@
 package com.vchornenkyy.whatpulsehelper.computers
 
 import android.util.Log
+import com.vchornenkyy.whatpulsehelper.common.BasePresenter
+import com.vchornenkyy.whatpulsehelper.common.BaseView
+import com.vchornenkyy.whatpulsehelper.common.dto.Computer
 import com.vchornenkyy.whatpulsehelper.common.helper.AppProperties
 import com.vchornenkyy.whatpulsehelper.computers.usecase.GetComputersUseCase
 import rx.Subscription
 import java.net.UnknownHostException
 
-class ComputersPresenter constructor(val appProperties: AppProperties) {
+class ComputersPresenter<VIEW : ComputersPresenter.View> constructor(val appProperties: AppProperties) : BasePresenter<VIEW>() {
 
-    var view: ComputersView? = null
     var subscription: Subscription? = null
 
     fun loadComputers() {
@@ -29,8 +31,14 @@ class ComputersPresenter constructor(val appProperties: AppProperties) {
                 )
     }
 
-    fun detach() {
+    override fun detach() {
+        super.detach()
+
         subscription?.unsubscribe()
         subscription = null
+    }
+
+    interface View : BaseView {
+        fun bindComputers(computers: List<Computer>)
     }
 }

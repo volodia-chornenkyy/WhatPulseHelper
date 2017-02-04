@@ -4,7 +4,7 @@ import android.support.design.widget.Snackbar
 import android.support.v4.app.Fragment
 import android.view.View
 
-class SharedView : IBaseView {
+class SharedView : BaseView {
 
     private var activity: BaseActivity? = null
     private var fragment: Fragment? = null

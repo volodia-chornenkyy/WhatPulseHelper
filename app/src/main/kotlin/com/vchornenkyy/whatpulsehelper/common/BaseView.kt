@@ -1,6 +1,6 @@
 package com.vchornenkyy.whatpulsehelper.common
 
-interface IBaseView {
+interface BaseView {
     // TODO replace to @StringRes
     fun displayMessage(message: String)
 }

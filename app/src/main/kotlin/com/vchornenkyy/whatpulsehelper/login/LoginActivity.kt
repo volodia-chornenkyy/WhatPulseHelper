@@ -10,9 +10,9 @@ import com.vchornenkyy.whatpulsehelper.common.helper.SharedPrefAppProperties
 import com.vchornenkyy.whatpulsehelper.common.tracking.EventTracker
 import kotlinx.android.synthetic.main.login_layout.*
 
-class LoginActivity : BaseActivity(), LoginView {
+class LoginActivity : BaseActivity(), LoginPresenter.View {
 
-    var presenter: LoginPresenter? = null
+    var presenter: LoginPresenter<LoginPresenter.View>? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

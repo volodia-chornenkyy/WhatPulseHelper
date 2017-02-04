@@ -7,9 +7,9 @@ import com.vchornenkyy.whatpulsehelper.MainActivity
 import com.vchornenkyy.whatpulsehelper.common.helper.SharedPrefAppProperties
 import com.vchornenkyy.whatpulsehelper.login.LoginActivity
 
-class SplashActivity : AppCompatActivity(), SplashView {
+class SplashActivity : AppCompatActivity(), SplashPresenter.View {
 
-    private var presenter: SplashPresenter? = null
+    private var presenter: SplashPresenter<SplashPresenter.View>? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
