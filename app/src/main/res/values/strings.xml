@@ -14,7 +14,7 @@
     <!--Bottom navigation-->
     <string name="bottom_nav_profile">Profile</string>
     <string name="bottom_nav_computers">Computers</string>
-    <string name="bottom_nav_teams">Teams</string>
+    <string name="bottom_nav_teams">Team</string>
 
     <!--Errors-->
     <string name="no.pulses.from.pc">No pulses was performed from this PC</string>
