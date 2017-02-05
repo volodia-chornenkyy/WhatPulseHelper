@@ -10,8 +10,7 @@ import org.junit.Assert.fail
 import org.junit.Test
 import org.junit.runner.RunWith
 import org.junit.runners.JUnit4
-import org.mockito.Mockito.`when`
-import org.mockito.Mockito.mock
+import org.mockito.Mockito.*
 import rx.Observable
 import rx.observers.TestSubscriber
 import rx.schedulers.Schedulers
@@ -45,5 +44,20 @@ class LoginUseCaseTest {
         } else {
             fail()
         }
+    }
+
+    @Test
+    fun saveUsername() {
+        `when`(cache.getUser()).thenReturn(Observable.empty())
+        val userResponse = UserResponseMock.get(accountName)
+        val user = ModelConverter().convert(userResponse) // TODO replace for real mock
+        `when`(converter.convert(userResponse)).thenReturn(user)
+        `when`(userApi.getUser(accountName)).thenReturn(Observable.just(userResponse))
+
+        loginUseCase.execute(accountName).subscribe(testSubscriber)
+
+        testSubscriber.assertNoErrors()
+
+        verify(appProperties, times(1)).saveUsername(accountName)
     }
 }
