@@ -2,7 +2,8 @@ package com.vchornenkyy.whatpulsehelper.domain
 
 import com.vchornenkyy.whatpulsehelper.common.helper.AppProperties
 import com.vchornenkyy.whatpulsehelper.domain.helper.ModelConverter
-import com.vchornenkyy.whatpulsehelper.mocks.UserResponseMock
+import com.vchornenkyy.whatpulsehelper.mocks.dto.UserMock
+import com.vchornenkyy.whatpulsehelper.mocks.pojo.UserResponseMock
 import com.vchornenkyy.whatpulsehelper.model.api.UserService
 import com.vchornenkyy.whatpulsehelper.model.cache.Cache
 import org.junit.Assert.assertTrue
@@ -32,7 +33,7 @@ class LoginUseCaseTest {
     fun successfulLogin() {
         `when`(cache.getUser()).thenReturn(Observable.empty())
         val userResponse = UserResponseMock.get()
-        val user = ModelConverter().convert(userResponse) // TODO replace for real mock
+        val user = UserMock.get(accountName)
         `when`(converter.convert(userResponse)).thenReturn(user)
         `when`(userApi.getUser(accountName)).thenReturn(Observable.just(userResponse))
 
@@ -50,7 +51,7 @@ class LoginUseCaseTest {
     fun saveUsername() {
         `when`(cache.getUser()).thenReturn(Observable.empty())
         val userResponse = UserResponseMock.get(accountName)
-        val user = ModelConverter().convert(userResponse) // TODO replace for real mock
+        val user = UserMock.get(accountName)
         `when`(converter.convert(userResponse)).thenReturn(user)
         `when`(userApi.getUser(accountName)).thenReturn(Observable.just(userResponse))
 

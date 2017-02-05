@@ -1,4 +1,4 @@
-package com.vchornenkyy.whatpulsehelper.mocks
+package com.vchornenkyy.whatpulsehelper.mocks.pojo
 
 import com.vchornenkyy.whatpulsehelper.model.api.pojo.RanksResponse
 
