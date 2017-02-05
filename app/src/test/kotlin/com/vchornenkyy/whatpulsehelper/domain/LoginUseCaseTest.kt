@@ -26,8 +26,8 @@ class LoginUseCaseTest {
     val userApi: UserService = mock(UserService::class.java)
     val cache: Cache = mock(Cache::class.java)
     val converter: ModelConverter = mock(ModelConverter::class.java)
-    val loginUseCase: LoginUseCase
-        get() = LoginUseCase(appProperties, userApi, cache, converter, Schedulers.immediate(), Schedulers.immediate())
+    val loginUseCase: LoginUseCase =
+            LoginUseCase(appProperties, userApi, cache, converter, Schedulers.immediate(), Schedulers.immediate())
 
     @Test
     fun successfulLogin() {

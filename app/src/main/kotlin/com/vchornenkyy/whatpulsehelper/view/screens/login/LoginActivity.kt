@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.view.View
 import com.vchornenkyy.whatpulsehelper.R
 import com.vchornenkyy.whatpulsehelper.common.helper.SharedPrefAppProperties
+import com.vchornenkyy.whatpulsehelper.domain.LoginUseCase
 import com.vchornenkyy.whatpulsehelper.view.BaseActivity
 import com.vchornenkyy.whatpulsehelper.view.MainActivity
 import com.vchornenkyy.whatpulsehelper.view.tracking.EventTracker
@@ -18,9 +19,7 @@ class LoginActivity : BaseActivity(), LoginPresenter.View {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.login_layout)
 
-        presenter = LoginPresenter(
-                SharedPrefAppProperties(this),
-                EventTracker.instance)
+        presenter = LoginPresenter(LoginUseCase(SharedPrefAppProperties(this)))
 
         presenter?.attach(this)
 

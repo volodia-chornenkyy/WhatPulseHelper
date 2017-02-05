@@ -2,7 +2,6 @@ package com.vchornenkyy.whatpulsehelper.view.screens.login
 
 import android.util.Log
 import com.fasterxml.jackson.databind.JsonMappingException
-import com.vchornenkyy.whatpulsehelper.common.helper.AppProperties
 import com.vchornenkyy.whatpulsehelper.domain.BasePresenter
 import com.vchornenkyy.whatpulsehelper.domain.LoginUseCase
 import com.vchornenkyy.whatpulsehelper.view.BaseView
@@ -10,7 +9,7 @@ import com.vchornenkyy.whatpulsehelper.view.screens.general_info.GeneralInfoPres
 import rx.Subscription
 import java.net.UnknownHostException
 
-class LoginPresenter<VIEW : LoginPresenter.View> constructor(val appProperties: AppProperties) : BasePresenter<VIEW>() {
+class LoginPresenter<VIEW : LoginPresenter.View> constructor(private val loginUseCase: LoginUseCase) : BasePresenter<VIEW>() {
 
     private var userSubscription: Subscription? = null
 
@@ -22,9 +21,10 @@ class LoginPresenter<VIEW : LoginPresenter.View> constructor(val appProperties: 
 
         view?.showProgress(true)
 
-        LoginUseCase(appProperties).execute(username)
+        loginUseCase.execute(username)
                 .subscribe(
                         { isLoggedIn ->
+                            view?.showProgress(false)
                             view?.openMainScreen()
                         },
                         { error ->
@@ -57,5 +57,4 @@ class LoginPresenter<VIEW : LoginPresenter.View> constructor(val appProperties: 
 
         fun openMainScreen()
     }
-
 }
