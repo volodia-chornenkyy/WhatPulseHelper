@@ -1,7 +1,6 @@
-package com.vchornenkyy.whatpulsehelper.view.screens.login.usecase
+package com.vchornenkyy.whatpulsehelper.domain
 
 import com.vchornenkyy.whatpulsehelper.common.helper.AppProperties
-import com.vchornenkyy.whatpulsehelper.domain.LoginUseCase
 import com.vchornenkyy.whatpulsehelper.domain.helper.ModelConverter
 import com.vchornenkyy.whatpulsehelper.mocks.UserResponseMock
 import com.vchornenkyy.whatpulsehelper.model.api.UserService
