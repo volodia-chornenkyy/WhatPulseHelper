@@ -1,6 +1,6 @@
 package com.vchornenkyy.whatpulsehelper.model.api
 
-import com.vchornenkyy.whatpulsehelper.model.api.model.UserResponse
+import com.vchornenkyy.whatpulsehelper.model.api.pojo.UserResponse
 import retrofit2.http.GET
 import retrofit2.http.Query
 import rx.Observable

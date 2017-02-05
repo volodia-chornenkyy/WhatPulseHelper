@@ -1,6 +1,6 @@
-package com.vchornenkyy.whatpulsehelper.model.api
+package com.vchornenkyy.whatpulsehelper.model.cache
 
-import com.vchornenkyy.whatpulsehelper.model.api.model.UserResponse
+import com.vchornenkyy.whatpulsehelper.model.api.pojo.UserResponse
 import rx.Observable
 import java.util.*
 

@@ -1,6 +1,6 @@
 package com.vchornenkyy.whatpulsehelper.mocks
 
-import com.vchornenkyy.whatpulsehelper.model.api.model.RanksResponse
+import com.vchornenkyy.whatpulsehelper.model.api.pojo.RanksResponse
 
 class RankResponseMock {
 

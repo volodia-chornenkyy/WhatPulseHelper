@@ -1,11 +1,11 @@
 package com.vchornenkyy.whatpulsehelper.domain.helper
 
-import com.vchornenkyy.whatpulsehelper.model.api.model.RanksResponse
-import com.vchornenkyy.whatpulsehelper.model.api.model.UserResponse
 import com.vchornenkyy.whatpulsehelper.domain.dto.Computer
 import com.vchornenkyy.whatpulsehelper.domain.dto.Ranks
 import com.vchornenkyy.whatpulsehelper.domain.dto.Team
 import com.vchornenkyy.whatpulsehelper.domain.dto.User
+import com.vchornenkyy.whatpulsehelper.model.api.pojo.RanksResponse
+import com.vchornenkyy.whatpulsehelper.model.api.pojo.UserResponse
 import java.text.DecimalFormat
 import java.text.NumberFormat
 import java.text.SimpleDateFormat

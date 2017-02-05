@@ -6,16 +6,15 @@ import android.support.v4.app.Fragment
 import android.view.Menu
 import android.view.MenuItem
 import com.vchornenkyy.whatpulsehelper.R
-import com.vchornenkyy.whatpulsehelper.view.BaseActivity
-import com.vchornenkyy.whatpulsehelper.model.api.Cache
-import com.vchornenkyy.whatpulsehelper.model.api.InMemoryCache
 import com.vchornenkyy.whatpulsehelper.common.helper.AppProperties
 import com.vchornenkyy.whatpulsehelper.common.helper.SharedPrefAppProperties
-import com.vchornenkyy.whatpulsehelper.view.tracking.EventTracker
+import com.vchornenkyy.whatpulsehelper.model.cache.Cache
+import com.vchornenkyy.whatpulsehelper.model.cache.InMemoryCache
 import com.vchornenkyy.whatpulsehelper.view.screens.computers.ComputersFragment
 import com.vchornenkyy.whatpulsehelper.view.screens.general_info.GeneralInfoFragment
 import com.vchornenkyy.whatpulsehelper.view.screens.login.LoginActivity
 import com.vchornenkyy.whatpulsehelper.view.screens.teams.TeamsFragment
+import com.vchornenkyy.whatpulsehelper.view.tracking.EventTracker
 import kotlinx.android.synthetic.main.main_activity.*
 
 class MainActivity : BaseActivity() {
