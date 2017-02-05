@@ -17,14 +17,14 @@ class UserInMemoryCache private constructor() : BaseCache<UserResponse>() {
         val instance: UserInMemoryCache by lazy { Holder.INSTANCE }
     }
 
-    override fun saveUser(data: UserResponse) {
+    override fun save(data: UserResponse) {
         if (!isCacheValid()) {
             this.userResponseTimestamp = Date().time
             this.userResponse = userResponse
         }
     }
 
-    override fun getUser(): Observable<UserResponse> {
+    override fun get(): Observable<UserResponse> {
         if (isCacheValid()) {
             return Observable.just(userResponse)
         }

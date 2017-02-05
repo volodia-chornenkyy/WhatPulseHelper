@@ -32,7 +32,7 @@ class LoginUseCaseTest {
 
     @Test
     fun successfulLogin() {
-        `when`(cache.getUser()).thenReturn(Observable.empty())
+        `when`(cache.get()).thenReturn(Observable.empty())
         val userResponse = UserResponseMock.get()
         val user = UserMock.get(accountName)
         `when`(converter.convert(userResponse)).thenReturn(user)
@@ -50,7 +50,7 @@ class LoginUseCaseTest {
 
     @Test
     fun saveUsername() {
-        `when`(cache.getUser()).thenReturn(Observable.empty())
+        `when`(cache.get()).thenReturn(Observable.empty())
         val userResponse = UserResponseMock.get(accountName)
         val user = UserMock.get(accountName)
         `when`(converter.convert(userResponse)).thenReturn(user)

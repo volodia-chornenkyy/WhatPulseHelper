@@ -6,15 +6,15 @@ abstract class BaseCache<T> {
 
     protected val timeout = 3600000
 
-    abstract fun saveUser(data: T)
+    abstract fun save(data: T)
 
-    abstract fun getUser(): Observable<T>
+    abstract fun get(): Observable<T>
 
     abstract fun clear()
 
-    abstract fun getTimestamp(): Long
+    protected abstract fun getTimestamp(): Long
 
-    abstract fun getCurrentTimestamp(): Long
+    protected abstract fun getCurrentTimestamp(): Long
 
     protected fun isCacheValid(): Boolean {
         val currentTimestamp = getCurrentTimestamp()

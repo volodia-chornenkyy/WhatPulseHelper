@@ -7,6 +7,7 @@ import com.vchornenkyy.whatpulsehelper.BuildConfig
 import com.vchornenkyy.whatpulsehelper.view.tracking.EventTracker
 import com.vchornenkyy.whatpulsehelper.view.tracking.trackers.TrackerAnswers
 import io.fabric.sdk.android.Fabric
+import io.paperdb.Paper
 
 class App : Application() {
 
@@ -14,6 +15,8 @@ class App : Application() {
 
     override fun onCreate() {
         super.onCreate()
+
+        Paper.init(this)
 
         // setup release build
         if (!BuildConfig.DEBUG) {
