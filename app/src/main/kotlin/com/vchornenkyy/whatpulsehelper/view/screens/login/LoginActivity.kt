@@ -3,10 +3,10 @@ package com.vchornenkyy.whatpulsehelper.view.screens.login
 import android.content.Intent
 import android.os.Bundle
 import android.view.View
-import com.vchornenkyy.whatpulsehelper.view.MainActivity
 import com.vchornenkyy.whatpulsehelper.R
-import com.vchornenkyy.whatpulsehelper.view.BaseActivity
 import com.vchornenkyy.whatpulsehelper.common.helper.SharedPrefAppProperties
+import com.vchornenkyy.whatpulsehelper.view.BaseActivity
+import com.vchornenkyy.whatpulsehelper.view.MainActivity
 import com.vchornenkyy.whatpulsehelper.view.tracking.EventTracker
 import kotlinx.android.synthetic.main.login_layout.*
 
@@ -49,6 +49,8 @@ class LoginActivity : BaseActivity(), LoginPresenter.View {
     }
 
     override fun openMainScreen() {
+        EventTracker.instance.login()
+
         startActivity(Intent(this, MainActivity::class.java))
         finish()
     }
