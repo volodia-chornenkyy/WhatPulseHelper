@@ -2,6 +2,7 @@ package com.vchornenkyy.whatpulsehelper.view.screens.login
 
 import com.vchornenkyy.whatpulsehelper.domain.BasePresenter
 import com.vchornenkyy.whatpulsehelper.domain.LoginUseCase
+import com.vchornenkyy.whatpulsehelper.domain.exceptions.EmptyUsernameException
 import com.vchornenkyy.whatpulsehelper.view.BaseView
 import rx.Subscription
 
@@ -11,7 +12,7 @@ class LoginPresenter<VIEW : LoginPresenter.View> constructor(private val loginUs
 
     fun login(username: String) {
         if (username.isEmpty()) {
-            view?.displayMessage("Please enter username")
+            view?.displayError(EmptyUsernameException())
             return
         }
 
