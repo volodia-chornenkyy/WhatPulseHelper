@@ -1,11 +1,11 @@
 package com.vchornenkyy.whatpulsehelper.domain.usecases.auth
 
 import com.vchornenkyy.whatpulsehelper.common.helper.AppProperties
+import com.vchornenkyy.whatpulsehelper.domain.cache.Cache
 import com.vchornenkyy.whatpulsehelper.domain.helper.ModelConverter
 import com.vchornenkyy.whatpulsehelper.mocks.dto.UserMock
 import com.vchornenkyy.whatpulsehelper.mocks.pojo.UserResponseMock
 import com.vchornenkyy.whatpulsehelper.model.api.UserService
-import com.vchornenkyy.whatpulsehelper.model.cache.Cache
 import org.junit.Assert.assertTrue
 import org.junit.Assert.fail
 import org.junit.Test

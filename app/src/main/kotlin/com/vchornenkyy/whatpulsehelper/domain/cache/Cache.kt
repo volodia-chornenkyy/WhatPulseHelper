@@ -1,4 +1,4 @@
-package com.vchornenkyy.whatpulsehelper.model.cache
+package com.vchornenkyy.whatpulsehelper.domain.cache
 
 import com.vchornenkyy.whatpulsehelper.model.api.pojo.UserResponse
 import rx.Observable

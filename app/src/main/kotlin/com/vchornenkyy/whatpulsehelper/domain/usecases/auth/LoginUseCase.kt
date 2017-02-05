@@ -1,12 +1,12 @@
 package com.vchornenkyy.whatpulsehelper.domain.usecases.auth
 
 import com.vchornenkyy.whatpulsehelper.common.helper.AppProperties
+import com.vchornenkyy.whatpulsehelper.domain.cache.Cache
+import com.vchornenkyy.whatpulsehelper.domain.cache.InMemoryCache
 import com.vchornenkyy.whatpulsehelper.domain.helper.ModelConverter
 import com.vchornenkyy.whatpulsehelper.domain.usecases.BaseUserUseCase
 import com.vchornenkyy.whatpulsehelper.model.api.UserService
 import com.vchornenkyy.whatpulsehelper.model.api.WhatPulseRestApi
-import com.vchornenkyy.whatpulsehelper.model.cache.Cache
-import com.vchornenkyy.whatpulsehelper.model.cache.InMemoryCache
 import rx.Observable
 import rx.Scheduler
 import rx.android.schedulers.AndroidSchedulers
