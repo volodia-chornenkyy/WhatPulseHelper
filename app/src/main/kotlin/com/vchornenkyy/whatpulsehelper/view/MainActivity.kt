@@ -50,7 +50,7 @@ class MainActivity : BaseActivity() {
                 R.id.tab_teams -> {
                     openFragment(TeamsFragment.newInstance())
 
-                    EventTracker.instance.computersOpened()
+                    EventTracker.instance.teamsOpened()
                 }
             }
             return@setOnNavigationItemSelectedListener true
