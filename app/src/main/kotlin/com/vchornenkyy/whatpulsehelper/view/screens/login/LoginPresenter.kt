@@ -1,8 +1,8 @@
 package com.vchornenkyy.whatpulsehelper.view.screens.login
 
-import com.vchornenkyy.whatpulsehelper.domain.BasePresenter
-import com.vchornenkyy.whatpulsehelper.domain.LoginUseCase
 import com.vchornenkyy.whatpulsehelper.domain.exceptions.EmptyUsernameException
+import com.vchornenkyy.whatpulsehelper.domain.usecases.auth.LoginUseCase
+import com.vchornenkyy.whatpulsehelper.view.BasePresenter
 import com.vchornenkyy.whatpulsehelper.view.BaseView
 import rx.Subscription
 

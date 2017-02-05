@@ -1,11 +1,11 @@
 package com.vchornenkyy.whatpulsehelper.view.screens.computers
 
 import android.util.Log
-import com.vchornenkyy.whatpulsehelper.domain.BasePresenter
-import com.vchornenkyy.whatpulsehelper.view.BaseView
-import com.vchornenkyy.whatpulsehelper.domain.dto.Computer
 import com.vchornenkyy.whatpulsehelper.common.helper.AppProperties
-import com.vchornenkyy.whatpulsehelper.domain.GetComputersUseCase
+import com.vchornenkyy.whatpulsehelper.domain.dto.Computer
+import com.vchornenkyy.whatpulsehelper.domain.usecases.GetComputersUseCase
+import com.vchornenkyy.whatpulsehelper.view.BasePresenter
+import com.vchornenkyy.whatpulsehelper.view.BaseView
 import rx.Subscription
 import java.net.UnknownHostException
 

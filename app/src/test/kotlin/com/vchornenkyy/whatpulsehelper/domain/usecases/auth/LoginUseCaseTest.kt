@@ -1,4 +1,4 @@
-package com.vchornenkyy.whatpulsehelper.domain
+package com.vchornenkyy.whatpulsehelper.domain.usecases.auth
 
 import com.vchornenkyy.whatpulsehelper.common.helper.AppProperties
 import com.vchornenkyy.whatpulsehelper.domain.helper.ModelConverter

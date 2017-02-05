@@ -1,7 +1,7 @@
 package com.vchornenkyy.whatpulsehelper.view.screens.login
 
-import com.vchornenkyy.whatpulsehelper.domain.LoginUseCase
 import com.vchornenkyy.whatpulsehelper.domain.exceptions.EmptyUsernameException
+import com.vchornenkyy.whatpulsehelper.domain.usecases.auth.LoginUseCase
 import org.junit.Test
 import org.junit.runner.RunWith
 import org.junit.runners.JUnit4

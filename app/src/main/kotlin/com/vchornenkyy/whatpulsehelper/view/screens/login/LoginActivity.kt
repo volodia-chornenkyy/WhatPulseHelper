@@ -7,8 +7,8 @@ import android.view.View
 import com.fasterxml.jackson.databind.JsonMappingException
 import com.vchornenkyy.whatpulsehelper.R
 import com.vchornenkyy.whatpulsehelper.common.helper.SharedPrefAppProperties
-import com.vchornenkyy.whatpulsehelper.domain.LoginUseCase
 import com.vchornenkyy.whatpulsehelper.domain.exceptions.EmptyUsernameException
+import com.vchornenkyy.whatpulsehelper.domain.usecases.auth.LoginUseCase
 import com.vchornenkyy.whatpulsehelper.view.BaseActivity
 import com.vchornenkyy.whatpulsehelper.view.MainActivity
 import com.vchornenkyy.whatpulsehelper.view.tracking.EventTracker
