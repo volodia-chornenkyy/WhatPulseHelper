@@ -1,11 +1,12 @@
 package com.vchornenkyy.whatpulsehelper.domain.usecases.auth
 
 import com.vchornenkyy.whatpulsehelper.common.helper.AppProperties
-import com.vchornenkyy.whatpulsehelper.domain.cache.Cache
+import com.vchornenkyy.whatpulsehelper.domain.cache.BaseCache
 import com.vchornenkyy.whatpulsehelper.domain.helper.ModelConverter
 import com.vchornenkyy.whatpulsehelper.mocks.dto.UserMock
 import com.vchornenkyy.whatpulsehelper.mocks.pojo.UserResponseMock
 import com.vchornenkyy.whatpulsehelper.model.api.UserService
+import com.vchornenkyy.whatpulsehelper.model.api.pojo.UserResponse
 import org.junit.Assert.assertTrue
 import org.junit.Assert.fail
 import org.junit.Test
@@ -24,7 +25,7 @@ class LoginUseCaseTest {
     val testSubscriber = TestSubscriber<Boolean>()
     val appProperties: AppProperties = mock(AppProperties::class.java)
     val userApi: UserService = mock(UserService::class.java)
-    val cache: Cache = mock(Cache::class.java)
+    val cache: BaseCache<UserResponse> = mock(BaseCache::class.java) as BaseCache<UserResponse>
     val converter: ModelConverter = mock(ModelConverter::class.java)
     val loginUseCase: LoginUseCase =
             LoginUseCase(appProperties, userApi, cache, converter, Schedulers.immediate(), Schedulers.immediate())

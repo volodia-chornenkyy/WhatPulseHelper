@@ -8,8 +8,9 @@ import android.view.MenuItem
 import com.vchornenkyy.whatpulsehelper.R
 import com.vchornenkyy.whatpulsehelper.common.helper.AppProperties
 import com.vchornenkyy.whatpulsehelper.common.helper.SharedPrefAppProperties
-import com.vchornenkyy.whatpulsehelper.domain.cache.Cache
-import com.vchornenkyy.whatpulsehelper.domain.cache.InMemoryCache
+import com.vchornenkyy.whatpulsehelper.domain.cache.BaseCache
+import com.vchornenkyy.whatpulsehelper.domain.cache.UserInMemoryCache
+import com.vchornenkyy.whatpulsehelper.model.api.pojo.UserResponse
 import com.vchornenkyy.whatpulsehelper.view.screens.computers.ComputersFragment
 import com.vchornenkyy.whatpulsehelper.view.screens.general_info.GeneralInfoFragment
 import com.vchornenkyy.whatpulsehelper.view.screens.login.LoginActivity
@@ -69,7 +70,7 @@ class MainActivity : BaseActivity() {
 
                 appProperties?.saveUsername("")
 
-                val cache: Cache = InMemoryCache.instance
+                val cache: BaseCache<UserResponse> = UserInMemoryCache.instance
                 cache.clear()
 
                 EventTracker.instance.logout()

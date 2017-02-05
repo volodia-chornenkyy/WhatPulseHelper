@@ -4,28 +4,28 @@ import com.vchornenkyy.whatpulsehelper.model.api.pojo.UserResponse
 import rx.Observable
 import java.util.*
 
-class InMemoryCache private constructor() : Cache {
-    private val timeout = 3600000
+class UserInMemoryCache private constructor() : BaseCache<UserResponse>() {
+
     private var userResponseTimestamp: Long = 0
     private var userResponse: UserResponse? = null
 
     private object Holder {
-        val INSTANCE = InMemoryCache()
+        val INSTANCE = UserInMemoryCache()
     }
 
     companion object {
-        val instance: InMemoryCache by lazy { Holder.INSTANCE }
+        val instance: UserInMemoryCache by lazy { Holder.INSTANCE }
     }
 
-    override fun saveUser(userResponse: UserResponse) {
-        if (!isCacheValid(Date().time)) {
+    override fun saveUser(data: UserResponse) {
+        if (!isCacheValid()) {
             this.userResponseTimestamp = Date().time
             this.userResponse = userResponse
         }
     }
 
     override fun getUser(): Observable<UserResponse> {
-        if (isCacheValid(Date().time)) {
+        if (isCacheValid()) {
             return Observable.just(userResponse)
         }
         return Observable.empty()
@@ -36,8 +36,11 @@ class InMemoryCache private constructor() : Cache {
         userResponseTimestamp = 0
     }
 
-    private fun isCacheValid(currentTime: Long): Boolean {
-        val timePassed = currentTime - userResponseTimestamp
-        return timePassed < timeout
+    override fun getTimestamp(): Long {
+        return userResponseTimestamp
+    }
+
+    override fun getCurrentTimestamp(): Long {
+        return Date().time
     }
 }
