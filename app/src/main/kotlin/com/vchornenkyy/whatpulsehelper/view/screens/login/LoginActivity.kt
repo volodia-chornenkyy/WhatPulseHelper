@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.util.Log
 import android.view.View
 import com.fasterxml.jackson.databind.JsonMappingException
+import com.vchornenkyy.whatpulsehelper.R
 import com.vchornenkyy.whatpulsehelper.common.helper.SharedPrefAppProperties
 import com.vchornenkyy.whatpulsehelper.domain.LoginUseCase
 import com.vchornenkyy.whatpulsehelper.domain.exceptions.EmptyUsernameException
