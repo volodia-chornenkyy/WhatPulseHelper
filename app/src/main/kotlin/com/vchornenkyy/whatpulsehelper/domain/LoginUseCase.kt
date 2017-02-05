@@ -9,7 +9,6 @@ import com.vchornenkyy.whatpulsehelper.model.cache.InMemoryCache
 import rx.Observable
 import rx.Scheduler
 import rx.android.schedulers.AndroidSchedulers
-import rx.functions.Func1
 import rx.schedulers.Schedulers
 
 class LoginUseCase(appProperties: AppProperties,
@@ -21,9 +20,9 @@ class LoginUseCase(appProperties: AppProperties,
 
     fun execute(userId: String): Observable<Boolean> {
         return getUser(userId)
-                .map(Func1 { user ->
+                .map { user ->
                     properties.saveUsername(user.accountName!!)
-                    return@Func1 user != null
-                })
+                    return@map user != null
+                }
     }
 }
