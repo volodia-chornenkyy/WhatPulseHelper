@@ -2,9 +2,9 @@ package com.vchornenkyy.whatpulsehelper.domain.usecases.auth
 
 import com.vchornenkyy.whatpulsehelper.common.helper.AppProperties
 import com.vchornenkyy.whatpulsehelper.domain.cache.BaseCache
-import com.vchornenkyy.whatpulsehelper.domain.cache.UserPaperCache
+import com.vchornenkyy.whatpulsehelper.domain.cache.UserResponsePaperCache
 import com.vchornenkyy.whatpulsehelper.domain.helper.ModelConverter
-import com.vchornenkyy.whatpulsehelper.domain.usecases.BaseUserUseCase
+import com.vchornenkyy.whatpulsehelper.domain.usecases.BaseUserWhatPulseUseCase
 import com.vchornenkyy.whatpulsehelper.model.api.UserService
 import com.vchornenkyy.whatpulsehelper.model.api.WhatPulseRestApi
 import com.vchornenkyy.whatpulsehelper.model.api.pojo.UserResponse
@@ -15,16 +15,18 @@ import rx.schedulers.Schedulers
 
 class LoginUseCase(appProperties: AppProperties,
                    userApi: UserService = WhatPulseRestApi().userApi,
-                   cache: BaseCache<UserResponse> = UserPaperCache(),
+                   cache: BaseCache<UserResponse> = UserResponsePaperCache(),
                    converter: ModelConverter = ModelConverter(),
                    subscribeOn: Scheduler = Schedulers.io(),
-                   observeOn: Scheduler = AndroidSchedulers.mainThread()) : BaseUserUseCase(appProperties, userApi, cache, converter, subscribeOn, observeOn) {
+                   observeOn: Scheduler = AndroidSchedulers.mainThread()) : BaseUserWhatPulseUseCase(appProperties, userApi, cache, converter, subscribeOn, observeOn) {
 
     fun execute(userId: String): Observable<Boolean> {
-        return getUser(userId)
+        return getBaseWhatPulseObservable(userId)
                 .map { user ->
-                    properties.saveUsername(user.accountName!!)
+                    properties.saveUsername(user.accountName)
                     return@map user != null
                 }
+                .subscribeOn(subscribeOn)
+                .observeOn(observeOn)
     }
 }

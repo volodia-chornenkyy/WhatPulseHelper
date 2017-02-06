@@ -87,6 +87,7 @@ class ModelConverter {
     private fun convertComputers(response: UserResponse): HashMap<String, Computer> {
         val computers = HashMap<String, Computer>()
         for ((key, value) in response.computers) {
+            // TODO move to separate method
             val computer = Computer()
             computer.name = value.name
             if (value.lastPulseTimestamp == 0L) {

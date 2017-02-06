@@ -6,6 +6,7 @@ import java.util.*
 
 abstract class BasePaperCache<T> : BaseCache<T>() {
 
+    // TODO try to generate keys by T value
     protected abstract fun getDataKey(): String
 
     protected abstract fun getDataTimestampKey(): String
@@ -19,11 +20,11 @@ abstract class BasePaperCache<T> : BaseCache<T>() {
 
     override fun get(): Observable<T> {
         return Observable.defer {
-            val userResponse = Paper.book().read<T>(getDataKey())
-            if (userResponse == null || !isCacheValid()) {
+            val data = Paper.book().read<T>(getDataKey())
+            if (data == null || !isCacheValid()) {
                 return@defer Observable.empty<T>()
             } else {
-                return@defer Observable.just<T>(userResponse)
+                return@defer Observable.just<T>(data)
             }
         }
     }

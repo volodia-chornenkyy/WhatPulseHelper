@@ -1,14 +1,14 @@
 package com.vchornenkyy.whatpulsehelper.domain.cache
 
-import com.vchornenkyy.whatpulsehelper.model.api.pojo.UserResponse
+import com.vchornenkyy.whatpulsehelper.domain.dto.User
 
-class UserPaperCache : BasePaperCache<UserResponse>() {
+class UserPaperCache : BasePaperCache<User>() {
 
     override fun getDataTimestampKey(): String {
-        return "userResponseTimestamp"
+        return "userTimestamp"
     }
 
     override fun getDataKey(): String {
-        return "userResponse"
+        return "user"
     }
 }
