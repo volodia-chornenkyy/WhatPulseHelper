@@ -4,6 +4,7 @@ import com.vchornenkyy.whatpulsehelper.domain.dto.Computer
 import com.vchornenkyy.whatpulsehelper.domain.dto.Ranks
 import com.vchornenkyy.whatpulsehelper.domain.dto.Team
 import com.vchornenkyy.whatpulsehelper.domain.dto.User
+import com.vchornenkyy.whatpulsehelper.model.api.pojo.ComputerResponse
 import com.vchornenkyy.whatpulsehelper.model.api.pojo.RanksResponse
 import com.vchornenkyy.whatpulsehelper.model.api.pojo.UserResponse
 import java.text.DecimalFormat
@@ -32,7 +33,7 @@ class ModelConverter {
         return user
     }
 
-    private fun convertTeam(response: UserResponse): Team {
+    fun convertTeam(response: UserResponse): Team {
         val team = Team()
         val teamResponse = response.team
         if (teamResponse.name.isNotEmpty()) {
@@ -49,7 +50,7 @@ class ModelConverter {
         return team
     }
 
-    private fun convertUser(computers: HashMap<String, Computer>, ranks: Ranks, team: Team, response: UserResponse): User {
+    fun convertUser(computers: HashMap<String, Computer>, ranks: Ranks, team: Team, response: UserResponse): User {
         val user = User()
         user.userId = response.userId
         user.accountName = response.accountName
@@ -74,7 +75,7 @@ class ModelConverter {
         return user
     }
 
-    private fun convertRanks(response: RanksResponse): Ranks {
+    fun convertRanks(response: RanksResponse): Ranks {
         val ranks = Ranks()
         ranks.clicks = numberFormatter.format(response.clicks)
         ranks.keys = numberFormatter.format(response.keys)
@@ -84,30 +85,34 @@ class ModelConverter {
         return ranks
     }
 
-    private fun convertComputers(response: UserResponse): HashMap<String, Computer> {
+    fun convertComputers(response: UserResponse): HashMap<String, Computer> {
         val computers = HashMap<String, Computer>()
         for ((key, value) in response.computers) {
-            // TODO move to separate method
-            val computer = Computer()
-            computer.name = value.name
-            if (value.lastPulseTimestamp == 0L) {
-                computer.lastPulse = ""
-            } else {
-                computer.lastPulse = dateTimeFormatter.format(Date(value.lastPulseTimestamp.times(1000)))
-            }
-            computer.pulses = value.pulses.toString()
-            computer.clicks = numberFormatter.format(value.clicks)
-            computer.keys = numberFormatter.format(value.keys)
-            computer.download = dataTypeFormatter.megaBytesToString(value.download)
-            computer.upload = dataTypeFormatter.megaBytesToString(value.upload)
-            if (value.uptimeSeconds == 0L) {
-                computer.uptime = "0"
-            } else {
-                computer.uptime = value.uptimeShort
-            }
+            val computer = convertComputer(value)
             computers.put(computer.name, computer)
         }
         return computers
+    }
+
+    fun convertComputer(value: ComputerResponse): Computer {
+        val computer = Computer()
+        computer.name = value.name
+        if (value.lastPulseTimestamp == 0L) {
+            computer.lastPulse = ""
+        } else {
+            computer.lastPulse = dateTimeFormatter.format(Date(value.lastPulseTimestamp.times(1000)))
+        }
+        computer.pulses = value.pulses.toString()
+        computer.clicks = numberFormatter.format(value.clicks)
+        computer.keys = numberFormatter.format(value.keys)
+        computer.download = dataTypeFormatter.megaBytesToString(value.download)
+        computer.upload = dataTypeFormatter.megaBytesToString(value.upload)
+        if (value.uptimeSeconds == 0L) {
+            computer.uptime = "0"
+        } else {
+            computer.uptime = value.uptimeShort
+        }
+        return computer
     }
 
 
