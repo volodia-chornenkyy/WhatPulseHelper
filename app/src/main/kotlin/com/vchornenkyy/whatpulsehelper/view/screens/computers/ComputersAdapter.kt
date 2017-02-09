@@ -1,5 +1,6 @@
 package com.vchornenkyy.whatpulsehelper.view.screens.computers
 
+import android.support.annotation.LayoutRes
 import android.view.View.GONE
 import android.view.View.VISIBLE
 import android.widget.TextView
@@ -9,6 +10,7 @@ import com.vchornenkyy.whatpulsehelper.view.widgets.BaseAdapter
 
 class ComputersAdapter : BaseAdapter<Computer>() {
 
+    @LayoutRes
     override fun getLayoutIdForPosition(position: Int): Int {
         return R.layout.computer_layout
     }

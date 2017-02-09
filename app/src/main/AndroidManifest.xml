@@ -35,6 +35,10 @@
             android:name=".view.screens.login.LoginActivity"
             android:theme="@style/AppTheme.NoActionBar"
             android:windowSoftInputMode="adjustResize" />
+        <activity
+            android:label="Changelog"
+            android:name=".view.screens.changelog.ChangelogActivity"
+            android:theme="@style/AppTheme.NoActionBar" />
     </application>
 
 </manifest>
