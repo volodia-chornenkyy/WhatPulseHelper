@@ -27,7 +27,7 @@ android {
         minSdkVersion 16
         targetSdkVersion 25
         versionCode 3
-        versionName "0.3.dev"
+        versionName "0.3"
 
         vectorDrawables.useSupportLibrary = true
     }
@@ -44,6 +44,8 @@ android {
     }
     buildTypes {
         debug {
+            versionNameSuffix ".debug"
+
             minifyEnabled true
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
