@@ -22,5 +22,4 @@ class User {
     var averageClicksPerSecond: String? = null
     var ranks: Ranks? = null
     var computers: HashMap<String, Computer>? = null
-    var team: Team? = null
 }
