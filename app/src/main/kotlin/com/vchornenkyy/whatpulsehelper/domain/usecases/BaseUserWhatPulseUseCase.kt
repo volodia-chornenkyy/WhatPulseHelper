@@ -4,24 +4,23 @@ import com.vchornenkyy.whatpulsehelper.common.helper.AppProperties
 import com.vchornenkyy.whatpulsehelper.domain.cache.BaseCache
 import com.vchornenkyy.whatpulsehelper.domain.cache.UserResponsePaperCache
 import com.vchornenkyy.whatpulsehelper.domain.helper.ModelConverter
-import com.vchornenkyy.whatpulsehelper.model.api.UserService
-import com.vchornenkyy.whatpulsehelper.model.api.WhatPulseRestApi
 import com.vchornenkyy.whatpulsehelper.model.api.pojo.UserResponse
+import com.vchornenkyy.whatpulsehelper.model.repository.UserRepository
 import rx.Observable
 import rx.Scheduler
 import rx.android.schedulers.AndroidSchedulers
 import rx.schedulers.Schedulers
 
 abstract class BaseUserWhatPulseUseCase(protected val properties: AppProperties,
-                                        protected val userApi: UserService = WhatPulseRestApi().userApi,
+                                        userRepository: UserRepository = UserRepository(),
                                         val cacheResponse: BaseCache<UserResponse> = UserResponsePaperCache(),
                                         protected val converter: ModelConverter = ModelConverter(),
-                                        val subscribeOn: Scheduler = Schedulers.io(),
-                                        val observeOn: Scheduler = AndroidSchedulers.mainThread()) {
+                                        subscribeOn: Scheduler = Schedulers.io(),
+                                        observeOn: Scheduler = AndroidSchedulers.mainThread()) : BaseUseCase<UserRepository>(userRepository, subscribeOn, observeOn) {
 
 
     protected fun getBaseWhatPulseObservable(userId: String): Observable<UserResponse> {
-        val apiObservable = userApi.getUser(userId)
+        val apiObservable = repository.getUser(userId)
                 .map {
                     userResponse ->
                     cacheResponse.save(userResponse)
