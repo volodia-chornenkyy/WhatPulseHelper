@@ -5,7 +5,7 @@ import com.vchornenkyy.whatpulsehelper.model.api.WhatPulseRestApi
 import com.vchornenkyy.whatpulsehelper.model.api.pojo.UserResponse
 import rx.Observable
 
-class UserRepository(val userApi: UserService = WhatPulseRestApi().userApi) : BaseRepository {
+class UserRepository(val userApi: UserService = WhatPulseRestApi().getUserApi()) : BaseRepository {
 
     fun getUser(userName: String): Observable<UserResponse> {
         return userApi.getUser(userName)

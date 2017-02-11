@@ -12,17 +12,17 @@ import rx.Scheduler
 import rx.android.schedulers.AndroidSchedulers
 import rx.schedulers.Schedulers
 
-class LoginUseCase(appProperties: AppProperties,
+class LoginUseCase(val appProperties: AppProperties,
                    userRepository: UserRepository = UserRepository(),
-                   cache: BaseCache<UserResponse> = UserResponsePaperCache(),
+                   baseCache: BaseCache<UserResponse> = UserResponsePaperCache(),
                    converter: ModelConverter = ModelConverter(),
                    subscribeOn: Scheduler = Schedulers.io(),
-                   observeOn: Scheduler = AndroidSchedulers.mainThread()) : BaseUserWhatPulseUseCase(appProperties, userRepository, cache, converter, subscribeOn, observeOn) {
+                   observeOn: Scheduler = AndroidSchedulers.mainThread()) : BaseUserWhatPulseUseCase(userRepository, baseCache, converter, subscribeOn, observeOn) {
 
     fun execute(userId: String): Observable<Boolean> {
         return getBaseWhatPulseObservable(userId)
                 .map { user ->
-                    properties.saveUsername(user.accountName)
+                    appProperties.saveUsername(user.accountName)
                     return@map user != null
                 }
                 .subscribeOn(subscribeOn)

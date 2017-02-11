@@ -3,7 +3,7 @@ package com.vchornenkyy.whatpulsehelper.view.screens.general_info
 import android.util.Log
 import com.vchornenkyy.whatpulsehelper.common.helper.AppProperties
 import com.vchornenkyy.whatpulsehelper.domain.dto.User
-import com.vchornenkyy.whatpulsehelper.domain.usecases.GetUserUseCase
+import com.vchornenkyy.whatpulsehelper.domain.usecases.user.GetUserUseCase
 import com.vchornenkyy.whatpulsehelper.view.BasePresenter
 import com.vchornenkyy.whatpulsehelper.view.BaseView
 import rx.Subscription
