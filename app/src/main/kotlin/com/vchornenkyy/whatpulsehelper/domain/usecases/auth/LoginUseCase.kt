@@ -2,7 +2,7 @@ package com.vchornenkyy.whatpulsehelper.domain.usecases.auth
 
 import com.vchornenkyy.whatpulsehelper.common.helper.AppProperties
 import com.vchornenkyy.whatpulsehelper.domain.cache.BaseCache
-import com.vchornenkyy.whatpulsehelper.domain.cache.UserResponsePaperCache
+import com.vchornenkyy.whatpulsehelper.domain.cache.boilerplate.UserResponsePaperCache
 import com.vchornenkyy.whatpulsehelper.domain.helper.ModelConverter
 import com.vchornenkyy.whatpulsehelper.domain.usecases.BaseUserWhatPulseUseCase
 import com.vchornenkyy.whatpulsehelper.model.api.pojo.UserResponse

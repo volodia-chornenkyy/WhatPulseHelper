@@ -9,7 +9,7 @@ import com.vchornenkyy.whatpulsehelper.R
 import com.vchornenkyy.whatpulsehelper.common.helper.AppProperties
 import com.vchornenkyy.whatpulsehelper.common.helper.SharedPrefAppProperties
 import com.vchornenkyy.whatpulsehelper.domain.cache.BaseCache
-import com.vchornenkyy.whatpulsehelper.domain.cache.UserResponsePaperCache
+import com.vchornenkyy.whatpulsehelper.domain.cache.boilerplate.UserResponsePaperCache
 import com.vchornenkyy.whatpulsehelper.model.api.pojo.UserResponse
 import com.vchornenkyy.whatpulsehelper.view.screens.computers.ComputersFragment
 import com.vchornenkyy.whatpulsehelper.view.screens.general_info.GeneralInfoFragment
