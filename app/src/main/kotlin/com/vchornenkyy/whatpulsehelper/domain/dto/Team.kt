@@ -1,5 +1,6 @@
 package com.vchornenkyy.whatpulsehelper.domain.dto
 
+// TODO update it based on latest TeamResponse
 class Team {
     var name: String = ""
     var description: String = ""
