@@ -1,10 +1,21 @@
 package com.vchornenkyy.whatpulsehelper.domain.helper
 
+import java.text.DecimalFormat
 import java.util.*
 
 class DataTypeFormatter {
 
-    private var signsAfterComma = 2
+    private val numberFormatter: DecimalFormat = DecimalFormat("0.00")
+
+    init {
+        numberFormatter.isGroupingUsed = false
+
+        val symbols = numberFormatter.decimalFormatSymbols
+        symbols.decimalSeparator = '.'
+        numberFormatter.decimalFormatSymbols = symbols
+    }
+
+    private val pattern = "%s %sB"
 
     fun megaBytesToString(megaBytes: Double): String {
         if (megaBytes < 0) {
@@ -12,7 +23,7 @@ class DataTypeFormatter {
         }
 
         val unit = 1024
-        if (megaBytes < unit) return String.format(getPattern(), megaBytes, "M")
+        if (megaBytes < unit) return format(megaBytes, 'M')
         var exp = (Math.log(megaBytes) / Math.log(unit.toDouble())).toInt().toDouble()
         var shortenedAmount = megaBytes / Math.pow(unit.toDouble(), exp)
         if (exp >= 5) {
@@ -23,18 +34,10 @@ class DataTypeFormatter {
             shortenedAmount *= additionalMultiplier
         }
         val pre = "GTPE"[(exp - 1).toInt()]
-        return String.format(getPattern(), shortenedAmount, pre)
+        return format(shortenedAmount, pre)
     }
 
-    fun getPattern(): String {
-        return String.format(Locale.US, "%%.%df %%sB", signsAfterComma)
-    }
+    private fun format(value: Double, prefix: Char) = String.format(Locale.US, pattern, formatValue(value), prefix)
 
-    fun setSignsAfterComma(signsAfterComma: Int) {
-        if (signsAfterComma >= 0) {
-            this.signsAfterComma = signsAfterComma
-        } else {
-            this.signsAfterComma = 2
-        }
-    }
+    private fun formatValue(value: Double): String = numberFormatter.format(value)
 }
