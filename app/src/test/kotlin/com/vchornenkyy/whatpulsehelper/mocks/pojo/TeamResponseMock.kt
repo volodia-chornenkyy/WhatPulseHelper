@@ -1,6 +1,6 @@
 package com.vchornenkyy.whatpulsehelper.mocks.pojo
 
-import com.vchornenkyy.whatpulsehelper.model.api.pojo.TeamResponse
+import com.vchornenkyy.whatpulsehelper.model.api.pojo.team.TeamResponse
 
 class TeamResponseMock {
 
