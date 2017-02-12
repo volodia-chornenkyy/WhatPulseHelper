@@ -10,13 +10,13 @@ class UserMock {
     companion object {
         fun get(): User {
             val computers = HashMap<String, ComputerResponse>(1)
-            computers.put("1", ComputerResponseMock.get())
+            computers.put("1", ComputerResponseMock.getComputerWithoutUptime())
             return User()
         }
 
         fun get(name: String): User {
             val computers = HashMap<String, ComputerResponse>(1)
-            computers.put("1", ComputerResponseMock.get())
+            computers.put("1", ComputerResponseMock.getComputerWithoutUptime())
             val user = User()
             user.accountName = name
             return user
