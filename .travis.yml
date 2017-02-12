@@ -6,6 +6,7 @@ jdk:
 before_install:
  - chmod +x gradlew
  - pip install --user codecov
+ - sudo locale-gen
 
 android:
   components:
