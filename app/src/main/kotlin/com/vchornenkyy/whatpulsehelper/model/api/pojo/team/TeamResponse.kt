@@ -21,7 +21,7 @@ data class TeamResponse(
         @JsonProperty("GeneratedTime") val generatedTime: String = "",
         @JsonProperty("Keys") val keys: Long = 0,
         @JsonProperty("UptimeLong") val uptimeLong: String = "",
-        @JsonProperty("Clicks") val clicks: Int = 0,
+        @JsonProperty("Clicks") val clicks: Long = 0,
         @JsonProperty("Download") val download: String = "",
         @JsonProperty("Ranks") val ranks: RanksResponse = RanksResponse(0, 0, 0, 0, 0)
 )

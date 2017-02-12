@@ -12,6 +12,8 @@ abstract class BaseCache<T> {
 
     abstract fun clear()
 
+    abstract fun clearAll()
+
     protected abstract fun getTimestamp(): Long
 
     protected abstract fun getCurrentTimestamp(): Long

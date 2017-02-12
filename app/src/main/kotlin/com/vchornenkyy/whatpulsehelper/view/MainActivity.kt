@@ -14,7 +14,7 @@ import com.vchornenkyy.whatpulsehelper.model.api.pojo.UserResponse
 import com.vchornenkyy.whatpulsehelper.view.screens.computers.ComputersFragment
 import com.vchornenkyy.whatpulsehelper.view.screens.general_info.GeneralInfoFragment
 import com.vchornenkyy.whatpulsehelper.view.screens.login.LoginActivity
-import com.vchornenkyy.whatpulsehelper.view.screens.teams.TeamsFragment
+import com.vchornenkyy.whatpulsehelper.view.screens.teams.TeamFragment
 import com.vchornenkyy.whatpulsehelper.view.tracking.EventTracker
 import kotlinx.android.synthetic.main.main_activity.*
 
@@ -49,7 +49,7 @@ class MainActivity : BaseActivity() {
                     EventTracker.instance.computersOpened()
                 }
                 R.id.tab_teams -> {
-                    openFragment(TeamsFragment.newInstance())
+                    openFragment(TeamFragment.newInstance())
 
                     EventTracker.instance.teamsOpened()
                 }
@@ -71,7 +71,7 @@ class MainActivity : BaseActivity() {
                 appProperties?.saveUsername("")
 
                 val cache: BaseCache<UserResponse> = UserResponsePaperCache()
-                cache.clear()
+                cache.clearAll()
 
                 EventTracker.instance.logout()
 
