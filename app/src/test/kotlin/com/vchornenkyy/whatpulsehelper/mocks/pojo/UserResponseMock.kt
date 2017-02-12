@@ -9,13 +9,13 @@ class UserResponseMock {
     companion object {
         fun get(): UserResponse {
             val computers = HashMap<String, ComputerResponse>(1)
-            computers.put("1", ComputerResponseMock.get())
+            computers.put("1", ComputerResponseMock.getComputerWithoutUptime())
             return UserResponse("", 0, "", "", "", 0, "", 0, 0, 0, 0, "", "", 0.0, 0.0, 0, "", 0, 0, 0.0f, 0.0f, RankResponseMock.Companion.get(), computers)
         }
 
         fun get(name: String): UserResponse {
             val computers = HashMap<String, ComputerResponse>(1)
-            computers.put("1", ComputerResponseMock.get())
+            computers.put("1", ComputerResponseMock.getComputerWithoutUptime())
             return UserResponse("", 0, name, "", "", 0, "", 0, 0, 0, 0, "", "", 0.0, 0.0, 0, "", 0, 0, 0.0f, 0.0f, RankResponseMock.Companion.get(), computers)
         }
     }
