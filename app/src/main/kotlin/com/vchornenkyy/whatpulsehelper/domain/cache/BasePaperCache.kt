@@ -31,6 +31,11 @@ abstract class BasePaperCache<T> : BaseCache<T>() {
     }
 
     override fun clear() {
+        Paper.book().delete(getDataKey())
+        Paper.book().delete(getDataTimestampKey())
+    }
+
+    override fun clearAll() {
         Paper.book().destroy()
     }
 
