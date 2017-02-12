@@ -6,22 +6,22 @@ import com.vchornenkyy.whatpulsehelper.model.api.pojo.RanksResponse
 
 @JsonIgnoreProperties(ignoreUnknown = true)
 data class TeamResponse(
-        @JsonProperty("DownloadMB") val downloadMB: Int = 0,
-        @JsonProperty("Description") val description: String? = null,
-        @JsonProperty("DateFormed") val dateFormed: String? = null,
-        @JsonProperty("UploadMB") val uploadMB: Int = 0,
-        @JsonProperty("UptimeShort") val uptimeShort: String? = null,
-        @JsonProperty("DateFormedUnixTimestamp") val dateFormedUnixTimestamp: String? = null,
-        @JsonProperty("Upload") val upload: String? = null,
+        @JsonProperty("DownloadMB") val downloadMB: Double = 0.0,
+        @JsonProperty("Description") val description: String = "",
+        @JsonProperty("DateFormed") val dateFormed: String = "",
+        @JsonProperty("UploadMB") val uploadMB: Double = 0.0,
+        @JsonProperty("UptimeShort") val uptimeShort: String = "",
+        @JsonProperty("DateFormedUnixTimestamp") val dateFormedUnixTimestamp: Long = 0,
+        @JsonProperty("Upload") val upload: String = "",
         @JsonProperty("Users") val users: Int = 0,
-        @JsonProperty("TeamID") val teamID: String? = null,
-        @JsonProperty("Founder") val founder: String? = null,
+        @JsonProperty("TeamID") val teamID: String = "",
+        @JsonProperty("Founder") val founder: String = "",
         @JsonProperty("UptimeSeconds") val uptimeSeconds: Long = 0,
-        @JsonProperty("Name") val name: String? = null,
-        @JsonProperty("GeneratedTime") val generatedTime: String? = null,
+        @JsonProperty("Name") val name: String = "",
+        @JsonProperty("GeneratedTime") val generatedTime: String = "",
         @JsonProperty("Keys") val keys: Long = 0,
-        @JsonProperty("UptimeLong") val uptimeLong: String? = null,
+        @JsonProperty("UptimeLong") val uptimeLong: String = "",
         @JsonProperty("Clicks") val clicks: Int = 0,
-        @JsonProperty("Download") val download: String? = null,
-        @JsonProperty("Ranks") val ranks: RanksResponse? = null
+        @JsonProperty("Download") val download: String = "",
+        @JsonProperty("Ranks") val ranks: RanksResponse = RanksResponse(0, 0, 0, 0, 0)
 )

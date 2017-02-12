@@ -10,6 +10,7 @@ abstract class BaseConverter<FROM, TO> {
 
     protected val numberFormatter: DecimalFormat = NumberFormat.getInstance(Locale.US) as DecimalFormat
     protected val dateTimeFormatter: SimpleDateFormat = SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.US)
+    protected val dateOnlyFormatter: SimpleDateFormat = SimpleDateFormat("yyyy-MM-dd", Locale.US)
 
     protected val dataTypeFormatter = DataTypeFormatter()
 
