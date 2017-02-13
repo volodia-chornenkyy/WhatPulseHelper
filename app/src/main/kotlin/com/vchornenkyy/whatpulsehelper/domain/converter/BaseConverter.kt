@@ -18,6 +18,10 @@ abstract class BaseConverter<FROM, TO> {
         val symbols = numberFormatter.decimalFormatSymbols
         symbols.groupingSeparator = ' '
         numberFormatter.decimalFormatSymbols = symbols
+
+        dateTimeFormatter.timeZone = TimeZone.getTimeZone("GMT")
+
+        dateOnlyFormatter.timeZone = TimeZone.getTimeZone("GMT")
     }
 
     abstract fun convert(data: FROM): TO
