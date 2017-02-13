@@ -19,7 +19,7 @@ class ComputerMock {
         }
 
         fun getComputerWithLastPulse(): Computer {
-            return Computer("", "0", "0", "0.00 MB", "0.00 MB", "0", "0", "1970-01-01 02:00:01")
+            return Computer("", "0", "0", "0.00 MB", "0.00 MB", "0", "0", "1970-01-01 00:00:01")
         }
     }
 }
