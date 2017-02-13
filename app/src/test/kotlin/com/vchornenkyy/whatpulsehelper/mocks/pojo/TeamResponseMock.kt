@@ -7,7 +7,7 @@ class TeamResponseMock {
     companion object {
 
         fun get(): TeamResponse {
-            return TeamResponse()
+            return TeamResponse(ranks = RankResponseMock.get())
         }
     }
 }
