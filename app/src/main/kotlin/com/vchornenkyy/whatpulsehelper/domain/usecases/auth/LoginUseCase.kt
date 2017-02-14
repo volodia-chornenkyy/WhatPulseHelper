@@ -21,6 +21,7 @@ class LoginUseCase(private val appProperties: AppProperties,
         return getBaseWhatPulseObservable(userId)
                 .map { user ->
                     appProperties.saveUsername(user.accountName)
+                    appProperties.saveTeamName(user.team.name)
                     return@map true
                 }
                 .subscribeOn(subscribeOn)
