@@ -2,6 +2,7 @@ package com.vchornenkyy.whatpulsehelper.model.api.pojo
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties
 import com.fasterxml.jackson.annotation.JsonProperty
+import com.vchornenkyy.whatpulsehelper.model.api.pojo.team.TeamResponse
 import java.util.*
 
 @JsonIgnoreProperties(ignoreUnknown = true)
@@ -28,5 +29,6 @@ data class UserResponse(
         @JsonProperty("AvKPS") val averageKeysPerSecond: Float,
         @JsonProperty("AvCPS") val averageClicksPerSecond: Float,
         @JsonProperty("Ranks") val ranks: RanksResponse,
-        @JsonProperty("Computers") val computers: HashMap<String, ComputerResponse>
+        @JsonProperty("Computers") val computers: HashMap<String, ComputerResponse>,
+        @JsonProperty("Team") val team: TeamResponse
 )

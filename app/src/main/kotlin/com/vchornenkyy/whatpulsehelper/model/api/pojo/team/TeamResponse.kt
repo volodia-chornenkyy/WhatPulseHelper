@@ -24,4 +24,7 @@ data class TeamResponse(
         @JsonProperty("Clicks") val clicks: Long = 0,
         @JsonProperty("Download") val download: String = "",
         @JsonProperty("Ranks") val ranks: RanksResponse = RanksResponse(0, 0, 0, 0, 0)
-)
+) {
+    // should exist for Jackson JSON parser
+    constructor(ignore: String) : this()
+}

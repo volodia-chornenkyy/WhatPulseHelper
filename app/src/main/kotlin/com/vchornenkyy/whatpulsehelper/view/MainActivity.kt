@@ -64,7 +64,7 @@ class MainActivity : BaseActivity() {
 
                         EventTracker.instance.teamsOpened()
                     } else {
-                        // TODO update Team data after reselect
+                        firstVisibleFragment.updateTeamData()
                     }
                 }
             }
