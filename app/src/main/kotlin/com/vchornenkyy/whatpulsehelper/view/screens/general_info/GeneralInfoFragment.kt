@@ -33,7 +33,7 @@ class GeneralInfoFragment : BaseFragment(), GeneralInfoPresenter.View {
 
         presenter?.attach(this)
 
-        presenter?.loadUser()
+        updateUserData()
 
         return binding?.root
     }
@@ -46,6 +46,10 @@ class GeneralInfoFragment : BaseFragment(), GeneralInfoPresenter.View {
     //endregion
 
     //region View
+    override fun updateUserData() {
+        presenter?.loadUser()
+    }
+
     override fun bindUser(user: User) {
         binding?.user = user
     }

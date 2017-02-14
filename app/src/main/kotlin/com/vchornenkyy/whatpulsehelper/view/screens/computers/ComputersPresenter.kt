@@ -39,6 +39,8 @@ class ComputersPresenter<VIEW : ComputersPresenter.View> constructor(val appProp
     }
 
     interface View : BaseView {
+        fun updateComputersData()
+
         fun bindComputers(computers: List<Computer>)
     }
 }

@@ -36,7 +36,7 @@ class ComputersFragment : BaseFragment(), ComputersPresenter.View {
 
         presenter?.attach(this)
 
-        presenter?.loadComputers()
+        updateComputersData()
 
         return view
     }
@@ -46,6 +46,10 @@ class ComputersFragment : BaseFragment(), ComputersPresenter.View {
         super.onDestroyView()
     }
     //endregion
+
+    override fun updateComputersData() {
+        presenter?.loadComputers()
+    }
 
     override fun bindComputers(computers: List<Computer>) {
         adapter.updateData(computers)
