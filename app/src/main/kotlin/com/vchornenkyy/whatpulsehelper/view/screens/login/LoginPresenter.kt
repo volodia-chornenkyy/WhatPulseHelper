@@ -4,11 +4,9 @@ import com.vchornenkyy.whatpulsehelper.domain.exceptions.EmptyUsernameException
 import com.vchornenkyy.whatpulsehelper.domain.usecases.auth.LoginUseCase
 import com.vchornenkyy.whatpulsehelper.view.BasePresenter
 import com.vchornenkyy.whatpulsehelper.view.BaseView
-import rx.Subscription
 
-class LoginPresenter<VIEW : LoginPresenter.View> constructor(private val loginUseCase: LoginUseCase) : BasePresenter<VIEW>() {
-
-    private var userSubscription: Subscription? = null
+class LoginPresenter<VIEW : LoginPresenter.View>(
+        private val loginUseCase: LoginUseCase) : BasePresenter<VIEW>() {
 
     fun login(username: String) {
         if (username.isEmpty()) {
@@ -18,7 +16,7 @@ class LoginPresenter<VIEW : LoginPresenter.View> constructor(private val loginUs
 
         view?.showProgress(true)
 
-        loginUseCase.execute(username)
+        val subscription = loginUseCase.execute(username)
                 .subscribe(
                         { isLoggedIn ->
                             view?.showProgress(false)
@@ -30,14 +28,7 @@ class LoginPresenter<VIEW : LoginPresenter.View> constructor(private val loginUs
                             view?.displayError(error)
                         }
                 )
-    }
-
-
-    override fun detach() {
-        super.detach()
-
-        userSubscription?.unsubscribe()
-        userSubscription = null
+        compositeSubscription.add(subscription)
     }
 
     interface View : BaseView {

@@ -6,15 +6,13 @@ import com.vchornenkyy.whatpulsehelper.domain.dto.User
 import com.vchornenkyy.whatpulsehelper.domain.usecases.user.GetUserUseCase
 import com.vchornenkyy.whatpulsehelper.view.BasePresenter
 import com.vchornenkyy.whatpulsehelper.view.BaseView
-import rx.Subscription
 import java.net.UnknownHostException
 
-class GeneralInfoPresenter<VIEW : GeneralInfoPresenter.View> constructor(val appProperties: AppProperties) : BasePresenter<VIEW>() {
-
-    var userSubscription: Subscription? = null
+class GeneralInfoPresenter<VIEW : GeneralInfoPresenter.View>(
+        private val appProperties: AppProperties) : BasePresenter<VIEW>() {
 
     fun loadUser() {
-        userSubscription = GetUserUseCase(appProperties).execute()
+        val subscription = GetUserUseCase(appProperties).execute()
                 .subscribe(
                         { user ->
                             view?.bindUser(user)
@@ -29,13 +27,7 @@ class GeneralInfoPresenter<VIEW : GeneralInfoPresenter.View> constructor(val app
                             // TODO display error message to UI
                         }
                 )
-    }
-
-    override fun detach() {
-        super.detach()
-
-        userSubscription?.unsubscribe()
-        userSubscription = null
+        compositeSubscription.add(subscription)
     }
 
     interface View : BaseView {
