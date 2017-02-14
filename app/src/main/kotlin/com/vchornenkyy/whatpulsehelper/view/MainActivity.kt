@@ -2,7 +2,6 @@ package com.vchornenkyy.whatpulsehelper.view
 
 import android.content.Intent
 import android.os.Bundle
-import android.support.v4.app.Fragment
 import android.view.Menu
 import android.view.MenuItem
 import com.vchornenkyy.whatpulsehelper.R
@@ -12,7 +11,9 @@ import com.vchornenkyy.whatpulsehelper.domain.cache.BaseCache
 import com.vchornenkyy.whatpulsehelper.domain.cache.boilerplate.UserResponsePaperCache
 import com.vchornenkyy.whatpulsehelper.model.api.pojo.UserResponse
 import com.vchornenkyy.whatpulsehelper.view.screens.computers.ComputersFragment
+import com.vchornenkyy.whatpulsehelper.view.screens.computers.ComputersPresenter
 import com.vchornenkyy.whatpulsehelper.view.screens.general_info.GeneralInfoFragment
+import com.vchornenkyy.whatpulsehelper.view.screens.general_info.GeneralInfoPresenter
 import com.vchornenkyy.whatpulsehelper.view.screens.login.LoginActivity
 import com.vchornenkyy.whatpulsehelper.view.screens.teams.TeamFragment
 import com.vchornenkyy.whatpulsehelper.view.tracking.EventTracker
@@ -37,21 +38,34 @@ class MainActivity : BaseActivity() {
 
         bottomBar.setOnNavigationItemSelectedListener {
             item ->
+            val firstVisibleFragment = getFirstVisibleFragment()
             when (item.itemId) {
                 R.id.tab_profile -> {
-                    openFragment(GeneralInfoFragment.newInstance())
+                    if (firstVisibleFragment !is GeneralInfoPresenter.View) {
+                        openFragment(GeneralInfoFragment.newInstance())
 
-                    EventTracker.instance.profileOpened()
+                        EventTracker.instance.profileOpened()
+                    } else {
+                        firstVisibleFragment.updateUserData()
+                    }
                 }
                 R.id.tab_computers -> {
-                    openFragment(ComputersFragment.newInstance())
+                    if (firstVisibleFragment !is ComputersPresenter.View) {
+                        openFragment(ComputersFragment.newInstance())
 
-                    EventTracker.instance.computersOpened()
+                        EventTracker.instance.computersOpened()
+                    } else {
+                        firstVisibleFragment.updateComputersData()
+                    }
                 }
                 R.id.tab_teams -> {
-                    openFragment(TeamFragment.newInstance())
+                    if (firstVisibleFragment !is TeamFragment) {
+                        openFragment(TeamFragment.newInstance())
 
-                    EventTracker.instance.teamsOpened()
+                        EventTracker.instance.teamsOpened()
+                    } else {
+                        // TODO update Team data after reselect
+                    }
                 }
             }
             return@setOnNavigationItemSelectedListener true
@@ -80,12 +94,5 @@ class MainActivity : BaseActivity() {
             }
         }
         return false
-    }
-
-
-    private fun openFragment(fragment: Fragment) {
-        supportFragmentManager.beginTransaction()
-                .replace(R.id.mainActivityContainer, fragment)
-                .commit()
     }
 }

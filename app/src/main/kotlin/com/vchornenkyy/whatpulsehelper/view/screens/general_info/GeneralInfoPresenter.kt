@@ -39,6 +39,8 @@ class GeneralInfoPresenter<VIEW : GeneralInfoPresenter.View> constructor(val app
     }
 
     interface View : BaseView {
+        fun updateUserData()
+
         fun bindUser(user: User)
     }
 }
