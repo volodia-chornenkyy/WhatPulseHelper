@@ -7,9 +7,9 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.vchornenkyy.whatpulsehelper.R
-import com.vchornenkyy.whatpulsehelper.view.BaseFragment
-import com.vchornenkyy.whatpulsehelper.domain.dto.Computer
 import com.vchornenkyy.whatpulsehelper.common.helper.SharedPrefAppProperties
+import com.vchornenkyy.whatpulsehelper.domain.dto.Computer
+import com.vchornenkyy.whatpulsehelper.view.BaseFragment
 
 class ComputersFragment : BaseFragment(), ComputersPresenter.View {
     var presenter: ComputersPresenter<ComputersPresenter.View>? = null
@@ -21,34 +21,39 @@ class ComputersFragment : BaseFragment(), ComputersPresenter.View {
         fun newInstance(): ComputersFragment {
             return ComputersFragment()
         }
-
     }
 
     // region Lifecycle
     override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
-
+        super.onCreateView(inflater, container, savedInstanceState)
         val view = LayoutInflater.from(context).inflate(R.layout.computers_layout, container, false)
 
         setupUi(view)
 
-        presenter = ComputersPresenter(SharedPrefAppProperties(context))
-
-        presenter?.attach(this)
-
-        presenter?.loadComputers()
+        updateComputersData()
 
         return view
     }
-
-    override fun onDestroyView() {
-        presenter?.detach()
-        super.onDestroyView()
-    }
     //endregion
+
+    //region View
+    override fun updateComputersData() {
+        presenter?.loadComputers()
+    }
 
     override fun bindComputers(computers: List<Computer>) {
         adapter.updateData(computers)
+    }
+    //endregion
+
+    override fun initPresenter() {
+        presenter = ComputersPresenter(SharedPrefAppProperties(context), this)
+        presenter?.attach()
+    }
+
+    override fun removePresenter() {
+        presenter?.detach()
     }
 
     private fun setupUi(view: View) {

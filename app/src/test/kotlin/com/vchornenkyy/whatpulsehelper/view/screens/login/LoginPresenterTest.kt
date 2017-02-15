@@ -16,14 +16,13 @@ class LoginPresenterTest {
     val loginUseCase: LoginUseCase = mock(LoginUseCase::class.java)
     val view: LoginPresenter.View = mock(LoginPresenter.View::class.java)
 
-    val presenter: LoginPresenter<LoginPresenter.View> = LoginPresenter(loginUseCase)
+    val presenter: LoginPresenter<LoginPresenter.View> = LoginPresenter(loginUseCase, view)
 
     @Test
     fun loginSuccessful() {
         `when`(loginUseCase.execute(accountName)).then {
             return@then Observable.just(true)
         }
-        presenter.attach(view)
 
         presenter.login(accountName)
 
@@ -36,7 +35,6 @@ class LoginPresenterTest {
         `when`(loginUseCase.execute(accountName)).then {
             return@then Observable.just(true)
         }
-        presenter.attach(view)
 
         presenter.login(accountName)
 
@@ -48,7 +46,6 @@ class LoginPresenterTest {
     fun displayError() {
         val exception = Exception()
         `when`(loginUseCase.execute(accountName)).thenReturn(Observable.error(exception))
-        presenter.attach(view)
 
         presenter.login(accountName)
 
@@ -58,8 +55,6 @@ class LoginPresenterTest {
 
     @Test
     fun emptyUsername() {
-        presenter.attach(view)
-
         presenter.login("")
 
         verify(view, times(1)).displayError(any(EmptyUsernameException::class.java) ?: EmptyUsernameException())

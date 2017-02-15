@@ -6,10 +6,11 @@ import java.util.*
 
 abstract class BasePaperCache<T> : BaseCache<T>() {
 
-    // TODO try to generate keys by T value
     protected abstract fun getDataKey(): String
 
-    protected abstract fun getDataTimestampKey(): String
+    protected open fun getDataTimestampKey(): String {
+        return getDataKey() + "Timestamp"
+    }
 
     override fun save(data: T) {
         if (!isCacheValid()) {
@@ -30,6 +31,11 @@ abstract class BasePaperCache<T> : BaseCache<T>() {
     }
 
     override fun clear() {
+        Paper.book().delete(getDataKey())
+        Paper.book().delete(getDataTimestampKey())
+    }
+
+    override fun clearAll() {
         Paper.book().destroy()
     }
 
