@@ -9,18 +9,19 @@ import com.vchornenkyy.whatpulsehelper.view.BaseView
 import java.net.UnknownHostException
 
 class GeneralInfoPresenter<VIEW : GeneralInfoPresenter.View>(
-        private val appProperties: AppProperties) : BasePresenter<VIEW>() {
+        private val appProperties: AppProperties,
+        view: VIEW) : BasePresenter<VIEW>(view) {
 
     fun loadUser() {
         val subscription = GetUserUseCase(appProperties).execute()
                 .subscribe(
                         { user ->
-                            view?.bindUser(user)
+                            view.bindUser(user)
                         },
                         { error ->
 
                             if (error is UnknownHostException) {
-                                view?.displayMessage("Please check internet connection")
+                                view.displayMessage("Please check internet connection")
                             }
 
                             Log.e(GeneralInfoPresenter::class.java.name, error.message, error)

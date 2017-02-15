@@ -11,25 +11,26 @@ import java.net.UnknownHostException
 
 class TeamPresenter<VIEW : TeamPresenter.View>(
         private val appProperties: AppProperties,
-        private val getTeamUseCase: GetTeamUseCase) : BasePresenter<VIEW>() {
+        private val getTeamUseCase: GetTeamUseCase,
+        view: VIEW) : BasePresenter<VIEW>(view) {
 
     fun getUserTeam() {
         val teamName = appProperties.getTeamName()
 
         if (teamName.isEmpty()) {
-            view?.displayMessage("You are not team member")
+            view.displayMessage("You are not team member")
             return
         }
 
         val subscription = getTeamUseCase.execute(teamName)
                 .subscribe(
                         { team ->
-                            view?.bindTeam(team)
+                            view.bindTeam(team)
                         },
                         { error ->
 
                             if (error is UnknownHostException) {
-                                view?.displayMessage("Please check internet connection")
+                                view.displayMessage("Please check internet connection")
                             }
 
                             Log.e(GeneralInfoPresenter::class.java.name, error.message, error)

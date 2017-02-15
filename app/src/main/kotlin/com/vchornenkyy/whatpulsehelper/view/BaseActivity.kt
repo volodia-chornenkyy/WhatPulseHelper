@@ -15,6 +15,12 @@ abstract class BaseActivity : AppCompatActivity(), BaseView {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         sharedView = SharedView(this)
+        initPresenter()
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        removePresenter()
     }
 
     override fun onConfigurationChanged(newConfig: Configuration?) {
@@ -46,4 +52,8 @@ abstract class BaseActivity : AppCompatActivity(), BaseView {
                 ?.forEach { return it }
         return null
     }
+
+    protected open fun initPresenter() {}
+
+    protected open fun removePresenter() {}
 }

@@ -48,8 +48,8 @@ class ComputersFragment : BaseFragment(), ComputersPresenter.View {
     //endregion
 
     override fun initPresenter() {
-        presenter = ComputersPresenter(SharedPrefAppProperties(context))
-        presenter?.attach(this)
+        presenter = ComputersPresenter(SharedPrefAppProperties(context), this)
+        presenter?.attach()
     }
 
     override fun removePresenter() {

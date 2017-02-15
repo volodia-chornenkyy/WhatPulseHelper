@@ -3,21 +3,17 @@ package com.vchornenkyy.whatpulsehelper.view
 import android.support.annotation.CallSuper
 import rx.subscriptions.CompositeSubscription
 
-abstract class BasePresenter<VIEW> {
-
-    protected var view: VIEW? = null
+abstract class BasePresenter<VIEW>(
+        protected val view: VIEW) {
 
     protected val compositeSubscription: CompositeSubscription = CompositeSubscription()
 
     @CallSuper
-    open fun attach(view: VIEW) {
-        this.view = view
+    open fun attach() {
     }
 
     @CallSuper
     open fun detach() {
-        view = null
-
         if (compositeSubscription.hasSubscriptions()) {
             compositeSubscription.unsubscribe()
         }
