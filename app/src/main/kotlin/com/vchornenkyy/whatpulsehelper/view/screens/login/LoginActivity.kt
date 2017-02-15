@@ -17,27 +17,29 @@ import java.net.UnknownHostException
 
 class LoginActivity : BaseActivity(), LoginPresenter.View {
 
-
     var presenter: LoginPresenter<LoginPresenter.View>? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.login_layout)
 
-        presenter = LoginPresenter(LoginUseCase(SharedPrefAppProperties(this)))
-
-        presenter?.attach(this)
-
         loginProceed.setOnClickListener {
             presenter?.login(loginUsername.text.toString())
         }
     }
 
-    override fun onDestroy() {
-        super.onDestroy()
+    override fun initPresenter() {
+        super.initPresenter()
+        presenter = LoginPresenter(LoginUseCase(SharedPrefAppProperties(this)), this)
+        presenter?.attach()
+    }
+
+    override fun removePresenter() {
+        super.removePresenter()
         presenter?.detach()
     }
 
+    //region View
     override fun showProgress(show: Boolean) {
         if (show) {
             loginProceed.visibility = View.GONE
@@ -67,4 +69,5 @@ class LoginActivity : BaseActivity(), LoginPresenter.View {
             else -> Log.e(LoginActivity::class.java.canonicalName, e.message, e)
         }
     }
+    //endregion
 }

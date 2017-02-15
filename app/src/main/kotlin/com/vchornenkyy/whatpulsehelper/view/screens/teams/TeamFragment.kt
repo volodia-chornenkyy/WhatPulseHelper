@@ -53,8 +53,9 @@ class TeamFragment : BaseFragment(), TeamPresenter.View {
     override fun initPresenter() {
         presenter = TeamPresenter(
                 SharedPrefAppProperties(context),
-                GetTeamUseCase())
-        presenter?.attach(this)
+                GetTeamUseCase(),
+                this)
+        presenter?.attach()
     }
 
     override fun removePresenter() {

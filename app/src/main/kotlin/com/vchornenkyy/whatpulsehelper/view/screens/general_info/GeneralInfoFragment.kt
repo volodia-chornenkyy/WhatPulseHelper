@@ -36,7 +36,6 @@ class GeneralInfoFragment : BaseFragment(), GeneralInfoPresenter.View {
     }
 
     override fun onDestroyView() {
-        presenter?.detach()
         binding?.unbind()
         super.onDestroyView()
     }
@@ -53,8 +52,8 @@ class GeneralInfoFragment : BaseFragment(), GeneralInfoPresenter.View {
     //endregion
 
     override fun initPresenter() {
-        presenter = GeneralInfoPresenter(SharedPrefAppProperties(context))
-        presenter?.attach(this)
+        presenter = GeneralInfoPresenter(SharedPrefAppProperties(context), this)
+        presenter?.attach()
     }
 
     override fun removePresenter() {

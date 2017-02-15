@@ -6,26 +6,27 @@ import com.vchornenkyy.whatpulsehelper.view.BasePresenter
 import com.vchornenkyy.whatpulsehelper.view.BaseView
 
 class LoginPresenter<VIEW : LoginPresenter.View>(
-        private val loginUseCase: LoginUseCase) : BasePresenter<VIEW>() {
+        private val loginUseCase: LoginUseCase,
+        view: VIEW) : BasePresenter<VIEW>(view) {
 
     fun login(username: String) {
         if (username.isEmpty()) {
-            view?.displayError(EmptyUsernameException())
+            view.displayError(EmptyUsernameException())
             return
         }
 
-        view?.showProgress(true)
+        view.showProgress(true)
 
         val subscription = loginUseCase.execute(username)
                 .subscribe(
                         { isLoggedIn ->
-                            view?.showProgress(false)
-                            view?.openMainScreen()
+                            view.showProgress(false)
+                            view.openMainScreen()
                         },
                         { error ->
-                            view?.showProgress(false)
+                            view.showProgress(false)
 
-                            view?.displayError(error)
+                            view.displayError(error)
                         }
                 )
         compositeSubscription.add(subscription)
