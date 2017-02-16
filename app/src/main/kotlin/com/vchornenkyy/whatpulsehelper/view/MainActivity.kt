@@ -10,6 +10,7 @@ import com.vchornenkyy.whatpulsehelper.common.helper.SharedPrefAppProperties
 import com.vchornenkyy.whatpulsehelper.domain.cache.BaseCache
 import com.vchornenkyy.whatpulsehelper.domain.cache.boilerplate.UserResponsePaperCache
 import com.vchornenkyy.whatpulsehelper.model.api.pojo.UserResponse
+import com.vchornenkyy.whatpulsehelper.view.screens.changelog.ChangelogActivity
 import com.vchornenkyy.whatpulsehelper.view.screens.computers.ComputersFragment
 import com.vchornenkyy.whatpulsehelper.view.screens.computers.ComputersPresenter
 import com.vchornenkyy.whatpulsehelper.view.screens.general_info.GeneralInfoFragment
@@ -79,6 +80,9 @@ class MainActivity : BaseActivity() {
 
     override fun onOptionsItemSelected(item: MenuItem?): Boolean {
         when (item?.itemId) {
+            R.id.menu_changelog -> {
+                startActivity(Intent(this, ChangelogActivity::class.java))
+            }
             R.id.menu_logout -> {
                 // todo move to presenter
 
