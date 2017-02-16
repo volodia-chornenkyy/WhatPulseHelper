@@ -6,7 +6,6 @@ jdk:
 before_install:
  - chmod +x gradlew
  - pip install --user codecov
- - sudo locale-gen
 
 android:
   components:
@@ -27,7 +26,6 @@ android:
 
 script:
   - ./gradlew jacocoTestReport
-  - bash uploadFailedTestReportToGit.sh
   - ./gradlew assembleDebug
 
 after_success:
