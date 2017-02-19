@@ -1,5 +1,7 @@
 package com.vchornenkyy.whatpulsehelper.model.api
 
+import com.fasterxml.jackson.databind.ObjectMapper
+import com.fasterxml.jackson.module.kotlin.KotlinModule
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
@@ -18,7 +20,7 @@ class WhatPulseRestApi {
                 .baseUrl("http://api.whatpulse.org/")
                 .client(getOkHttpClient())
                 .addCallAdapterFactory(RxJavaCallAdapterFactory.create())
-                .addConverterFactory(JacksonConverterFactory.create())
+                .addConverterFactory(JacksonConverterFactory.create(ObjectMapper().registerModule(KotlinModule())))
                 .build()
     }
 

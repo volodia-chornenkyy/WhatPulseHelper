@@ -74,6 +74,7 @@ dependencies {
     kapt "com.android.databinding:compiler:$build_tools_version"
     compile "com.squareup.retrofit2:retrofit:$retrofit_version"
     compile "com.squareup.retrofit2:converter-jackson:$retrofit_version"
+    compile "com.fasterxml.jackson.module:jackson-module-kotlin:2.8.6"
     compile "com.squareup.retrofit2:adapter-rxjava:$retrofit_version"
     compile "com.squareup.okhttp3:logging-interceptor:$okhttp_version"
     compile "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
