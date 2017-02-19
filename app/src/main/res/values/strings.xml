@@ -23,7 +23,8 @@
     <string name="no.pulses.from.pc">No pulses was performed from this PC</string>
 
     <!--Menu-->
-    <string name="menu_changelog">Changelog</string>
+    <string name="menu_version">Version</string>
+    <string name="menu_version_pattern">Version %s</string>
     <string name="menu_logout">Logout</string>
 
     <!--Placeholders-->

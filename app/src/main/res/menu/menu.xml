@@ -2,8 +2,9 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
     <item
-        android:id="@+id/menu_changelog"
-        android:title="@string/menu_changelog" />
+        android:id="@+id/menu_version"
+        android:checkable="false"
+        android:title="@string/menu_version" />
 
     <item
         android:id="@+id/menu_logout"

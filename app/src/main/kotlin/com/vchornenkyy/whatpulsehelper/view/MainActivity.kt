@@ -9,8 +9,8 @@ import com.vchornenkyy.whatpulsehelper.common.helper.AppProperties
 import com.vchornenkyy.whatpulsehelper.common.helper.SharedPrefAppProperties
 import com.vchornenkyy.whatpulsehelper.domain.cache.BaseCache
 import com.vchornenkyy.whatpulsehelper.domain.cache.boilerplate.UserResponsePaperCache
+import com.vchornenkyy.whatpulsehelper.domain.usecases.GetCurrentVersionUseCase
 import com.vchornenkyy.whatpulsehelper.model.api.pojo.UserResponse
-import com.vchornenkyy.whatpulsehelper.view.screens.changelog.ChangelogActivity
 import com.vchornenkyy.whatpulsehelper.view.screens.computers.ComputersFragment
 import com.vchornenkyy.whatpulsehelper.view.screens.computers.ComputersPresenter
 import com.vchornenkyy.whatpulsehelper.view.screens.general_info.GeneralInfoFragment
@@ -23,6 +23,8 @@ import kotlinx.android.synthetic.main.main_activity.*
 class MainActivity : BaseActivity() {
 
     private var appProperties: AppProperties? = null
+
+    private var menu: Menu? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -75,14 +77,16 @@ class MainActivity : BaseActivity() {
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
         menuInflater.inflate(R.menu.menu, menu)
+        this.menu = menu
+
+        // todo move to presenter
+        GetCurrentVersionUseCase().execute().subscribe { setCurrentVersion(it) }
+
         return true
     }
 
     override fun onOptionsItemSelected(item: MenuItem?): Boolean {
         when (item?.itemId) {
-            R.id.menu_changelog -> {
-                startActivity(Intent(this, ChangelogActivity::class.java))
-            }
             R.id.menu_logout -> {
                 // todo move to presenter
 
@@ -99,4 +103,11 @@ class MainActivity : BaseActivity() {
         }
         return false
     }
+
+    //region FUTURE VIEW METHODS
+    fun setCurrentVersion(version: String) {
+        val versionItem = menu?.findItem(R.id.menu_version)
+        versionItem?.title = getString(R.string.menu_version_pattern, version)
+    }
+    //endregion
 }
