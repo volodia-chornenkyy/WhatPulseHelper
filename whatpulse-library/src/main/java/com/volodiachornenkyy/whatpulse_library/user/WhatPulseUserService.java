@@ -1,11 +1,11 @@
 package com.volodiachornenkyy.whatpulse_library.user;
 
-import retrofit2.Call;
+import io.reactivex.Single;
 import retrofit2.http.GET;
 import retrofit2.http.Query;
 
-public interface WhatPulseUserService {
+interface WhatPulseUserService {
 
     @GET("user.php?format=json")
-    Call<WhatPulseUser> getUser(@Query("user") String userId);
+    Single<WhatPulseUser> getUser(@Query("user") String userId);
 }
