@@ -38,5 +38,4 @@ allprojects {
 dependencies {
     compile "com.android.support:design:$support_lib_version"
     compile project(path: ':whatpulse-library')
-    compile(name:'formathttpinterceptor', ext:'aar')
 }
