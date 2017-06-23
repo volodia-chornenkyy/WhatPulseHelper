@@ -2,6 +2,7 @@ package com.vchornenkyy.whatpulsehelper.view.widgets
 
 import android.databinding.DataBindingUtil
 import android.databinding.ViewDataBinding
+import android.support.annotation.LayoutRes
 import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -48,6 +49,7 @@ abstract class BaseAdapter<T> : RecyclerView.Adapter<BaseAdapter.BindingViewHold
         return data[position]
     }
 
+    @LayoutRes
     protected abstract fun getLayoutIdForPosition(position: Int): Int
 
     class BindingViewHolder<T>(private val binding: ViewDataBinding) : RecyclerView.ViewHolder(binding.root) {
