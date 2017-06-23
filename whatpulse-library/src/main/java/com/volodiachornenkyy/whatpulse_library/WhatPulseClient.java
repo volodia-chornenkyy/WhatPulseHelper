@@ -1,5 +1,6 @@
 package com.volodiachornenkyy.whatpulse_library;
 
+import com.volodiachornenkyy.whatpulse_library.pulses.WhatPulsePulsesApi;
 import com.volodiachornenkyy.whatpulse_library.user.WhatPulseUserApi;
 
 import okhttp3.OkHttpClient;
@@ -12,6 +13,8 @@ public class WhatPulseClient {
     private Retrofit retrofit;
 
     private WhatPulseUserApi userApi;
+
+    private WhatPulsePulsesApi pulsesApi;
 
     public WhatPulseClient() {
         this(new OkHttpClient());
@@ -31,5 +34,12 @@ public class WhatPulseClient {
             userApi = new WhatPulseUserApi(retrofit);
         }
         return userApi;
+    }
+
+    public WhatPulsePulsesApi getPulsesApi() {
+        if (pulsesApi == null) {
+            pulsesApi = new WhatPulsePulsesApi(retrofit);
+        }
+        return pulsesApi;
     }
 }

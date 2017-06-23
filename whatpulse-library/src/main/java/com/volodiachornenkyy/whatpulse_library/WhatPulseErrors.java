@@ -6,6 +6,7 @@ public enum WhatPulseErrors {
     UNKNOWN_USER("Unknown UserID given"),
 
     // TODO /pulses errors
+    NO_PULSES_FOUND("No pulses found!"),
 
     // TODO /team errors
 

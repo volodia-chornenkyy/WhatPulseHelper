@@ -8,9 +8,13 @@ import android.widget.TextView;
 
 import com.volodiachornenkyy.whatpulse_library.WhatPulseClient;
 import com.volodiachornenkyy.whatpulse_library.WhatPulseErrors;
+import com.volodiachornenkyy.whatpulse_library.pulses.WhatPulsePulse;
+import com.volodiachornenkyy.whatpulse_library.pulses.WhatPulsePulsesApi;
 import com.volodiachornenkyy.whatpulse_library.shared.WhatPulseException;
 import com.volodiachornenkyy.whatpulse_library.user.WhatPulseUser;
 import com.volodiachornenkyy.whatpulse_library.user.WhatPulseUserApi;
+
+import java.util.List;
 
 import io.reactivex.SingleObserver;
 import io.reactivex.android.schedulers.AndroidSchedulers;
@@ -23,6 +27,7 @@ public class MainActivity extends AppCompatActivity {
     TextView tvResults;
 
     WhatPulseUserApi userApi;
+    WhatPulsePulsesApi pulsesApi;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,6 +39,7 @@ public class MainActivity extends AppCompatActivity {
 
         WhatPulseClient whatPulseClient = new WhatPulseClient();
         userApi = whatPulseClient.getUserApi();
+        pulsesApi = whatPulseClient.getPulsesApi();
 
         findViewById(R.id.load_user).setOnClickListener(new View.OnClickListener() {
             @Override
@@ -59,6 +65,36 @@ public class MainActivity extends AppCompatActivity {
                     }
                 };
                 userApi.getUser(getInputValue())
+                        .subscribeOn(Schedulers.io())
+                        .observeOn(AndroidSchedulers.mainThread())
+                        .subscribe(subscriber);
+            }
+        });
+
+        findViewById(R.id.load_pulses).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                tvResults.setText("");
+                SingleObserver<List<WhatPulsePulse>> subscriber = new SingleObserver<List<WhatPulsePulse>>() {
+                    @Override
+                    public void onSubscribe(Disposable disposable) {
+                    }
+
+                    @Override
+                    public void onSuccess(List<WhatPulsePulse> whatPulseUser) {
+                        tvResults.setText(whatPulseUser.toString());
+                    }
+
+                    @Override
+                    public void onError(Throwable throwable) {
+                        if (throwable instanceof WhatPulseException) {
+                            tvResults.setText(WhatPulseErrors.define(throwable.getMessage()).name());
+                        } else {
+                            tvResults.setText(throwable.getMessage());
+                        }
+                    }
+                };
+                pulsesApi.getUserPulses(getInputValue())
                         .subscribeOn(Schedulers.io())
                         .observeOn(AndroidSchedulers.mainThread())
                         .subscribe(subscriber);
