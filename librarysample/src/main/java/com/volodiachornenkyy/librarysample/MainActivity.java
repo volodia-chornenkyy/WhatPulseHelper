@@ -8,9 +8,9 @@ import android.widget.TextView;
 
 import com.volodiachornenkyy.whatpulse_library.WhatPulseClient;
 import com.volodiachornenkyy.whatpulse_library.error.WhatPulseErrors;
+import com.volodiachornenkyy.whatpulse_library.error.WhatPulseException;
 import com.volodiachornenkyy.whatpulse_library.pulses.WhatPulsePulse;
 import com.volodiachornenkyy.whatpulse_library.pulses.WhatPulsePulsesApi;
-import com.volodiachornenkyy.whatpulse_library.shared.WhatPulseException;
 import com.volodiachornenkyy.whatpulse_library.teams.WhatPulseTeam;
 import com.volodiachornenkyy.whatpulse_library.teams.WhatPulseTeamApi;
 import com.volodiachornenkyy.whatpulse_library.user.WhatPulseUser;

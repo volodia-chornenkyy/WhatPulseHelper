@@ -1,4 +1,4 @@
-package com.volodiachornenkyy.whatpulse_library.shared;
+package com.volodiachornenkyy.whatpulse_library.error;
 
 public class WhatPulseException extends RuntimeException {
 
