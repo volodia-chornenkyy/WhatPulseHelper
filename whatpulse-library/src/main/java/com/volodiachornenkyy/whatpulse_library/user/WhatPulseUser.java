@@ -4,6 +4,7 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.volodiachornenkyy.whatpulse_library.shared.WhatPulseComputer;
 import com.volodiachornenkyy.whatpulse_library.shared.WhatPulseError;
+import com.volodiachornenkyy.whatpulse_library.shared.WhatPulseRanks;
 
 import java.util.Map;
 
@@ -81,6 +82,9 @@ public class WhatPulseUser extends WhatPulseError {
 
     @JsonProperty("GeneratedTime")
     private String generatedTime;
+
+    @JsonProperty("Ranks")
+    private WhatPulseRanks ranks;
 
     @JsonProperty("Computers")
     private Map<String, WhatPulseComputer> computers;
