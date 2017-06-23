@@ -3,13 +3,12 @@ package com.volodiachornenkyy.whatpulse_library.user;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.volodiachornenkyy.whatpulse_library.shared.WhatPulseComputer;
-import com.volodiachornenkyy.whatpulse_library.shared.WhatPulseError;
 import com.volodiachornenkyy.whatpulse_library.shared.WhatPulseRanks;
 
 import java.util.Map;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
-public class WhatPulseUser extends WhatPulseError {
+public class WhatPulseUser {
 
     @JsonProperty("UptimeLong")
     private String uptimeLong;

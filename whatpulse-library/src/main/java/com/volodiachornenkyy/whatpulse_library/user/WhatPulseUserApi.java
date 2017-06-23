@@ -1,9 +1,12 @@
 package com.volodiachornenkyy.whatpulse_library.user;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.volodiachornenkyy.whatpulse_library.shared.WhatPulseError;
 import com.volodiachornenkyy.whatpulse_library.shared.WhatPulseException;
 
 import io.reactivex.Single;
-import io.reactivex.functions.Consumer;
+import io.reactivex.functions.Function;
+import okhttp3.ResponseBody;
 import retrofit2.Retrofit;
 
 public class WhatPulseUserApi {
@@ -14,13 +17,18 @@ public class WhatPulseUserApi {
     }
 
     public Single<WhatPulseUser> getUser(String userId) {
-        return userService.getUser(userId).doOnSuccess(new Consumer<WhatPulseUser>() {
+        return userService.getUser(userId).map(new Function<ResponseBody, WhatPulseUser>() {
             @Override
-            public void accept(WhatPulseUser whatPulseUser) throws Exception {
-                String error = whatPulseUser.getError();
-                if (error != null) {
-                    throw new WhatPulseException(error);
+            public WhatPulseUser apply(ResponseBody responseBody) throws Exception {
+                String json = responseBody.string();
+                ObjectMapper objectMapper = new ObjectMapper();
+
+                WhatPulseError whatPulseError = objectMapper.readValue(json, WhatPulseError.class);
+                if (whatPulseError.getError() != null) {
+                    throw new WhatPulseException(whatPulseError.getError());
                 }
+
+                return objectMapper.readValue(json, WhatPulseUser.class);
             }
         });
     }
