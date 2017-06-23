@@ -1,59 +1,48 @@
 package com.volodiachornenkyy.whatpulse_library.pulses;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
-import com.volodiachornenkyy.whatpulse_library.error.WhatPulseError;
-import com.volodiachornenkyy.whatpulse_library.error.WhatPulseException;
+import com.volodiachornenkyy.whatpulse_library.shared.WhatPulseBaseApi;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.io.IOException;
+import java.util.HashMap;
 
 import io.reactivex.Single;
 import io.reactivex.functions.Function;
 import okhttp3.ResponseBody;
 import retrofit2.Retrofit;
 
-public class WhatPulsePulsesApi {
+public class WhatPulsePulsesApi extends WhatPulseBaseApi {
 
     private WhatPulsePulsesService pulsesService;
 
-    private Function<ResponseBody, List<WhatPulsePulse>> mapper;
+    private Function<ResponseBody, WhatPulsePulses> mapper;
 
     public WhatPulsePulsesApi(Retrofit retrofit) {
         pulsesService = retrofit.create(WhatPulsePulsesService.class);
-
-        mapper = new Function<ResponseBody, List<WhatPulsePulse>>() {
-            @Override
-            public List<WhatPulsePulse> apply(ResponseBody responseBody) throws Exception {
-                String json = responseBody.string();
-                ObjectMapper objectMapper = new ObjectMapper();
-
-                WhatPulseError whatPulseError = objectMapper.readValue(json, WhatPulseError.class);
-                if (whatPulseError.getError() != null) {
-                    throw new WhatPulseException(whatPulseError.getError());
-                }
-
-                WhatPulsePulses pulses = objectMapper.readValue(json, WhatPulsePulses.class);
-                List<WhatPulsePulse> data = new ArrayList<>(pulses.size());
-                data.addAll(pulses.values());
-                return data;
-            }
-        };
+        mapper = getMapperFunction(WhatPulsePulses.class);
     }
 
-    public Single<List<WhatPulsePulse>> getUserPulses(String userId, Long start, Long end) {
+    @Override
+    protected <T> T convert(Class<T> tClass, String json) throws IOException {
+        WhatPulsePulsesMap pulses = objectMapper.readValue(json, WhatPulsePulsesMap.class);
+        return (T) new WhatPulsePulses(pulses.values());
+    }
+
+    public Single<WhatPulsePulses> getUserPulses(String userId, Long start, Long end) {
         return pulsesService.getUserPulses(userId, start, end).map(mapper);
     }
 
-    public Single<List<WhatPulsePulse>> getUserPulses(String userId) {
+    public Single<WhatPulsePulses> getUserPulses(String userId) {
         return getUserPulses(userId, null, null);
     }
 
-    public Single<List<WhatPulsePulse>> getTeamPulses(String teamId, Long start, Long end) {
-
+    public Single<WhatPulsePulses> getTeamPulses(String teamId, Long start, Long end) {
         return pulsesService.getTeamPulses(teamId, start, end).map(mapper);
     }
 
-    public Single<List<WhatPulsePulse>> getTeamPulses(String teamId) {
+    public Single<WhatPulsePulses> getTeamPulses(String teamId) {
         return getTeamPulses(teamId, null, null);
+    }
+
+    private class WhatPulsePulsesMap extends HashMap<String, WhatPulsePulse> {
     }
 }
