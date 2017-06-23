@@ -7,10 +7,13 @@ import android.widget.EditText;
 import android.widget.TextView;
 
 import com.volodiachornenkyy.whatpulse_library.WhatPulseClient;
+import com.volodiachornenkyy.whatpulse_library.WhatPulseErrors;
+import com.volodiachornenkyy.whatpulse_library.shared.WhatPulseException;
 import com.volodiachornenkyy.whatpulse_library.user.WhatPulseUser;
 import com.volodiachornenkyy.whatpulse_library.user.WhatPulseUserApi;
 
 import io.reactivex.SingleObserver;
+import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.Disposable;
 import io.reactivex.schedulers.Schedulers;
 
@@ -39,7 +42,6 @@ public class MainActivity extends AppCompatActivity {
                 SingleObserver<WhatPulseUser> subscriber = new SingleObserver<WhatPulseUser>() {
                     @Override
                     public void onSubscribe(Disposable disposable) {
-                        System.out.println("TEST onSubscribe");
                     }
 
                     @Override
@@ -49,11 +51,16 @@ public class MainActivity extends AppCompatActivity {
 
                     @Override
                     public void onError(Throwable throwable) {
-                        tvResults.setText(throwable.getMessage());
+                        if (throwable instanceof WhatPulseException) {
+                            tvResults.setText(WhatPulseErrors.define(throwable.getMessage()).name());
+                        } else {
+                            tvResults.setText(throwable.getMessage());
+                        }
                     }
                 };
                 userApi.getUser(getInputValue())
                         .subscribeOn(Schedulers.io())
+                        .observeOn(AndroidSchedulers.mainThread())
                         .subscribe(subscriber);
             }
         });

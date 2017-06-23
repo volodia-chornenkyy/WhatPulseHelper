@@ -27,4 +27,6 @@ android {
 dependencies {
     compile "com.squareup.retrofit2:converter-jackson:$retrofit_version"
     compile "com.squareup.retrofit2:adapter-rxjava2:$retrofit_version"
+    compile "io.reactivex.rxjava2:rxandroid:$rxandroid2_version"
+    compile "io.reactivex.rxjava2:rxjava:$rxjava2_version"
 }
