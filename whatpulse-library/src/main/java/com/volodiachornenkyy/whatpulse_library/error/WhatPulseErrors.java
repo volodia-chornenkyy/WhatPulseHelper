@@ -1,4 +1,4 @@
-package com.volodiachornenkyy.whatpulse_library;
+package com.volodiachornenkyy.whatpulse_library.error;
 
 public enum WhatPulseErrors {
     // /user errors

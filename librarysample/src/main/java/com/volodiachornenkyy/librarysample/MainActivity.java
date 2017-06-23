@@ -7,7 +7,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 
 import com.volodiachornenkyy.whatpulse_library.WhatPulseClient;
-import com.volodiachornenkyy.whatpulse_library.WhatPulseErrors;
+import com.volodiachornenkyy.whatpulse_library.error.WhatPulseErrors;
 import com.volodiachornenkyy.whatpulse_library.pulses.WhatPulsePulse;
 import com.volodiachornenkyy.whatpulse_library.pulses.WhatPulsePulsesApi;
 import com.volodiachornenkyy.whatpulse_library.shared.WhatPulseException;

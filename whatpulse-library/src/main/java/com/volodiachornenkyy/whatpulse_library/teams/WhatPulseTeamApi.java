@@ -1,7 +1,7 @@
 package com.volodiachornenkyy.whatpulse_library.teams;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.volodiachornenkyy.whatpulse_library.shared.WhatPulseError;
+import com.volodiachornenkyy.whatpulse_library.error.WhatPulseError;
 import com.volodiachornenkyy.whatpulse_library.shared.WhatPulseException;
 
 import io.reactivex.Single;

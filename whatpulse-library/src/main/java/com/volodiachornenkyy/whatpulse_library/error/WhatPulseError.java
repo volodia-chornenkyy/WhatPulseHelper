@@ -1,4 +1,4 @@
-package com.volodiachornenkyy.whatpulse_library.shared;
+package com.volodiachornenkyy.whatpulse_library.error;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
