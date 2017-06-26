@@ -21,13 +21,14 @@ class StatedNavigationBottomBar : BottomNavigationView {
     constructor(context: Context, attrs: AttributeSet, defStyleAttr: Int) : super(context, attrs, defStyleAttr)
 
     private val keySuperState = "superState"
-    private val keySelectedItemId = "selectedItemId"
+    private val keySelectedItemId = "idOfSelectedItem"
 
     public override fun onSaveInstanceState(): Parcelable {
         val bundle = Bundle()
         bundle.putParcelable(keySuperState, super.onSaveInstanceState())
 
-        bundle.putInt(keySelectedItemId, selectedItemId)
+        bundle.putInt(keySelectedItemId, idOfSelectedItem)
+        // TODO check value from native selectedItemId
 
         return bundle
     }
@@ -40,7 +41,7 @@ class StatedNavigationBottomBar : BottomNavigationView {
         restoreSelectedItemState(selectedItemId)
     }
 
-    private val selectedItemId: Int
+    private val idOfSelectedItem: Int
         get() {
             (0..menu.size() - 1)
                     .map { menu.getItem(it) }

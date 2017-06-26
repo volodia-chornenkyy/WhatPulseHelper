@@ -21,7 +21,7 @@ repositories {
 
 android {
     compileSdkVersion 25
-    buildToolsVersion "24.0.3"
+    buildToolsVersion '25.0.3'
     defaultConfig {
         applicationId "com.vchornenkyy.com.vchornenkyy.whatpulsehelper"
         minSdkVersion 16
@@ -46,7 +46,7 @@ android {
         debug {
             versionNameSuffix ".debug"
 
-            minifyEnabled true
+            minifyEnabled false // TODO fix compilation error "Flag -libraryjars is not supported by the built-in shrinker"
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
         release {
@@ -66,7 +66,15 @@ android {
 }
 
 // conflict in PaperDB
-configurations.all { resolutionStrategy { force 'org.objenesis:objenesis:2.5' } }
+configurations.all {
+    resolutionStrategy {
+        force 'org.objenesis:objenesis:2.5'
+        force "com.android.support:design:$support_lib_version" // TODO test build without overriding support libs
+        force "com.android.support:appcompat-v7:$support_lib_version"
+        force "com.android.support:support-v4:$support_lib_version"
+        force "com.android.support:support-annotations:$support_lib_version"
+    }
+}
 
 dependencies {
     compile "com.android.support:design:$support_lib_version"
