@@ -2,7 +2,7 @@
 
 buildscript {
 
-    ext.build_tools_version = '2.2.3'
+    ext.gradle_version = '3.0.1'
     ext.kotlin_version = '1.0.6'
     ext.retrofit_version = '2.1.0'
     ext.okhttp_version = '3.4.1'
@@ -17,7 +17,7 @@ buildscript {
         }
     }
     dependencies {
-        classpath "com.android.tools.build:gradle:$build_tools_version"
+        classpath "com.android.tools.build:gradle:$gradle_version"
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
         classpath "org.jetbrains.kotlin:kotlin-android-extensions:$kotlin_version"
 

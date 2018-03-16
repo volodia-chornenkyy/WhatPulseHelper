@@ -60,7 +60,7 @@ android {
 dependencies {
     compile "com.android.support:design:$support_lib_version"
     compile "com.android.support:cardview-v7:$support_lib_version"
-    kapt "com.android.databinding:compiler:$build_tools_version"
+    kapt "com.android.databinding:compiler:$gradle_version"
     compile "com.squareup.retrofit2:retrofit:$retrofit_version"
     compile "com.squareup.retrofit2:converter-jackson:$retrofit_version"
     compile "com.squareup.retrofit2:adapter-rxjava:$retrofit_version"
