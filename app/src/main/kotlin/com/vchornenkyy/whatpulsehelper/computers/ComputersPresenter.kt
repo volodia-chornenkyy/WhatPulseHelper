@@ -3,13 +3,13 @@ package com.vchornenkyy.whatpulsehelper.computers
 import android.util.Log
 import com.vchornenkyy.whatpulsehelper.common.helper.AppProperties
 import com.vchornenkyy.whatpulsehelper.computers.usecase.GetComputersUseCase
-import rx.Subscription
+import io.reactivex.disposables.Disposable
 import java.net.UnknownHostException
 
 class ComputersPresenter constructor(val appProperties: AppProperties) {
 
     var view: ComputersView? = null
-    var subscription: Subscription? = null
+    var subscription: Disposable? = null
 
     fun loadComputers() {
         subscription = GetComputersUseCase(appProperties).execute()
@@ -30,7 +30,7 @@ class ComputersPresenter constructor(val appProperties: AppProperties) {
     }
 
     fun detach() {
-        subscription?.unsubscribe()
+        subscription?.dispose()
         subscription = null
     }
 }

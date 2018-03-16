@@ -3,13 +3,13 @@ package com.vchornenkyy.whatpulsehelper.general_info
 import android.util.Log
 import com.vchornenkyy.whatpulsehelper.common.helper.AppProperties
 import com.vchornenkyy.whatpulsehelper.general_info.usecase.GetUserUseCase
-import rx.Subscription
+import io.reactivex.disposables.Disposable
 import java.net.UnknownHostException
 
 class GeneralInfoPresenter constructor(val appProperties: AppProperties) {
 
     var view: GeneralInfoView? = null
-    var userSubscription: Subscription? = null
+    var userSubscription: Disposable? = null
 
     fun loadUser() {
         userSubscription = GetUserUseCase(appProperties).execute()
@@ -30,7 +30,7 @@ class GeneralInfoPresenter constructor(val appProperties: AppProperties) {
     }
 
     fun detach() {
-        userSubscription?.unsubscribe()
+        userSubscription?.dispose()
         userSubscription = null
     }
 }

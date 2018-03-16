@@ -6,14 +6,14 @@ import com.vchornenkyy.whatpulsehelper.common.helper.AppProperties
 import com.vchornenkyy.whatpulsehelper.common.tracking.EventTracker
 import com.vchornenkyy.whatpulsehelper.general_info.GeneralInfoPresenter
 import com.vchornenkyy.whatpulsehelper.login.usecase.LoginUseCase
-import rx.Subscription
+import io.reactivex.disposables.Disposable
 import java.net.UnknownHostException
 
 class LoginPresenter constructor(val appProperties: AppProperties,
                                  val eventTracker: EventTracker) {
 
     private var view: LoginView? = null
-    private var userSubscription: Subscription? = null
+    private var userSubscription: Disposable? = null
 
     fun login(username: String) {
         if (username.isEmpty()) {
@@ -53,7 +53,7 @@ class LoginPresenter constructor(val appProperties: AppProperties,
     fun detach() {
         view = null
 
-        userSubscription?.unsubscribe()
+        userSubscription?.dispose()
         userSubscription = null
     }
 

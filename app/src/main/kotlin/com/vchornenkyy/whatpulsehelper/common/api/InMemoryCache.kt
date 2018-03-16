@@ -1,7 +1,7 @@
 package com.vchornenkyy.whatpulsehelper.common.api
 
 import com.vchornenkyy.whatpulsehelper.common.api.model.UserResponse
-import rx.Observable
+import io.reactivex.Observable
 import java.util.*
 
 class InMemoryCache private constructor() : Cache {

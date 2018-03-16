@@ -1,7 +1,7 @@
 package com.vchornenkyy.whatpulsehelper.common.api
 
 import com.vchornenkyy.whatpulsehelper.common.api.model.UserResponse
-import rx.Observable
+import io.reactivex.Observable
 
 interface Cache {
     fun saveUser(userResponse: UserResponse)

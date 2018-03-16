@@ -63,10 +63,10 @@ dependencies {
     kapt "com.android.databinding:compiler:$gradle_version"
     compile "com.squareup.retrofit2:retrofit:$retrofit_version"
     compile "com.squareup.retrofit2:converter-jackson:$retrofit_version"
-    compile "com.squareup.retrofit2:adapter-rxjava:$retrofit_version"
+    compile "com.squareup.retrofit2:adapter-rxjava2:$retrofit_version"
     compile "com.squareup.okhttp3:logging-interceptor:$okhttp_version"
     compile "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
-    compile "io.reactivex:rxandroid:$rxandroid_version"
+    compile "io.reactivex.rxjava2:rxandroid:$rxandroid_version"
     compile("com.crashlytics.sdk.android:crashlytics:2.9.1@aar") {
         transitive = true;
     }
