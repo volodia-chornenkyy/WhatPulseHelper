@@ -20,7 +20,7 @@ repositories {
 
 android {
     compileSdkVersion 27
-    buildToolsVersion "24.0.3"
+    buildToolsVersion "26.0.2"
     defaultConfig {
         applicationId "com.vchornenkyy.com.vchornenkyy.whatpulsehelper"
         minSdkVersion 16
