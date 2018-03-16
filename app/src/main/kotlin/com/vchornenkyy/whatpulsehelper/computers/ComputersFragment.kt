@@ -25,14 +25,14 @@ class ComputersFragment : BaseFragment(), ComputersView {
     }
 
     // region Lifecycle
-    override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?,
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
 
         val view = LayoutInflater.from(context).inflate(R.layout.computers_layout, container, false)
 
         setupUi(view)
 
-        presenter = ComputersPresenter(SharedPrefAppProperties(context))
+        presenter = ComputersPresenter(SharedPrefAppProperties(context!!))
 
         presenter?.view = this
 
@@ -53,7 +53,7 @@ class ComputersFragment : BaseFragment(), ComputersView {
 
     private fun setupUi(view: View) {
         // TODO find out why direct usage don't work
-        val list: RecyclerView? = view.findViewById(R.id.list) as RecyclerView?
+        val list: RecyclerView? = view.findViewById<RecyclerView>(R.id.list)
         val layoutManager = LinearLayoutManager(context)
         layoutManager.isAutoMeasureEnabled = true
         list?.layoutManager = layoutManager

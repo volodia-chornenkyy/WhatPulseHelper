@@ -6,11 +6,15 @@ buildscript {
     ext.kotlin_version = '1.0.6'
     ext.retrofit_version = '2.1.0'
     ext.okhttp_version = '3.4.1'
-    ext.support_lib_version = '25.1.0'
+    ext.support_lib_version = '27.1.0'
     ext.rxandroid_version = '1.2.1'
 
     repositories {
         jcenter()
+        maven {
+            url 'https://maven.google.com/'
+            name 'Google'
+        }
     }
     dependencies {
         classpath "com.android.tools.build:gradle:$build_tools_version"
@@ -25,6 +29,10 @@ buildscript {
 allprojects {
     repositories {
         jcenter()
+        maven {
+            url 'https://maven.google.com/'
+            name 'Google'
+        }
     }
 }
 

@@ -36,14 +36,13 @@ class StatedNavigationBottomBar : BottomNavigationView {
         restoreSelectedItemState(selectedMenuItemId)
     }
 
-    private val selectedItemId: Int
-        get() {
-            (0..menu.size() - 1)
-                    .map { menu.getItem(it) }
-                    .filter { it.isChecked }
-                    .forEach { return it.itemId }
-            return 0
-        }
+    override fun getSelectedItemId(): Int {
+        (0..menu.size() - 1)
+                .map { menu.getItem(it) }
+                .filter { it.isChecked }
+                .forEach { return it.itemId }
+        return 0
+    }
 
     private fun restoreSelectedItemState(menuItemId: Int) {
         val menuItem = menu.findItem(menuItemId)

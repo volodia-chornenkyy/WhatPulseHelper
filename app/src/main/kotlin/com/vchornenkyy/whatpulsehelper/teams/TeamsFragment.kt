@@ -17,11 +17,7 @@ class TeamsFragment : BaseFragment() {
 
     }
 
-    override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?,
-                              savedInstanceState: Bundle?): View? {
-
-        val view = LayoutInflater.from(context).inflate(R.layout.teams_layout, container, false)
-
-        return view
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+        return LayoutInflater.from(context).inflate(R.layout.teams_layout, container, false)
     }
 }
