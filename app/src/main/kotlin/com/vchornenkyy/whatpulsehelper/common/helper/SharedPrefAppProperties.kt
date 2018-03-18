@@ -2,6 +2,7 @@ package com.vchornenkyy.whatpulsehelper.common.helper
 
 import android.content.Context
 import android.content.SharedPreferences
+import java.util.*
 
 class SharedPrefAppProperties(context: Context) : AppProperties {
 
@@ -15,5 +16,9 @@ class SharedPrefAppProperties(context: Context) : AppProperties {
 
     override fun getUsername(): String {
         return pref.getString(KEY_USERNAME, "") // todo change it when login screen will be created
+    }
+
+    override fun getAppLocale(): Locale {
+        return Locale.getDefault();
     }
 }

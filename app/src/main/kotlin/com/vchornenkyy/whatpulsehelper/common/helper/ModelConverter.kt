@@ -4,23 +4,14 @@ import com.vchornenkyy.whatpulsehelper.common.api.model.UserResponse
 import com.vchornenkyy.whatpulsehelper.common.dto.Computer
 import com.vchornenkyy.whatpulsehelper.common.dto.Ranks
 import com.vchornenkyy.whatpulsehelper.common.dto.User
+import java.text.DateFormat
 import java.text.DecimalFormat
 import java.text.NumberFormat
-import java.text.SimpleDateFormat
 import java.util.*
 
-class ModelConverter {
-    val numberFormatter: DecimalFormat
-    val dateFormatter: SimpleDateFormat
-
-    init {
-        numberFormatter = NumberFormat.getInstance(Locale.US) as DecimalFormat
-        val symbols = numberFormatter.decimalFormatSymbols
-        symbols.groupingSeparator = ' '
-        numberFormatter.decimalFormatSymbols = symbols
-
-        dateFormatter = SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.US)
-    }
+class ModelConverter(locale: Locale) {
+    private val numberFormatter: DecimalFormat = NumberFormat.getInstance(locale) as DecimalFormat
+    private val dateFormatter: DateFormat = DateFormat.getDateTimeInstance(DateFormat.SHORT, DateFormat.MEDIUM, locale)
 
     fun convert(response: UserResponse): User {
         val ranks = Ranks()

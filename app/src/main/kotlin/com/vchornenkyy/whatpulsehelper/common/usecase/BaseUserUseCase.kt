@@ -15,7 +15,7 @@ abstract class BaseUserUseCase(protected val properties: AppProperties,
                                protected val userApi: UserService = WhatPulseRestApi().userApi) {
 
     protected val cache: Cache = InMemoryCache.instance
-    protected val converter = ModelConverter()
+    protected val converter = ModelConverter(properties.getAppLocale())
 
     protected fun getUser(userId: String): Observable<User> {
         return cache.getUser()
