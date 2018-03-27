@@ -7,6 +7,4 @@ Project to learn Kotlin and Rx and help WhatPulse users check their statistic fr
 <img width="15%" alt='Get it on Google Play' src='https://play.google.com/intl/en_us/badges/images/generic/en_badge_web_generic.png'/>
 </a>
 
-<img width="30%" src="/play_store_resources/screens/framed/login_p_framed.png"/>
-<img width="30%" src="/play_store_resources/screens/framed/profile_p_framed.png"/>
-<img width="30%" src="/play_store_resources/screens/framed/computers_p_framed.png"/>
+<img width="30%" src="/play_store_resources/giphy.gif"/>
