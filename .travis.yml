@@ -25,4 +25,4 @@ android:
 
 script:
   # bash gradlew test jacocoTestReport for tests
-  - ./gradlew assembleRelease
+  - ./gradlew assembleDebug
