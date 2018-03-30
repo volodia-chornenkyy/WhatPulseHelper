@@ -5,6 +5,7 @@ import com.crashlytics.android.answers.ContentViewEvent
 import com.crashlytics.android.answers.CustomEvent
 import com.crashlytics.android.answers.LoginEvent
 import com.vchornenkyy.whatpulsehelper.common.tracking.IEventTracker
+import com.vchornenkyy.whatpulsehelper.common.tracking.Screens
 
 class TrackerAnswers : IEventTracker {
 
@@ -17,18 +18,22 @@ class TrackerAnswers : IEventTracker {
     }
 
     override fun profileOpened() {
-        Answers.getInstance().logContentView(ContentViewEvent().putContentName("profile"))
+        trackScreen(Screens.PROFILE)
     }
 
     override fun computersOpened() {
-        Answers.getInstance().logContentView(ContentViewEvent().putContentName("computers"))
+        trackScreen(Screens.COMPUTERS)
     }
 
     override fun teamsOpened() {
-        Answers.getInstance().logContentView(ContentViewEvent().putContentName("teams"))
+        trackScreen(Screens.TEAMS)
     }
 
     override fun orientationChanged(orientation: String) {
         Answers.getInstance().logCustom(CustomEvent("Orientation change").putCustomAttribute("type", orientation))
+    }
+
+    override fun trackScreen(screen: String) {
+        Answers.getInstance().logContentView(ContentViewEvent().putContentName(screen))
     }
 }

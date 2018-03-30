@@ -15,4 +15,6 @@ interface IEventTracker {
     fun teamsOpened()
 
     fun orientationChanged(@Orientation.Items orientation: String)
+
+    fun trackScreen(screen: String)
 }
