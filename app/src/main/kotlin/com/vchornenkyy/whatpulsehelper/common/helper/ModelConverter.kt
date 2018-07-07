@@ -11,7 +11,7 @@ import java.util.*
 
 class ModelConverter(locale: Locale) {
     private val numberFormatter: DecimalFormat = NumberFormat.getInstance(locale) as DecimalFormat
-    private val dateFormatter: DateFormat = DateFormat.getDateTimeInstance(DateFormat.SHORT, DateFormat.MEDIUM, locale)
+    private val dateFormatter: DateFormat = DateFormat.getDateTimeInstance(DateFormat.DEFAULT, DateFormat.MEDIUM, locale)
 
     fun convert(response: UserResponse): User {
         val ranks = Ranks()
