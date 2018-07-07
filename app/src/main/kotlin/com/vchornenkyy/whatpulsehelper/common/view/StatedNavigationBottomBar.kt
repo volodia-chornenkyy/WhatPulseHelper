@@ -4,8 +4,8 @@ import android.content.Context
 import android.os.Parcel
 import android.os.Parcelable
 import android.support.design.widget.BottomNavigationView
+import android.support.v4.view.AbsSavedState
 import android.util.AttributeSet
-import android.view.View
 
 /**
  * @author chornenkyy@gmail.com
@@ -51,13 +51,18 @@ class StatedNavigationBottomBar : BottomNavigationView {
         }
     }
 
-    internal class SavedState : View.BaseSavedState {
+    /**
+     * Fixed with help of these:
+     * Kotlin problem: https://medium.com/@kirillsuslov/how-to-save-android-view-state-in-kotlin-9dbe96074d49
+     * BottomNavigation problem: https://stackoverflow.com/a/48412463/3160214
+     */
+    internal class SavedState : AbsSavedState {
         var selectedMenuItemId: Int = 0
 
         constructor(superState: Parcelable) : super(superState) {}
 
-        private constructor(`in`: Parcel) : super(`in`) {
-            selectedMenuItemId = `in`.readInt()
+        private constructor(parcel: Parcel, classLoader: ClassLoader?) : super(parcel, classLoader) {
+            selectedMenuItemId = parcel.readInt()
         }
 
         override fun writeToParcel(out: Parcel, flags: Int) {
@@ -66,9 +71,15 @@ class StatedNavigationBottomBar : BottomNavigationView {
         }
 
         companion object {
-            val CREATOR: Parcelable.Creator<SavedState> = object : Parcelable.Creator<SavedState> {
-                override fun createFromParcel(`in`: Parcel): SavedState {
-                    return SavedState(`in`)
+
+            @JvmField
+            val CREATOR: Parcelable.Creator<SavedState> = object : Parcelable.ClassLoaderCreator<SavedState> {
+                override fun createFromParcel(parcel: Parcel, classLoader: ClassLoader): SavedState {
+                    return SavedState(parcel, classLoader)
+                }
+
+                override fun createFromParcel(source: Parcel): SavedState {
+                    return SavedState(source, null)
                 }
 
                 override fun newArray(size: Int): Array<SavedState?> {
