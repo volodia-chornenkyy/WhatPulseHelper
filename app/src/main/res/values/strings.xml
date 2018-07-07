@@ -20,7 +20,12 @@
     <string name="no.pulses.from.pc">No pulses was performed from this PC</string>
 
     <!--Menu-->
+    <string name="menu_refresh">Refresh</string>
     <string name="menu_logout">Logout</string>
+
+    <string name="info">Info</string>
+    <string name="dismiss">Dismiss</string>
+    <string name="info_default_cache">Due to WhatPulse limitations actual data can be loaded only once an hour. Last was on %1$s at %2$s</string>
 
     <!--Placeholders-->
     <string name="placeholder_text">Value</string>

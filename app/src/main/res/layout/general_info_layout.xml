@@ -14,7 +14,19 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:animateLayoutChanges="true"
         android:orientation="vertical">
+
+        <com.vchornenkyy.whatpulsehelper.common.view.InfoView
+            android:id="@+id/infoLoading"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingLeft="@dimen/space_vertical"
+            android:paddingRight="@dimen/space_vertical"
+            android:visibility="gone"
+            app:contentText="@string/info_default_cache"
+            app:headerText="@string/info"
+            tools:visibility="visible" />
 
         <LinearLayout
             android:id="@+id/accountLayout"

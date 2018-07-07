@@ -33,6 +33,8 @@ class GeneralInfoFragment : BaseFragment(), GeneralInfoView {
 
         presenter?.view = this
 
+        binding?.infoLoading?.setOnClickListener { presenter?.onLoadingInfoDismissed() }
+
         presenter?.loadUser()
 
         return binding?.root
@@ -48,6 +50,23 @@ class GeneralInfoFragment : BaseFragment(), GeneralInfoView {
     //region View
     override fun bindUser(user: User) {
         binding?.user = user
+    }
+
+    override fun showLoadingInfo(date: String, time: String) {
+        val string: String = getString(R.string.info_default_cache, date, time)
+        binding?.infoLoading?.setContent(string)
+        binding?.infoLoading?.visibility = View.VISIBLE
+    }
+
+    override fun hideLoadingInfo() {
+        binding?.infoLoading?.visibility = View.GONE
+    }
+
+    //endregion
+
+    //region IRefreshable
+    override fun onRefresh() {
+        presenter?.forceLoadUser()
     }
     //endregion
 }

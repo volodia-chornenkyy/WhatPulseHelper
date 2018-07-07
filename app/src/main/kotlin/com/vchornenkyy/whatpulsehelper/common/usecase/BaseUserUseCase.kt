@@ -12,9 +12,9 @@ import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
 
 abstract class BaseUserUseCase(protected val properties: AppProperties,
-                               protected val userApi: UserService = WhatPulseRestApi().userApi) {
+                               private val userApi: UserService = WhatPulseRestApi().userApi) {
 
-    protected val cache: Cache = InMemoryCache.instance
+    protected val cache: Cache = InMemoryCache(properties)
     protected val converter = ModelConverter(properties.getAppLocale())
 
     protected fun getUser(userId: String): Observable<User> {

@@ -1,43 +1,33 @@
 package com.vchornenkyy.whatpulsehelper.common.api
 
 import com.vchornenkyy.whatpulsehelper.common.api.model.UserResponse
+import com.vchornenkyy.whatpulsehelper.common.helper.AppProperties
 import io.reactivex.Observable
 import java.util.*
 
-class InMemoryCache private constructor() : Cache {
-    private val timeout = 3600000
-    private var userResponseTimestamp: Long = 0
-    private var userResponse: UserResponse? = null
+class InMemoryCache(private val properties: AppProperties) : Cache {
 
-    private object Holder {
-        val INSTANCE = InMemoryCache()
-    }
 
-    companion object {
-        val instance: InMemoryCache by lazy { Holder.INSTANCE }
+    private companion object Holder {
+        var CACHE: UserResponse? = null
     }
 
     override fun saveUser(userResponse: UserResponse) {
-        if (!isCacheValid(Date().time)) {
-            this.userResponseTimestamp = Date().time
-            this.userResponse = userResponse
+        if (!properties.isUserLoadingAvailable(Date().time)) {
+            properties.setLastUserLoadTimestamp()
+            Holder.CACHE = userResponse
         }
     }
 
     override fun getUser(): Observable<UserResponse> {
-        if (isCacheValid(Date().time)) {
-            return Observable.just(userResponse)
+        if (properties.isUserLoadingAvailable(Date().time) && Holder.CACHE != null) {
+            return Observable.just(Holder.CACHE)
         }
         return Observable.empty()
     }
 
     override fun clear() {
-        userResponse = null
-        userResponseTimestamp = 0
-    }
-
-    private fun isCacheValid(currentTime: Long): Boolean {
-        val timePassed = currentTime - userResponseTimestamp
-        return timePassed < timeout
+        Holder.CACHE = null
+        properties.clearLastUserLoadTimestamp()
     }
 }

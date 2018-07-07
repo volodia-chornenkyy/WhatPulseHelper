@@ -9,4 +9,12 @@ interface AppProperties {
     fun getUsername(): String
 
     fun getAppLocale(): Locale
+
+    fun getLastUserLoadTimestamp(): Long
+
+    fun setLastUserLoadTimestamp()
+
+    fun clearLastUserLoadTimestamp()
+
+    fun isUserLoadingAvailable(time: Long): Boolean
 }

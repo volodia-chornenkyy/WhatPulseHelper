@@ -22,6 +22,11 @@
 
     <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
 
+    <style name="AppTheme.Toolbar" parent="AppTheme">
+        <!--changes color of menu icon(3 dots)-->
+        <item name="android:textColorSecondary">@android:color/black</item>
+    </style>
+
     <style name="SplashTheme" parent="Theme.AppCompat.NoActionBar">
         <item name="android:windowBackground">@drawable/bg_splash</item>
     </style>

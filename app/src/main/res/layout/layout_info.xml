@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merge xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:layout_height="wrap_content"
+    tools:layout_width="match_parent"
+    tools:paddingLeft="@dimen/space_vertical"
+    tools:paddingRight="@dimen/space_vertical"
+    tools:parentTag="android.widget.RelativeLayout">
+
+    <TextView
+        android:id="@+id/tvHeader"
+        style="@style/Title"
+        tools:text="header" />
+
+    <TextView
+        android:id="@+id/tvValue"
+        style="@style/Text.Value"
+        android:layout_below="@id/tvHeader"
+        android:layout_marginLeft="0dp"
+        android:gravity="left"
+        tools:text="content" />
+
+    <TextView
+        android:id="@+id/tvAction"
+        style="@style/Title"
+        android:layout_alignParentRight="true"
+        android:layout_below="@id/tvValue"
+        android:background="?attr/selectableItemBackgroundBorderless"
+        android:clickable="true"
+        android:textAllCaps="true"
+        android:textColor="@color/colorPrimaryDark"
+        tools:text="action" />
+</merge>
