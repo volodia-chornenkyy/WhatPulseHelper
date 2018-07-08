@@ -5,7 +5,9 @@ import android.os.Bundle
 import android.support.v4.app.Fragment
 import android.view.Menu
 import android.view.MenuItem
+import android.view.View
 import com.vchornenkyy.whatpulsehelper.common.BaseActivity
+import com.vchornenkyy.whatpulsehelper.common.ILoadingView
 import com.vchornenkyy.whatpulsehelper.common.IRefreshable
 import com.vchornenkyy.whatpulsehelper.common.api.Cache
 import com.vchornenkyy.whatpulsehelper.common.api.InMemoryCache
@@ -16,9 +18,8 @@ import com.vchornenkyy.whatpulsehelper.computers.ComputersFragment
 import com.vchornenkyy.whatpulsehelper.general_info.GeneralInfoFragment
 import com.vchornenkyy.whatpulsehelper.login.LoginActivity
 import com.vchornenkyy.whatpulsehelper.teams.TeamsFragment
-import kotlinx.android.synthetic.main.main_activity.*
 
-class MainActivity : BaseActivity() {
+class MainActivity : BaseActivity(), ILoadingView {
 
     private var appProperties: AppProperties? = null
 
@@ -95,6 +96,14 @@ class MainActivity : BaseActivity() {
     override fun onAttachFragment(fragment: Fragment) {
         super.onAttachFragment(fragment)
         updateToolbarTitle(fragment)
+    }
+
+    override fun showLoading() {
+        mainActivityLoadingContainer.visibility = View.VISIBLE
+    }
+
+    override fun hideLoading() {
+        mainActivityLoadingContainer.visibility = View.GONE
     }
 
     private fun getCurrentFragment() =

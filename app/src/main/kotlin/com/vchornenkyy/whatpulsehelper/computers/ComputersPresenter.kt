@@ -12,12 +12,15 @@ class ComputersPresenter constructor(val appProperties: AppProperties) {
     var subscription: Disposable? = null
 
     fun loadComputers() {
+        view?.showLoading()
         subscription = GetComputersUseCase(appProperties).execute()
                 .subscribe(
                         { computers ->
+                            view?.hideLoading()
                             view?.bindComputers(computers)
                         },
                         { error ->
+                            view?.hideLoading()
 
                             if (error is UnknownHostException) {
                                 view?.displayMessage("Please check internet connection")

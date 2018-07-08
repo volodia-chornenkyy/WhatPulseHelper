@@ -12,6 +12,9 @@ class InMemoryCache(private val properties: AppProperties) : Cache {
         var CACHE: UserResponse? = null
     }
 
+    /* FIXME when time stored into preference cache can't be updated until an hour pass.
+     need store user response into storage. Jackson purely works with Kotlin (check build.gradle, Multidex).
+    */
     override fun saveUser(userResponse: UserResponse) {
         if (!properties.isUserLoadingAvailable(Date().time)) {
             properties.setLastUserLoadTimestamp()

@@ -5,11 +5,10 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.vchornenkyy.whatpulsehelper.R
 import com.vchornenkyy.whatpulsehelper.common.BaseFragment
+import com.vchornenkyy.whatpulsehelper.common.ILoadingView
 import com.vchornenkyy.whatpulsehelper.common.dto.User
 import com.vchornenkyy.whatpulsehelper.common.helper.SharedPrefAppProperties
-import com.vchornenkyy.whatpulsehelper.databinding.GeneralInfoLayoutBinding
 
 class GeneralInfoFragment : BaseFragment(), GeneralInfoView {
 
@@ -67,6 +66,20 @@ class GeneralInfoFragment : BaseFragment(), GeneralInfoView {
     //region IRefreshable
     override fun onRefresh() {
         presenter?.forceLoadUser()
+    }
+    //endregion
+
+    //region ILoadingView
+    override fun showLoading() {
+        if (activity is ILoadingView) {
+            (activity as ILoadingView).showLoading()
+        }
+    }
+
+    override fun hideLoading() {
+        if (activity is ILoadingView) {
+            (activity as ILoadingView).hideLoading()
+        }
     }
     //endregion
 }

@@ -14,12 +14,18 @@ class GeneralInfoPresenter constructor(val appProperties: AppProperties) {
     private var userSubscription: Disposable? = null
 
     fun loadUser() {
+        if (appProperties.isUserLoadingAvailable(Date().time)) {
+            view?.showLoading()
+        }
         userSubscription = GetUserUseCase(appProperties).execute()
                 .subscribe(
                         { user ->
+                            view?.hideLoading()
                             view?.bindUser(user)
                         },
                         { error ->
+                            view?.hideLoading()
+
                             if (error is UnknownHostException) {
                                 view?.displayMessage("Please check internet connection")
                             }

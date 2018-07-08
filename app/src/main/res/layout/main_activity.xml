@@ -24,14 +24,13 @@
                 android:layout_width="match_parent"
                 android:layout_height="?attr/actionBarSize"
                 android:background="@android:color/transparent"
-                app:theme="@style/AppTheme.Toolbar"
-                app:popupTheme="@style/AppTheme.PopupOverlay" />
+                app:popupTheme="@style/AppTheme.PopupOverlay"
+                app:theme="@style/AppTheme.Toolbar" />
 
             <FrameLayout
                 android:id="@+id/mainActivityContainer"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                app:layout_behavior="@string/appbar_scrolling_view_behavior" />
+                android:layout_height="match_parent" />
         </LinearLayout>
 
 
@@ -48,4 +47,24 @@
         android:layout_alignParentBottom="true"
         android:background="@android:color/white"
         app:menu="@menu/bottom_tabs" />
+
+    <FrameLayout
+        android:id="@+id/mainActivityLoadingContainer"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@id/bottomBar"
+        android:alpha=".75"
+        android:background="@android:color/white"
+        android:clickable="true"
+        android:focusable="true"
+        android:focusableInTouchMode="true"
+        android:visibility="gone"
+        tools:visibility="visible">
+
+        <ProgressBar
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_gravity="center" />
+
+    </FrameLayout>
 </RelativeLayout>

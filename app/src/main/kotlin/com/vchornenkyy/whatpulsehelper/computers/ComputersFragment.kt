@@ -6,8 +6,8 @@ import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.vchornenkyy.whatpulsehelper.R
 import com.vchornenkyy.whatpulsehelper.common.BaseFragment
+import com.vchornenkyy.whatpulsehelper.common.ILoadingView
 import com.vchornenkyy.whatpulsehelper.common.dto.Computer
 import com.vchornenkyy.whatpulsehelper.common.helper.SharedPrefAppProperties
 
@@ -50,6 +50,20 @@ class ComputersFragment : BaseFragment(), ComputersView {
     override fun bindComputers(computers: List<Computer>) {
         adapter.updateData(computers)
     }
+
+    //region ILoadingView
+    override fun showLoading() {
+        if (activity is ILoadingView) {
+            (activity as ILoadingView).showLoading()
+        }
+    }
+
+    override fun hideLoading() {
+        if (activity is ILoadingView) {
+            (activity as ILoadingView).hideLoading()
+        }
+    }
+    //endregion
 
     private fun setupUi(view: View) {
         // TODO find out why direct usage don't work
