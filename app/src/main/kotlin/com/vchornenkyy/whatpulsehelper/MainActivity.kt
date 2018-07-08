@@ -125,8 +125,12 @@ class MainActivity : BaseActivity() {
     }
 
     private fun openFragment(fragment: Fragment) {
-        supportFragmentManager.beginTransaction()
-                .replace(R.id.mainActivityContainer, fragment)
-                .commit()
+        val currentFragment = getCurrentFragment()
+        val sameFragment = currentFragment != null && fragment::class.java.name == currentFragment::class.java.name
+        if (!sameFragment) {
+            supportFragmentManager.beginTransaction()
+                    .replace(R.id.mainActivityContainer, fragment)
+                    .commit()
+        }
     }
 }
