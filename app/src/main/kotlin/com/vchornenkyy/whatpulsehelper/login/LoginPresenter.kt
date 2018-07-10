@@ -4,13 +4,15 @@ import android.util.Log
 import com.fasterxml.jackson.databind.JsonMappingException
 import com.vchornenkyy.whatpulsehelper.common.helper.AppProperties
 import com.vchornenkyy.whatpulsehelper.common.tracking.EventTracker
+import com.vchornenkyy.whatpulsehelper.common.usecase.UseCaseFactory
 import com.vchornenkyy.whatpulsehelper.general_info.GeneralInfoPresenter
 import com.vchornenkyy.whatpulsehelper.login.usecase.LoginUseCase
 import io.reactivex.disposables.Disposable
 import java.net.UnknownHostException
 
 class LoginPresenter constructor(val appProperties: AppProperties,
-                                 val eventTracker: EventTracker) {
+                                 val eventTracker: EventTracker,
+                                 val useCaseFactory: UseCaseFactory) {
 
     private var view: LoginView? = null
     private var userSubscription: Disposable? = null
@@ -23,7 +25,7 @@ class LoginPresenter constructor(val appProperties: AppProperties,
 
         view?.showProgress(true)
 
-        LoginUseCase(appProperties).execute(username)
+        useCaseFactory.get(LoginUseCase::class.java)!!.execute(username)
                 .subscribe(
                         { user ->
                             appProperties.saveUsername(username)

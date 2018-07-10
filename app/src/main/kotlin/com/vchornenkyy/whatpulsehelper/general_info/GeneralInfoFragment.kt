@@ -9,6 +9,7 @@ import com.vchornenkyy.whatpulsehelper.R
 import com.vchornenkyy.whatpulsehelper.common.BaseFragment
 import com.vchornenkyy.whatpulsehelper.common.dto.User
 import com.vchornenkyy.whatpulsehelper.common.helper.SharedPrefAppProperties
+import com.vchornenkyy.whatpulsehelper.common.usecase.UseCaseFactory
 import com.vchornenkyy.whatpulsehelper.databinding.GeneralInfoLayoutBinding
 
 class GeneralInfoFragment : BaseFragment(), GeneralInfoView {
@@ -29,7 +30,8 @@ class GeneralInfoFragment : BaseFragment(), GeneralInfoView {
                               savedInstanceState: Bundle?): View? {
         binding = DataBindingUtil.inflate(inflater, R.layout.general_info_layout, container, false)
 
-        presenter = GeneralInfoPresenter(SharedPrefAppProperties(context!!))
+        val appProperties = SharedPrefAppProperties(context!!)
+        presenter = GeneralInfoPresenter(appProperties, UseCaseFactory(context!!, appProperties))
 
         presenter?.view = this
 

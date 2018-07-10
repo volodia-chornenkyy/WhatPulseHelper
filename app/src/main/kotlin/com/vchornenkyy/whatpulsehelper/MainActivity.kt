@@ -8,7 +8,7 @@ import android.view.MenuItem
 import com.vchornenkyy.whatpulsehelper.common.BaseActivity
 import com.vchornenkyy.whatpulsehelper.common.IRefreshable
 import com.vchornenkyy.whatpulsehelper.common.api.Cache
-import com.vchornenkyy.whatpulsehelper.common.api.InMemoryCache
+import com.vchornenkyy.whatpulsehelper.common.api.SharedPrefCache
 import com.vchornenkyy.whatpulsehelper.common.helper.AppProperties
 import com.vchornenkyy.whatpulsehelper.common.helper.SharedPrefAppProperties
 import com.vchornenkyy.whatpulsehelper.common.tracking.EventTracker
@@ -80,7 +80,7 @@ class MainActivity : BaseActivity() {
 
                 appProperties?.saveUsername("")
 
-                val cache: Cache = InMemoryCache(appProperties!!)
+                val cache: Cache = SharedPrefCache(this, appProperties!!)
                 cache.clear()
 
                 EventTracker.instance.logout()

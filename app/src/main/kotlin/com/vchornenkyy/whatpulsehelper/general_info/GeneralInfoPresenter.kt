@@ -2,19 +2,21 @@ package com.vchornenkyy.whatpulsehelper.general_info
 
 import android.util.Log
 import com.vchornenkyy.whatpulsehelper.common.helper.AppProperties
+import com.vchornenkyy.whatpulsehelper.common.usecase.UseCaseFactory
 import com.vchornenkyy.whatpulsehelper.general_info.usecase.GetUserUseCase
 import io.reactivex.disposables.Disposable
 import java.net.UnknownHostException
 import java.text.DateFormat
 import java.util.*
 
-class GeneralInfoPresenter constructor(val appProperties: AppProperties) {
+class GeneralInfoPresenter constructor(val appProperties: AppProperties,
+                                       val useCaseFactory: UseCaseFactory) {
 
     var view: GeneralInfoView? = null
     private var userSubscription: Disposable? = null
 
     fun loadUser() {
-        userSubscription = GetUserUseCase(appProperties).execute()
+        userSubscription = useCaseFactory.get(GetUserUseCase::class.java)!!.execute()
                 .subscribe(
                         { user ->
                             view?.bindUser(user)

@@ -10,6 +10,7 @@ import com.vchornenkyy.whatpulsehelper.R
 import com.vchornenkyy.whatpulsehelper.common.BaseFragment
 import com.vchornenkyy.whatpulsehelper.common.dto.Computer
 import com.vchornenkyy.whatpulsehelper.common.helper.SharedPrefAppProperties
+import com.vchornenkyy.whatpulsehelper.common.usecase.UseCaseFactory
 
 class ComputersFragment : BaseFragment(), ComputersView {
     var presenter: ComputersPresenter? = null
@@ -32,7 +33,8 @@ class ComputersFragment : BaseFragment(), ComputersView {
 
         setupUi(view)
 
-        presenter = ComputersPresenter(SharedPrefAppProperties(context!!))
+        val appProperties = SharedPrefAppProperties(context!!)
+        presenter = ComputersPresenter(appProperties, UseCaseFactory(context!!, appProperties))
 
         presenter?.view = this
 

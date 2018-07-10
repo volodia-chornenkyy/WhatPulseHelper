@@ -1,6 +1,7 @@
 package com.vchornenkyy.whatpulsehelper
 
 import android.app.Application
+import android.support.multidex.MultiDex
 import com.crashlytics.android.Crashlytics
 import com.crashlytics.android.answers.Answers
 import com.vchornenkyy.whatpulsehelper.common.tracking.EventTracker
@@ -13,6 +14,8 @@ class App : Application() {
 
     override fun onCreate() {
         super.onCreate()
+
+        MultiDex.install(this)
 
         // setup release build
         if (!BuildConfig.DEBUG) {

@@ -46,7 +46,9 @@ class SharedPrefAppProperties(context: Context) : AppProperties {
     }
 
     override fun isUserLoadingAvailable(time: Long): Boolean {
-        val timePassed = time - getLastUserLoadTimestamp()
-        return timePassed < USER_LOADING_TIMEOUT
+        val lastUserLoadTimestamp = getLastUserLoadTimestamp()
+        if (lastUserLoadTimestamp == 0L) return true
+        val timePassed = time - lastUserLoadTimestamp
+        return timePassed >= USER_LOADING_TIMEOUT
     }
 }
