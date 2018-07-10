@@ -72,9 +72,6 @@ dependencies {
         transitive = true;
     }
 }
-kapt {
-    generateStubs = true
-}
 repositories {
     mavenCentral()
 }
